@@ -1,9 +1,19 @@
 ---
-
+const currentYear = new Date().getFullYear(); // Get the current year dynamically
 ---
 
-<footer class="pt-16 pb-12 sm:pt-24 sm:pb-16">
-    <p class="text-sm">
-        <a href="https://docs.netlify.com/frameworks/astro/" class="decoration-dashed text-primary underline-offset-8"> Astro on Netlify </a>
-    </p>
+<footer class="text-white pt-16 pb-12 sm:pt-24 sm:pb-16 text-center text-sm">
+    <div class="container mx-auto">
+        <p>
+            © {currentYear} Backup Failed Foundation is a registered 501(c)(3) nonprofit. Donations are tax‑deductible as allowed by law.
+        </p>
+        <p class="mt-2">
+            <a href="https://backupfailed.com" class="text-blue-400 hover:underline">backupfailed.com</a>
+        </p>
+        <div class="mt-4">
+            <a href="/privacy-policy" class="text-gray-400 hover:underline mx-2">Privacy Policy</a> |
+            <a href="/terms-of-service" class="text-gray-400 hover:underline mx-2">Terms of Service</a> |
+            <a href="/contact" class="text-gray-400 hover:underline mx-2">Contact Us</a>
+        </div>
+    </div>
 </footer>
