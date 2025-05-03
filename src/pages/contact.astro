@@ -1,0 +1,123 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContextAlert from '../components/ContextAlert.astro';
+
+const currentYear = new Date().getFullYear(); // Dynamically get the current year
+const faqItems = [
+    {
+        question: 'Who qualifies for free support?',
+        answer: 'We provide pro‑bono, no‑cost IT assistance to actively engaged, mission‑driven nonprofits. If you’re a registered 501(c)(3) (or equivalent) running ongoing projects that benefit your community, reach out and we’ll determine if we’re a good fit to support your mission—no invoices, no fine print.'
+    },
+    {
+        question: 'What if I’m not a nonprofit?',
+        answer: 'No sweat. If you’re a small business, startup, or other organization, we offer honest, market‑competitive rates. We’ll give you a clear quote up front so you know exactly what to expect.'
+    },
+    {
+        question: 'How do I submit a request?',
+        answer: 'Just fill out our contact form with your organization’s name, a brief description of your goals, and how you’d like us to help. Tell us if you’re a nonprofit or a business so we can route you correctly.'
+    },
+    {
+        question: 'Do you offer training or workshops?',
+        answer: 'We don’t do one-on-one training or live workshops, but we publish step‑by‑step guides and processes on our website. Check back often—we’re always adding fresh content to cover the latest IT trends.'
+    },
+    {
+        question: 'Can I volunteer or donate?',
+        answer: 'You bet! Whether you’ve got IT chops or just want to lend a hand, we’d love to have you. Fill out our contact form and let us know your skills or why you’d like to join the team. You can also donate—your support keeps our servers humming and our pro‑bono work going strong.'
+    },
+    {
+        question: 'What technologies do you support?',
+        answer: 'Our wheelhouse includes Microsoft 365 & Azure, open‑source CMS (WordPress, Ghost, etc.), networking & security, and custom automation scripts. Need HIPAA‑, PCI‑, or FINRA‑compliant logins for staff and volunteers? We’ve got you. Got something else in mind? Just ask!'
+    },
+    {
+        question: 'How do you protect my data?',
+        answer: 'We treat your data with the utmost care. We follow industry best practices, and never sell or share your information.'
+    },
+    {
+        question: 'I’m not very technical—can you still help me?',
+        answer: 'Absolutely. We walk you through every step in plain English, without jargon or complexity overload. Everyone has different strengths—together, we’ll fill in the gaps.'
+    },
+    {
+        question: 'Do you provide on‑site visits or only remote support?',
+        answer: 'We primarily deliver fast, efficient remote support. If you require on‑site assistance, let us know and we’ll see if we can accommodate or refer you to a local partner.'
+    },
+    {
+        question: 'What if I already have an IT provider?',
+        answer: 'We focus our limited pro‑bono resources on organizations without existing IT support. If you already have a provider, we may not be the best fit. We still encourage you to reach out to us and let us know what you need help with and where your current IT service provider or in-house technical staff is unable to meet your needs.'
+    }
+];
+---
+
+<Layout title="Contact Us | Backup Failed Foundation">
+    <ContextAlert class="mb-8" />
+
+    <main class="max-w-4xl mx-auto px-6 py-12">
+        <!-- Contact Form -->
+        <form id="contactForm" class="bg-gray-900 text-white p-6 rounded-lg shadow-lg">
+            <h1 class="text-3xl font-bold mb-6 text-center">Contact Us</h1>
+
+            <label for="name" class="block font-semibold mb-2">Name</label>
+            <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                class="w-full p-3 mb-4 bg-gray-800 text-white border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+
+            <label for="email" class="block font-semibold mb-2">Email</label>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="w-full p-3 mb-4 bg-gray-800 text-white border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+
+            <label for="message" class="block font-semibold mb-2">Message</label>
+            <textarea
+                id="message"
+                name="message"
+                required
+                class="w-full p-3 mb-4 bg-gray-800 text-white border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+
+            <button type="submit" class="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition duration-200"> Send Message </button>
+            <div id="formMsg" class="mt-4 text-center text-sm"></div>
+        </form>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="faq bg-gray-900 text-white mt-12 p-6 rounded-lg shadow-lg">
+            <h2 class="text-2xl font-bold mb-6 text-center">Frequently Asked Questions</h2>
+            {
+                faqItems.map((item) => (
+                    <details class="mb-4">
+                        <summary class="font-semibold cursor-pointer">{item.question}</summary>
+                        <p class="mt-2 text-gray-400">{item.answer}</p>
+                    </details>
+                ))
+            }
+        </section>
+    </main>
+</Layout>
+
+<script>
+    const form = document.getElementById('contactForm');
+    const msg = document.getElementById('formMsg');
+    const endpoint = 'https://bff-contact-function.azurewebsites.net/api/ContactUs?';
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        msg.textContent = 'Sending…';
+        const data = Object.fromEntries(new FormData(form));
+        try {
+            const res = await fetch(endpoint, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            msg.textContent = res.ok ? 'Thanks! We got your message.' : 'Server error. Try again later.';
+            if (res.ok) form.reset();
+        } catch {
+            msg.textContent = 'Network error. Check your connection.';
+        }
+    });
+</script>
