@@ -1,51 +1,19 @@
-# Astro on Netlify Platform Starter
+# Backup Failed Foundation Website
 
-[Live Demo](https://astro-platform-starter.netlify.app/)
+Welcome to the official repository for the **Backup Failed Foundation** website! We are a nonprofit organization dedicated to empowering mission-driven teams by providing accessible IT resources, education, and support. This website is built using the open-source [Astro](https://astro.build/) framework, which allows us to create fast, modern, and scalable web experiences.
 
-A modern starter based on Astro.js, Tailwind, and [Netlify Core Primitives](https://docs.netlify.com/core/overview/#develop) (Edge Functions, Image CDN, Blob Store).
+---
 
-## Astro Commands
+## 🌟 About Backup Failed Foundation
 
-All commands are run from the root of the project, from a terminal:
+At Backup Failed Foundation, we believe that technology should empower, not exclude. Our mission is to break down barriers in the tech world by offering accessible resources, IT support, education, and peer-led assistance to nonprofits and mission-driven groups—so they can focus on what matters most: serving others.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+---
 
-## Deploying to Netlify
+## 🚀 Built With Astro
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/netlify-templates/astro-platform-starter)
+This website is proudly built with [Astro](https://astro.build/), an open-source framework designed for building fast, content-focused websites. Astro's modern architecture allows us to deliver a performant and scalable experience for our users while leveraging the power of open-source tools.
 
-## Developing Locally
+---
 
-| Prerequisites                                                                |
-| :--------------------------------------------------------------------------- |
-| [Node.js](https://nodejs.org/) v18.14+.                                      |
-| (optional) [nvm](https://github.com/nvm-sh/nvm) for Node version management. |
 
-1. Clone this repository, then run `npm install` in its root directory.
-
-2. For the starter to have full functionality locally (e.g. edge functions, blob store), please ensure you have an up-to-date version of Netlify CLI. Run:
-
-```
-npm install netlify-cli@latest -g
-```
-
-3. Link your local repository to the deployed Netlify site. This will ensure you're using the same runtime version for both local development and your deployed site.
-
-```
-netlify link
-```
-
-4. Then, run the Astro.js development server via Netlify CLI:
-
-```
-netlify dev
-```
-
-If your browser doesn't navigate to the site automatically, visit [localhost:8888](http://localhost:8888).
