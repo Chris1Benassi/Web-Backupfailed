@@ -7,11 +7,11 @@ const freeServices = [
         title: 'IT Consultations',
         description: 'Talk through your tech needs, problems, or next big project—zero cost.',
         price: 'Free',
-        icon: '💻'
+        icon: '💻🖨'
     },
     {
         title: 'Community Help & Articles',
-        description: 'Knowledge base, forum access, and one-on-one help when needed.',
+        description: 'Unlimited access to our Knowledge base, forum access, and one-on-one help when needed through any of our guides.',
         price: 'Free',
         icon: '📚'
     },
@@ -32,25 +32,63 @@ const paidServices = [
     },
     {
         title: 'Domain Migration (Basic)',
-        description: 'Initial setup and record validation for A, MX, SPF, and web domain launch.',
+        description: 'Initial setup and record validation to allow you to use your registered domain for email usage, website, and other services.',
         price: 'Nonprofits: Free<br>Businesses: $100/year',
         icon: '🌐'
     },
     {
+        title: 'Domain Migration (Advanced)',
+        description:
+            'Assist with understanding your current DNS entries, clean it up, help with email authentication to ensure your emails dont bounce back from Google or other services, and more.',
+        price: 'Nonprofits: Free<br>Businesses: $100/year',
+        icon: '🌐'
+    },
+
+    {
         title: 'Email Migration (≤10 Users)',
-        description: 'Smooth migration to Microsoft 365 with mail, calendar, and contact transfer.',
-        price: 'Nonprofits: Free<br>Businesses: $300–$500',
+        description: 'Smooth migration to Microsoft 365 with mail, calendar, and contact transfer. ',
+        price: 'Nonprofits: Consultation <br> `Businesses: $300–$500.',
         icon: '📧'
     },
     {
-        title: 'Website Management',
-        description: 'Performance tuning, SSL, plugin updates, and uptime monitoring.',
-        price: 'Nonprofits: $1.50/site/month<br>Businesses: From $10/site/month',
+        title: 'Email Migration (Standard)',
+        description: 'A smooth migration experience for larger organizations. ',
+        price: 'Nonprofits: Free<br>Businesses: $50-$300/mailbox',
+        icon: '📧'
+    },
+    {
+        title: 'Microsoft 365 or Google Workspace Safety Net',
+        description: 'Continious backup of your Microsoft 365 or Google Workspace data.',
+        price: 'Nonprofits: $3.50/account/month<br>Businesses: From $5.00/account/month',
+        icon: '🔄'
+    },
+    {
+        title: 'Endpoint Hardening',
+        description: 'Zero-trust security enforcement on organization devices. Stay compliant and have logs to prove it.',
+        price: 'Nonprofits: $250-$1,000 [Pay What You Can]<br>Businesses: $3,000 for 30 users or less',
+        icon: '🔒'
+    },
+    {
+        title: 'M365 User and Device Onboarding [10 Users or less]',
+        description: 'We setup your devices, user accounts, and automation policies to let you focus on your mission.',
+        price: 'Nonprofits: $500[Pay What You Can]<br>Businesses: Consulation Required',
         icon: '🖥️'
     },
     {
+        title: 'M365 User and Device Onboarding [11 Users or more]',
+        description: 'We setup your devices, user accounts, and automation policies to let you focus on your mission.',
+        price: 'Nonprofits: $2,500[Pay What You Can]<br>Businesses: Consulation Required',
+        icon: '🖥️'
+    },
+    {
+        title: 'Website Management',
+        description: 'Does your website require constant monitoring, updates, and tuning? Let us help.',
+        price: 'Nonprofits: $1.50/site/month<br>Businesses: From $10/site/month',
+        icon: '🌎'
+    },
+    {
         title: 'Custom Automation & Scripting',
-        description: 'PowerShell scripts, Azure Functions, or YAML workflows tailored to your needs.',
+        description: 'PowerShell scripts, Azure Functions, or batch scripts workflows tailored to your needs.',
         price: 'Consultation required',
         icon: '⚙️'
     }
@@ -64,7 +102,7 @@ const paidServices = [
         <!-- Free Services Section -->
         <section class="mb-16">
             <div class="text-center mb-12">
-                <h2 class="text-4xl font-extrabold text-gray-900 tracking-tight">Free Nonprofit Services</h2>
+                <h2 class="text-4xl font-extrabold text-gray-900 tracking-tight">Nonprofit exclusive services</h2>
                 <p class="mt-4 text-lg text-gray-600">Helping mission-driven teams stay secure and scale with zero-cost support.</p>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
