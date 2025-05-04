@@ -1,0 +1,104 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContextAlert from '../components/ContextAlert.astro';
+
+const freeServices = [
+    {
+        title: 'IT Consultations',
+        description: 'Talk through your tech needs, problems, or next big project—zero cost.',
+        price: 'Free',
+        icon: '💻'
+    },
+    {
+        title: 'Community Help & Articles',
+        description: 'Knowledge base, forum access, and one-on-one help when needed.',
+        price: 'Free',
+        icon: '📚'
+    },
+    {
+        title: 'Grant & Cloud Credit Guidance',
+        description: 'Apply for Microsoft, Google, or other cloud-based nonprofit credits.',
+        price: 'Free',
+        icon: '☁️'
+    }
+];
+
+const paidServices = [
+    {
+        title: 'Managed IT Support',
+        description: 'Ongoing device support, patching, monitoring, and remote helpdesk.',
+        price: 'Nonprofits: $3/device/month<br>Businesses: Contact us',
+        icon: '🛠️'
+    },
+    {
+        title: 'Domain Migration (Basic)',
+        description: 'Initial setup and record validation for A, MX, SPF, and web domain launch.',
+        price: 'Nonprofits: Free<br>Businesses: $100/year',
+        icon: '🌐'
+    },
+    {
+        title: 'Email Migration (≤10 Users)',
+        description: 'Smooth migration to Microsoft 365 with mail, calendar, and contact transfer.',
+        price: 'Nonprofits: Free<br>Businesses: $300–$500',
+        icon: '📧'
+    },
+    {
+        title: 'Website Management',
+        description: 'Performance tuning, SSL, plugin updates, and uptime monitoring.',
+        price: 'Nonprofits: $1.50/site/month<br>Businesses: From $10/site/month',
+        icon: '🖥️'
+    },
+    {
+        title: 'Custom Automation & Scripting',
+        description: 'PowerShell scripts, Azure Functions, or YAML workflows tailored to your needs.',
+        price: 'Consultation required',
+        icon: '⚙️'
+    }
+];
+---
+
+<Layout title="Services | Backup Failed Foundation">
+    <ContextAlert class="mb-8" />
+
+    <main class="bg-gradient-to-b from-blue-50 via-white to-gray-100 py-16">
+        <!-- Free Services Section -->
+        <section class="mb-16">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-extrabold text-gray-900 tracking-tight">Free Nonprofit Services</h2>
+                <p class="mt-4 text-lg text-gray-600">Helping mission-driven teams stay secure and scale with zero-cost support.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                {
+                    freeServices.map((service) => (
+                        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+                            <div class="flex items-center justify-center text-5xl mb-4">{service.icon}</div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">{service.title}</h3>
+                            <p class="text-gray-700">{service.description}</p>
+                            <p class="mt-4 text-sm text-gray-500 font-semibold">{service.price}</p>
+                        </div>
+                    ))
+                }
+            </div>
+        </section>
+
+        <!-- Paid Services Section -->
+        <section>
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-extrabold text-gray-900 tracking-tight">Paid IT Services</h2>
+                <p class="mt-4 text-lg text-gray-600">Smart pricing. Scalable options. Nonprofits always get priority.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                {
+                    paidServices.map((service) => (
+                        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+                            <div class="flex items-center justify-center text-5xl mb-4">{service.icon}</div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">{service.title}</h3>
+                            <p class="text-gray-700">{service.description}</p>
+                            <p class="mt-4 text-sm text-gray-500 font-semibold" set:html={service.price} />
+                        </div>
+                    ))
+                }
+            </div>
+        </section>
+    </main>
+</Layout>
