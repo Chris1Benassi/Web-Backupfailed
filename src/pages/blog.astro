@@ -30,7 +30,7 @@ const posts = await getCollection('posts');
         const query = event.target.value.toLowerCase();
         document.querySelectorAll('#post-list li').forEach((li) => {
             const matches = li.textContent.toLowerCase().includes(query);
-            li.style.display = matches ? '' : 'none';
+            (li as HTMLElement).style.display = matches ? '' : 'none';
         });
     }
 </script>
