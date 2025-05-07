@@ -98,14 +98,14 @@ const paidServices = [
 <Layout title="Services | Backup Failed Foundation">
     <ContextAlert class="mb-8" />
 
-    <main class="bg-gradient-to-b from-blue-50 via-white to-gray-100 py-16">
+    <main class="py-16 bg-gray-50">
         <!-- Free Services Section -->
-        <section class="mb-16">
+        <section class="mb-16 bg-white px-6 py-12 max-w-7xl mx-auto shadow-lg">
             <div class="text-center mb-12">
                 <h2 class="text-4xl font-extrabold text-gray-900 tracking-tight">Nonprofit exclusive services</h2>
                 <p class="mt-4 text-lg text-gray-600">Helping mission-driven teams stay secure and scale with zero-cost support.</p>
             </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {
                     freeServices.map((service) => (
                         <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
@@ -120,12 +120,12 @@ const paidServices = [
         </section>
 
         <!-- Paid Services Section -->
-        <section>
+        <section class="bg-white px-6 py-12 max-w-7xl mx-auto shadow-lg">
             <div class="text-center mb-12">
                 <h2 class="text-4xl font-extrabold text-gray-900 tracking-tight">Paid IT Services</h2>
                 <p class="mt-4 text-lg text-gray-600">Smart pricing. Scalable options. Nonprofits always get priority.</p>
             </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {
                     paidServices.map((service) => (
                         <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">

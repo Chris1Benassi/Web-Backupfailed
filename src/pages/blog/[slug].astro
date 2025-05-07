@@ -1,18 +1,30 @@
 ---
-import { getEntryBySlug } from 'astro:content';
+import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 
+export async function getStaticPaths() {
+    const posts = await getCollection('posts');
+    return posts.map((post) => ({
+        params: { slug: post.slug } // Ensure `slug` is returned here
+    }));
+}
+
 const { slug } = Astro.params;
-const post = await getEntryBySlug('posts', slug);
-const { Content, title, date, tags } = await post.render();
+const post = await getCollection('posts').then((posts) => posts.find((p) => p.slug === slug));
+
+if (!post) {
+    throw new Error(`Post not found for slug: ${slug}`);
+}
+
+const { Content, data } = await post.render();
 ---
 
-<Layout title={title}>
+<Layout title={data.title}>
     <article class="max-w-4xl mx-auto px-6 py-12">
-        <h1 class="text-4xl font-bold mb-4">{title}</h1>
-        <p class="text-gray-500 mb-4">{date}</p>
-        <div class="mb-8">
-            {tags.map((tag) => <span class="inline-block bg-blue-100 text-blue-800 text-sm px-2 py-1 rounded mr-2">{tag}</span>)}
+        <h1 class="text-4xl font-bold mb-4">{data.title}</h1>
+        <p class="text-gray-500 mb-4">{data.date}</p>
+        <div class="flex flex-wrap gap-2 mb-8">
+            {data.tags.map((tag) => <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-1 rounded">{tag}</span>)}
         </div>
         <Content />
     </article>
