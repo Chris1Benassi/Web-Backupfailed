@@ -1,22 +1,37 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 
 export async function getStaticPaths() {
     const posts = await getCollection('posts');
-    return posts.map((post) => ({
-        params: { slug: post.slug } // Ensure `slug` is returned here
-    }));
+    const paths = posts.map((post) => {
+        const slug = post.id.replace(/_/g, '-'); // Generate slug from post ID
+        console.log(`Generated slug: ${slug}`); // Debugging
+        return { params: { slug } };
+    });
+    return paths;
 }
 
 const { slug } = Astro.params;
-const post = await getCollection('posts').then((posts) => posts.find((p) => p.slug === slug));
+const post = await getEntry('posts', slug);
 
 if (!post) {
     throw new Error(`Post not found for slug: ${slug}`);
 }
 
-const { Content, data } = await post.render();
+interface PostRendered {
+    Content: any;
+    data: {
+        title: string;
+        date: string;
+        tags: string[];
+    };
+}
+
+const { Content, data } =
+    post.rendered && 'Content' in post.rendered && 'data' in post.rendered
+        ? (post.rendered as PostRendered)
+        : { Content: null, data: { title: '', date: '', tags: [] } }; // Safely access rendered content
 ---
 
 <Layout title={data.title}>
@@ -24,8 +39,10 @@ const { Content, data } = await post.render();
         <h1 class="text-4xl font-bold mb-4">{data.title}</h1>
         <p class="text-gray-500 mb-4">{data.date}</p>
         <div class="flex flex-wrap gap-2 mb-8">
-            {data.tags.map((tag) => <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-1 rounded">{tag}</span>)}
+            <div class="flex flex-wrap gap-2 mb-8">
+                {data.tags.map((tag) => <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-1 rounded">{tag}</span>)}
+            </div>
+            {Content}
         </div>
-        <Content />
     </article>
 </Layout>

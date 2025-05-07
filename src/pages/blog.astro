@@ -2,7 +2,8 @@
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 
-const posts = await getCollection('posts');
+const posts = (await getCollection('posts')) as Array<{ id: string; data: { title: string; date: string; tags: string[]; image?: string } }>;
+console.log('Posts in blog.astro:', posts); // Debugging
 ---
 
 <Layout title="Knowledge Base | Backup Failed Foundation">
@@ -13,20 +14,18 @@ const posts = await getCollection('posts');
             {
                 posts.map((post) => (
                     <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow" data-tags={post.data.tags.join(' ')}>
-                        {post.data.image && <img src={post.data.image} alt={post.data.title} class="w-full h-64 object-cover" />}
-                        <div class="p-6">
-                            <h2 class="text-2xl font-bold text-gray-900 mb-2">{post.data.title}</h2>
-                            <p class="text-gray-500 text-sm mb-4">{post.data.date}</p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                {post.data.tags.map((tag) => (
-                                    <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-1 rounded">{tag}</span>
-                                ))}
+                        <a href={`/blog/${post.id}`} class="block">
+                            {post.data.image ? <img src={post.data.image} alt={post.data.title} class="w-full h-64 object-cover" /> : null}
+                            <div class="p-6">
+                                <h2 class="text-2xl font-bold text-gray-900 mb-2">{post.data.title}</h2>
+                                <p class="text-gray-500 text-sm mb-4">{post.data.date}</p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    {post.data.tags.map((tag) => (
+                                        <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-1 rounded">{tag}</span>
+                                    ))}
+                                </div>
                             </div>
-                            <p class="text-gray-700 text-sm mb-4">{post.data.excerpt || 'Click to read more about this article.'}</p>
-                            <a href={`/blog/${post.slug}`} class="text-blue-500 hover:underline text-sm font-medium">
-                                Read more →
-                            </a>
-                        </div>
+                        </a>
                     </div>
                 ))
             }
@@ -38,8 +37,8 @@ const posts = await getCollection('posts');
     function filterPosts(event) {
         const query = event.target.value.toLowerCase();
         document.querySelectorAll('#post-list > div').forEach((card) => {
-            const matches = card.textContent.toLowerCase().includes(query);
-            card.style.display = matches ? '' : 'none';
+            const matches = card.textContent && card.textContent.toLowerCase().includes(query);
+            (card as HTMLElement).style.display = matches ? '' : 'none';
         });
     }
 </script>

@@ -100,24 +100,33 @@ const faqItems = [
 </Layout>
 
 <script>
-    const form = document.getElementById('contactForm');
+    const form = document.getElementById('contactForm') as HTMLFormElement;
     const msg = document.getElementById('formMsg');
     const endpoint = 'https://bff-contact-function.azurewebsites.net/api/ContactUs?';
 
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        msg.textContent = 'Sending…';
-        const data = Object.fromEntries(new FormData(form));
-        try {
-            const res = await fetch(endpoint, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
-            });
-            msg.textContent = res.ok ? 'Thanks! We got your message.' : 'Server error. Try again later.';
-            if (res.ok) form.reset();
-        } catch {
-            msg.textContent = 'Network error. Check your connection.';
-        }
-    });
+    if (form) {
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (msg) {
+                msg.textContent = 'Sending…';
+            }
+            const data = Object.fromEntries(new FormData(form));
+            try {
+                const res = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                if (msg) {
+                    msg.textContent = res.ok ? 'Thanks! We got your message.' : 'Server error. Try again later.';
+                }
+                if (res.ok) form.reset();
+            } catch {
+                if (msg) {
+                    msg.textContent = 'Network error. Check your connection.';
+                }
+            }
+        });
+    }
 </script>
