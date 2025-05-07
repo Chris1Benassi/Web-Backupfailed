@@ -1,21 +1,51 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import ContextAlert from '../components/ContextAlert.astro';
-import Markdown from '../components/Markdown.astro';
 
-const explainer = `
-An Astro website can go way beyond static pages - on the right platform.
-
-Netlify supports not only [Streaming SSR](https://docs.astro.build/en/guides/server-side-rendering/#html-streaming) and fast [Edge Middleware](https://docs.astro.build/en/guides/middleware/), but also [on-demand revalidation](https://www.netlify.com/blog/cache-tags-and-purge-api-on-netlify/) and [stale-while-revalidate](https://www.netlify.com/blog/swr-and-fine-grained-cache-control/). 
-Any page or data can be rebuilt only when needed, without site visitors ever getting a performance hit.
-`;
+const blogPosts = [
+    { title: 'How to Secure Your Nonprofit’s Data', link: '/blog/secure-data', date: '2025-05-01' },
+    { title: 'Top 5 Free IT Tools for Nonprofits', link: '/blog/free-it-tools', date: '2025-04-20' },
+    { title: 'Why Cloud Credits Matter for Nonprofits', link: '/blog/cloud-credits', date: '2025-04-10' }
+];
 ---
 
-<Layout title="Welcome to Astro.">
-    <ContextAlert class="mb-8" />
-    <h1 class="mb-10">Netlify Platform Starter for Astro</h1>
-    <Markdown content={explainer} class="mb-10 text-lg" />
-    <p>
-        <a href="https://docs.netlify.com/frameworks/astro/" class="btn btn-lg sm:min-w-64">Read the Docs</a>
-    </p>
+<Layout title="Home | Backup Failed Foundation">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-b from-black-500 to-blue-900 text-white py-16 text-center">
+        <div class="max-w-4xl mx-auto px-6">
+            <h1 class="text-5xl font-extrabold mb-4">Empowering Nonprofits with Accessible IT Solutions</h1>
+            <p class="text-lg mb-6">We provide free and affordable IT resources, education, and support to mission-driven teams.</p>
+            <a href="/services" class="btn btn-lg bg-white text-blue-700 hover:bg-gray-100">Explore Our Services</a>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-4xl font-extrabold text-gray-900 mb-8 text-center">From Our Blog</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                {
+                    blogPosts.map((post) => (
+                        <div class="bg-gray-50 p-6 rounded-lg shadow-lg">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">{post.title}</h3>
+                            <p class="text-gray-500 text-sm mb-4">{post.date}</p>
+                            <a href={post.link} class="text-blue-500 hover:underline">
+                                Read More
+                            </a>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech News Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-4xl font-extrabold text-gray-900 mb-8 text-center">Tech News</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <iframe src="https://techcrunch.com/" class="w-full h-64 rounded-lg shadow-lg" title="Tech News"></iframe>
+                <iframe src="https://news.ycombinator.com/" class="w-full h-64 rounded-lg shadow-lg" title="Hacker News"></iframe>
+            </div>
+        </div>
+    </section>
 </Layout>
