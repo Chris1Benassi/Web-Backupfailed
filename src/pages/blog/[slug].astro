@@ -5,7 +5,7 @@ import Layout from '../../layouts/Layout.astro';
 export async function getStaticPaths() {
     const posts = await getCollection('posts');
     const paths = posts.map((post) => {
-        const slug = post.id.replace(/_/g, '-'); // Generate slug from post ID
+        const slug = post.data.slug || post.id.replace(/_/g, '-');
         console.log(`Generated slug: ${slug}`); // Debugging
         return { params: { slug } };
     });
@@ -19,19 +19,12 @@ if (!post) {
     throw new Error(`Post not found for slug: ${slug}`);
 }
 
-interface PostRendered {
-    Content: any;
-    data: {
-        title: string;
-        date: string;
-        tags: string[];
-    };
-}
+console.log('Post fetched:', post); // Debugging
 
-const { Content, data } =
-    post.rendered && 'Content' in post.rendered && 'data' in post.rendered
-        ? (post.rendered as PostRendered)
-        : { Content: null, data: { title: '', date: '', tags: [] } }; // Safely access rendered content
+const { Content } = await post.render(); // Render the content
+const { data } = post; // Access post data directly
+console.log('Rendered Content:', Content); // Debugging
+console.log('Rendered Data:', data); // Debugging
 ---
 
 <Layout title={data.title}>
@@ -39,10 +32,9 @@ const { Content, data } =
         <h1 class="text-4xl font-bold mb-4">{data.title}</h1>
         <p class="text-gray-500 mb-4">{data.date}</p>
         <div class="flex flex-wrap gap-2 mb-8">
-            <div class="flex flex-wrap gap-2 mb-8">
-                {data.tags.map((tag) => <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-1 rounded">{tag}</span>)}
-            </div>
-            {Content}
+            {data.tags.map((tag) => <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-1 rounded">{tag}</span>)}
         </div>
+        <Content />
+        <!-- Render the Markdown content -->
     </article>
 </Layout>
