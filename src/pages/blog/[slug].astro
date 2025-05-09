@@ -1,23 +1,25 @@
 ---
-import { getCollection, getEntry } from 'astro:content';
+import { getCollection, getEntry, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 
 export async function getStaticPaths() {
     const posts = await getCollection('posts');
     const paths = posts.map((post) => {
-        const slug = post.id.replace(/_/g, '-'); // Generate slug from post ID
-        console.log(`Generated slug: ${slug}`); // Debugging
-        return { params: { slug } };
+        const slug = post.data.slug || post.id.replace(/_/g, '-');
+        return { params: { slug }, props: { post } };
     });
     return paths;
 }
 
 const { slug } = Astro.params;
-const post = await getEntry('posts', slug);
+const { post } = Astro.props;
 
 if (!post) {
     throw new Error(`Post not found for slug: ${slug}`);
 }
+
+const { Content } = await render(post);
+const { data } = post;
 
 interface PostRendered {
     Content: any;
@@ -27,11 +29,6 @@ interface PostRendered {
         tags: string[];
     };
 }
-
-const { Content, data } =
-    post.rendered && 'Content' in post.rendered && 'data' in post.rendered
-        ? (post.rendered as PostRendered)
-        : { Content: null, data: { title: '', date: '', tags: [] } }; // Safely access rendered content
 ---
 
 <Layout title={data.title}>
@@ -42,7 +39,7 @@ const { Content, data } =
             <div class="flex flex-wrap gap-2 mb-8">
                 {data.tags.map((tag) => <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-1 rounded">{tag}</span>)}
             </div>
-            {Content}
+            <Content />
         </div>
     </article>
 </Layout>
