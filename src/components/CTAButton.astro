@@ -1,0 +1,40 @@
+---
+export interface Props {
+    text?: string; // Button text
+    link?: string; // Redirect link
+}
+
+const { text = 'Contact Us', link = 'https://backupfailed.com/contact/' } = Astro.props;
+---
+
+<a href={link} class="cta-button">
+    {text}
+</a>
+
+<style>
+    .cta-button {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        background-color: #3b82f6; /* Blue */
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 600;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 9999px; /* Fully rounded */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition:
+            background-color 0.3s ease,
+            box-shadow 0.3s ease;
+    }
+
+    .cta-button:hover {
+        background-color: #2563eb; /* Darker blue */
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .cta-button:focus {
+        outline: 2px solid #2563eb;
+        outline-offset: 2px;
+    }
+</style>
