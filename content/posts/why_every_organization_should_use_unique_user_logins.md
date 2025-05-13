@@ -61,4 +61,5 @@ You can focus on your business while we take care of the rest.
 
 <div style="background-color:rgba(46, 154, 255, 0.8); padding: 1em; margin: 1.5rem auto; border-radius: 25px; text-align: center; max-width: 600px; transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='rgba(37, 99, 235, 0.9)'" onmouseout="this.style.backgroundColor='rgba(46, 154, 255, 0.8)'">
     <strong><a href="https://backupfailed.com/contact/" style="color: white; text-decoration: none;">Ready to secure your organization with unique, compliant logins?</a></strong>
+    
 </div>
