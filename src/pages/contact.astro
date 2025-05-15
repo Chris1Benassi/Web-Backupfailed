@@ -73,6 +73,24 @@ const faqItems = [
                 class="w-full p-3 mb-4 bg-gray-800 text-white border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
 
+            <label for="topic" class="block font-semibold mb-2">What do you need help with?</label>
+            <select
+                id="topic"
+                name="topic"
+                required
+                class="w-full p-3 mb-4 bg-gray-800 text-white border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+                <option value="Nonprofit IT Consultation">Nonprofit IT Consultation</option>
+                <option value="Nonprofit Grant and Cloud Guidance">Nonprofit Grant and Cloud Guidance</option>
+                <option value="Managed IT Support">Managed IT Support</option>
+                <option value="Domain Support">Domain Support</option>
+                <option value="Email Migration Support">Email Migration Support</option>
+                <option value="Microsoft or Google Workspace Questions">Microsoft or Google Workspace Questions</option>
+                <option value="Endpoint Security">Endpoint Security</option>
+                <option value="Website Management">Website Management</option>
+                <option value="Custom Automations">Custom Automations</option>
+            </select>
+
             <label for="message" class="block font-semibold mb-2">Message</label>
             <textarea
                 id="message"
@@ -100,6 +118,8 @@ const faqItems = [
 </Layout>
 
 <script>
+    import type { ActionAPIContext } from 'astro:actions';
+
     const form = document.getElementById('contactForm') as HTMLFormElement;
     const msg = document.getElementById('formMsg');
     const endpoint = 'https://bff-contact-function.azurewebsites.net/api/ContactUs?';
@@ -128,5 +148,15 @@ const faqItems = [
                 }
             }
         });
+    }
+
+    // Check if the URL contains a 'topic' parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const topicParam = urlParams.get('topic');
+    if (topicParam) {
+        const topicSelect = document.getElementById('topic');
+        if (topicSelect) {
+            topicSelect.value = topicParam;
+        }
     }
 </script>

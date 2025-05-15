@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ContextAlert from '../components/ContextAlert.astro';
+import CTAButton from '../components/CTAButton.astro';
 
 const freeServices = [
     {
@@ -98,7 +99,7 @@ const paidServices = [
 <Layout title="Services | Backup Failed Foundation">
     <ContextAlert class="mb-8" />
 
-    <main class="py-16 bg-gray-50">
+    <main class="py-16 bg-white-50">
         <!-- Free Services Section -->
         <section class="mb-16 bg-white px-6 py-12 max-w-7xl mx-auto shadow-lg">
             <div class="text-center mb-12">
@@ -112,31 +113,35 @@ const paidServices = [
                             <div class="flex items-center justify-center text-5xl mb-4">{service.icon}</div>
                             <h3 class="text-xl font-bold text-gray-900 mb-2">{service.title}</h3>
                             <p class="text-gray-700">{service.description}</p>
-                            <p class="mt-4 text-sm text-gray-500 font-semibold">{service.price}</p>
+                            <p class="mt-4 text-sm text-green-500 font-semibold">{service.price} </p>
                         </div>
                     ))
                 }
-            </div>
-        </section>
 
-        <!-- Paid Services Section -->
-        <section class="bg-white px-6 py-12 max-w-7xl mx-auto shadow-lg">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl font-extrabold text-gray-900 tracking-tight">Paid IT Services</h2>
-                <p class="mt-4 text-lg text-gray-600">Smart pricing. Scalable options. Nonprofits always get priority.</p>
+                <div class="col-span-full mt-8 flex justify-center">
+                    <CTAButton text="Nonprofit Assistance Click Here" link="/contact" />
+                </div>
             </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {
-                    paidServices.map((service) => (
-                        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-                            <div class="flex items-center justify-center text-5xl mb-4">{service.icon}</div>
-                            <h3 class="text-xl font-bold text-gray-900 mb-2">{service.title}</h3>
-                            <p class="text-gray-700">{service.description}</p>
-                            <p class="mt-4 text-sm text-gray-500 font-semibold" set:html={service.price} />
-                        </div>
-                    ))
-                }
-            </div>
+
+            <!-- Paid Services Section -->
+            <section class="bg-white px-6 py-12 max-w-7xl mx-auto shadow-lg">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-extrabold text-gray-900 tracking-tight">Paid IT Services</h2>
+                    <p class="mt-4 text-lg text-gray-600">Smart pricing. Scalable options. Nonprofits always get priority.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {
+                        paidServices.map((service) => (
+                            <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+                                <div class="flex items-center justify-center text-5xl mb-4">{service.icon}</div>
+                                <h3 class="text-xl font-bold text-gray-900 mb-2">{service.title}</h3>
+                                <p class="text-gray-700">{service.description}</p>
+                                <p class="mt-4 text-sm text-gray-500 font-semibold" set:html={service.price} />
+                            </div>
+                        ))
+                    }
+                </div>
+            </section>
         </section>
     </main>
 </Layout>

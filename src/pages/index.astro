@@ -1,51 +1,42 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
-const blogPosts = [
-    { title: 'How to Secure Your Nonprofit’s Data', link: '/blog/secure-data', date: '2025-05-01' },
-    { title: 'Top 5 Free IT Tools for Nonprofits', link: '/blog/free-it-tools', date: '2025-04-20' },
-    { title: 'Why Cloud Credits Matter for Nonprofits', link: '/blog/cloud-credits', date: '2025-04-10' }
-];
+import AnimatedBlob from '../components/AnimatedBlob.astro';
+import CTAButton from '../components/CTAButton.astro';
 ---
 
 <Layout title="Home | Backup Failed Foundation">
-    <!-- Hero Section -->
-    <section class="bg-gradient-to-b from-black-500 to-blue-900 text-white py-16 text-center">
-        <div class="max-w-4xl mx-auto px-6">
-            <h1 class="text-5xl font-extrabold mb-4">Empowering Nonprofits with Accessible IT Solutions</h1>
-            <p class="text-lg mb-6">We provide free and affordable IT resources, education, and support to mission-driven teams.</p>
-            <a href="/services" class="btn btn-lg bg-white text-blue-700 hover:bg-gray-100">Explore Our Services</a>
-        </div>
-    </section>
-
-    <!-- Blog Section -->
-    <section class="py-16 bg-white">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-4xl font-extrabold text-gray-900 mb-8 text-center">From Our Blog</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                {
-                    blogPosts.map((post) => (
-                        <div class="bg-gray-50 p-6 rounded-lg shadow-lg">
-                            <h3 class="text-xl font-bold text-gray-900 mb-2">{post.title}</h3>
-                            <p class="text-gray-500 text-sm mb-4">{post.date}</p>
-                            <a href={post.link} class="text-blue-500 hover:underline">
-                                Read More
-                            </a>
-                        </div>
-                    ))
-                }
-            </div>
-        </div>
-    </section>
-
-    <!-- Tech News Section -->
-    <section class="py-16 bg-gray-50">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-4xl font-extrabold text-gray-900 mb-8 text-center">Tech News</h2>
-            <div class="grid md:grid-cols-2 gap-8">
-                <iframe src="https://techcrunch.com/" class="w-full h-64 rounded-lg shadow-lg" title="Tech News"></iframe>
-                <iframe src="https://news.ycombinator.com/" class="w-full h-64 rounded-lg shadow-lg" title="Hacker News"></iframe>
-            </div>
+    <!-- Animated Hero Section -->
+    <section class="relative flex flex-col items-center justify-center min-h-[70vh] py-24 overflow-hidden">
+        <AnimatedBlob class="absolute inset-0 -z-10" />
+        <div class="relative z-10 text-center">
+            <h1
+                class="text-6xl font-extrabold mb-6 animate-fade-in-up bg-gradient-to-r from-blue-400 via-pink-400 to-purple-500 bg-clip-text text-transparent drop-shadow-lg"
+            >
+                Empowering Nonprofits with Accessible IT Solutions
+            </h1>
+            <p class="text-2xl mb-10 animate-fade-in-up delay-150 text-white/80 drop-shadow">
+                Free & affordable IT resources, education, and support for mission-driven teams.
+            </p>
+            <CTAButton text="Explore Our Services" link="/services" />
         </div>
     </section>
 </Layout>
+
+<style>
+    @keyframes fade-in-up {
+        from {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    .animate-fade-in-up {
+        animation: fade-in-up 1s cubic-bezier(0.23, 1.01, 0.32, 1) both;
+    }
+    .animate-fade-in-up.delay-150 {
+        animation-delay: 0.15s;
+    }
+</style>
