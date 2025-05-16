@@ -61,37 +61,48 @@ const paidServices = [
         title: 'Microsoft 365 or Google Workspace Safety Net',
         description: 'Continious backup of your Microsoft 365 or Google Workspace data.',
         price: 'Nonprofits: $3.50/account/month<br>Businesses: From $5.00/account/month',
-        icon: '🔄'
+        icon: '🔄',
+        cta: 'Backup Cloud Services',
+        CtaLink: '/contact?topic=Microsoft%20or%20Google%20Workspace%20Questions'
     },
     {
         title: 'Endpoint Hardening',
         description: 'Zero-trust security enforcement on organization devices. Stay compliant and have logs to prove it.',
         price: 'Nonprofits: $250-$1,000 [Pay What You Can]<br>Businesses: $3,000 for 30 users or less',
-        icon: '🔒'
+        icon: '🔒',
+        cta: 'Endpoint Cybersecurity',
+        CtaLink: '/contact?topic=Endpoint%20Security'
     },
     {
         title: 'M365 User and Device Onboarding [10 Users or less]',
         description: 'We setup your devices, user accounts, and automation policies to let you focus on your mission.',
         price: 'Nonprofits: $500[Pay What You Can]<br>Businesses: Consulation Required',
-        icon: '🖥️'
+        icon: '🖥️',
+        cta: 'Microsoft 365 Support',
+        CtaLink: '/contact?topic=Microsoft%20or%20Google%20Workspace%20Questions'
     },
     {
         title: 'M365 User and Device Onboarding [11 Users or more]',
         description: 'We setup your devices, user accounts, and automation policies to let you focus on your mission.',
         price: 'Nonprofits: $2,500[Pay What You Can]<br>Businesses: Consulation Required',
-        icon: '🖥️'
+        icon: '🖥️',
+        cta: 'Microsoft 365 Support',
+        CtaLink: '/contact?topic=Microsoft%20or%20Google%20Workspace%20Questions'
     },
     {
         title: 'Website Management',
         description: 'Does your website require constant monitoring, updates, and tuning? Let us help.',
         price: 'Nonprofits: $1.50/site/month<br>Businesses: From $10/site/month',
-        icon: '🌎'
+        icon: '🌎',
+        cta: 'Website Assistance',
+        CtaLink: '/contact?topic=Website%20Management'
     },
     {
         title: 'Custom Automation & Scripting',
         description: 'PowerShell scripts, Azure Functions, or batch scripts workflows tailored to your needs.',
-        price: 'Consultation required',
-        icon: '⚙️'
+        icon: '⚙️',
+        cta: 'Consultation Required',
+        CtaLink: '/contact?topic=Custom%20Automations'
     }
 ];
 ---
@@ -129,6 +140,7 @@ const paidServices = [
                     <h2 class="text-4xl font-extrabold text-gray-900 tracking-tight">Paid IT Services</h2>
                     <p class="mt-4 text-lg text-gray-600">Smart pricing. Scalable options. Nonprofits always get priority.</p>
                 </div>
+
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {
                         paidServices.map((service) => (
@@ -137,6 +149,11 @@ const paidServices = [
                                 <h3 class="text-xl font-bold text-gray-900 mb-2">{service.title}</h3>
                                 <p class="text-gray-700">{service.description}</p>
                                 <p class="mt-4 text-sm text-gray-500 font-semibold" set:html={service.price} />
+                                {service.cta && service.CtaLink ? (
+                                    <div class="mt-4" text-align="center">
+                                        <CTAButton text={service.cta} link={service.CtaLink} />
+                                    </div>
+                                ) : null}
                             </div>
                         ))
                     }
