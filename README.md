@@ -14,6 +14,12 @@ At Backup Failed Foundation, we believe that technology should empower, not excl
 
 This website is proudly built with [Astro](https://astro.build/), an open-source framework designed for building fast, content-focused websites. Astro's modern architecture allows us to deliver a performant and scalable experience for our users while leveraging the power of open-source tools.
 
+Prerequisites:
+
+1. Install Node JS
+2. Launch terminal, navigate to folder path where your stuff is. 
+3. npm install astro 
+4. TADA! Done.
 ---
 
 

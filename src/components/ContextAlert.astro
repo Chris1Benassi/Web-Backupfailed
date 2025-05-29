@@ -19,7 +19,8 @@ if (!ctx) {
 }
 ---
 
-{
+<!-- ContextAlert.astro
+     Displays an alert letting you know this is not running on netlify. So if some stuff is not working, that's because its not running on web server -->{
     markdownText && (
         <Alert class={className}>
             <Markdown content={markdownText} />

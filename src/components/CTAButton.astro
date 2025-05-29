@@ -7,6 +7,8 @@ export interface Props {
 const { text = 'Contact Us', link = 'https://backupfailed.com/contact/' } = Astro.props;
 ---
 
+<!-- This component renders a Call to Action (CTA) button with customizable text and link. Used a lot in services page. 
+Makes it easy to reuse the button design and color scheme across the site. -->
 <a href={link} class="cta-button">
     {text}
 </a>
