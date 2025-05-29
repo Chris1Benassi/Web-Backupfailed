@@ -40,3 +40,9 @@ import CTAButton from '../components/CTAButton.astro';
         animation-delay: 0.15s;
     }
 </style>
+
+<script>
+    document.querySelector('.hamburger')?.addEventListener('click', () => {
+        document.querySelector(',nav ul')?.classList.toggle('expanded');
+    });
+</script>
