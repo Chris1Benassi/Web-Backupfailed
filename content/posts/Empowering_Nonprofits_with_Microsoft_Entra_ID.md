@@ -42,7 +42,7 @@ You can mix and match up to 300 Business Premium seats. For larger organizations
 Sure, you can shop around and we’ll encourage you to compare. But if you’re a small nonprofit that’s been priced out of enterprise tooling, we’re the team that steps in when others say “sorry, that’s too small.” From paperwork and tenant configuration to conditional access design and Autopilot deployments, we’ll handle the heavy lifting so you can focus on your mission.
 
 Bottom line:  
-You can stand up a full blown identity platform—with SSO, MFA, password self-service, device management and more for zero dollars on your first ten seats. After that, it’s just a few bucks per user each month, plus a one-time Pro upgrade if you need it. Ready to lock down your logins? 
+You can stand up a full blown identity platform with SSO, MFA, password self-service, device management and more for zero dollars on your first ten seats. After that, it’s just a few bucks per user each month, plus a one time Pro upgrade if you need it. Ready to lock down your logins? 
 
 <div style="background-color:rgba(46, 154, 255, 0.8); padding: 1em; margin: 1.5rem auto; border-radius: 25px; text-align: center; max-width: 600px; transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='rgba(37, 99, 235, 0.9)'" onmouseout="this.style.backgroundColor='rgba(46, 154, 255, 0.8)'">
     <strong><a href="https://backupfailed.com/contact/" style="color: white; text-decoration: none;">Let's make it happen, contact us.</a></strong>
