@@ -23,3 +23,4 @@ Prerequisites:
 ---
 
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c3044a95-7400-4f83-9a3d-fd34e457dde1/deploy-status)](https://app.netlify.com/projects/backupfailed/deploys)

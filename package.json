@@ -7,7 +7,8 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test": "vitest run --reporter verbose"
   },
   "dependencies": {
     "@astrojs/netlify": "^6.3.4",
@@ -30,8 +31,11 @@
     "unique-names-generator": "^4.7.1"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
     "@tinacms/cli": "^0.60.5",
     "@types/blobshape": "^1.0.3",
-    "@types/node": "^20.17.50"
+    "@types/node": "^20.17.50",
+    "vitest": "^3.2.2"
   }
 }
