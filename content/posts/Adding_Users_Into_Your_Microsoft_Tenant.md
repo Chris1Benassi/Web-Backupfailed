@@ -13,20 +13,27 @@ image: "https://storage001backupfailed.blob.core.windows.net/stor-container-web/
 *Photo by RDNE Stock project: [Pexels](https://www.pexels.com/photo/man-holding-a-red-present-7581000/)*
 
 
-## Overview
 
-This will show you how to add a user into your Microsoft tenant account. There are many ways of doing this, like Entra Admin Portal, Azure Admin Portal, and Office Admin Portal. We will be doing it through the Office Admin Portal.
+## Overview
+---
+<p>This will show you how to add a user into your Microsoft tenant account. There are many ways of doing this, like Entra Admin Portal, Azure Admin Portal, and Office Admin Portal. We will be doing it through the Office Admin Portal. </p> <br>   
 
 ## Prerequisites
+---
 
-- Microsoft Administrator Role to add users.
+<p>Microsoft Administrator Role to add users. </p>
+<br>
 
 ## Warnings
-
-> ⚠️ Adding a user will require a license unless they are replacing someone.  
-> ⚠️ Do not give the password to the end user via unencrypted email.
+---
+<p>
+ ⚠️ Adding a user will require a license unless they are replacing someone. <br>  
+ ⚠️ Do not give the password to the end user via unencrypted email.
+</p><br>
 
 ## Steps
+---
+<p>
 
 1. Go to the [Microsoft 365 admin center](https://admin.cloud.microsoft).
 2. Go to **Users > Active users**, and select **Add a user**.
@@ -44,12 +51,13 @@ This will show you how to add a user into your Microsoft tenant account. There a
    - Select whether you want to save these user settings as a template and choose whether you want to add another user.
    - Select **Close**.
 
-## Notes & Troubleshooting
 
+## Notes & Troubleshooting
+---
 - Common issues and fixes
 - Known bugs
 - When to escalate
 
 ## Related Articles
-
+---
 [Add users and assign licenses in Microsoft 365 - Microsoft 365 admin | Microsoft Learn](https://learn.microsoft.com/en-us/microsoft-365/admin/add-users/add-users)
