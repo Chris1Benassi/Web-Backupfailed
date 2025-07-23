@@ -19,7 +19,7 @@
     "@tailwindcss/vite": "^4.1.7",
     "@types/react": "^18.3.22",
     "@types/react-dom": "^18.3.7",
-    "astro": "^5.10.1",
+    "astro": "^5.12.3",
     "blobshape": "^1.0.0",
     "marked": "^13.0.3",
     "marked-shiki": "^1.2.0",
@@ -27,13 +27,11 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "tailwindcss": "^4.1.7",
-    "tinacms": "^2.1.1",
     "unique-names-generator": "^4.7.1"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
-    "@tinacms/cli": "^0.60.5",
     "@types/blobshape": "^1.0.3",
     "@types/node": "^20.17.50",
     "vitest": "^3.2.2"
