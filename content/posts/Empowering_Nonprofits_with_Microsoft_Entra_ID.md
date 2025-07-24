@@ -81,7 +81,7 @@ This guide explains how nonprofits can use Microsoft Entra ID to secure staff id
 
 ## Related Articles
 
-- [How To - Microsoft 365 - Creating New Users For Organization](./How-To-Create-New-Users-For-Organization
+- [How To - Microsoft 365 - Creating New Users For Organization](./How-To-Create-New-Users-For-Organization)
 - [How To - SharePoint - Share Files with external users](./How-To-SharePoint-Share-Files-From-Windows-Explorer)
 
 ---
