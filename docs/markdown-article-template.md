@@ -50,6 +50,8 @@ Brief summary of what this doc is for. Why does this process exist? Who is it fo
 
 - [Link to other relevant SOPs or policies](/posts/[slug])
 
+***Do Not Add .md***
+
 ---
 
 ## Final Checklist Before Publishing

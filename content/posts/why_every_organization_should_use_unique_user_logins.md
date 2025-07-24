@@ -62,8 +62,8 @@ This guide explains why unique user logins are essential for every organization 
 
 ## Related Articles
 
-- [How To - Microsoft 365 - Creating New Users For Organization](./Adding_Users_Into_Your_Microsoft_Tenant.md)
-- [How To - Microsoft Entra ID - Empowering Your Nonprofit Organization](./how-to-microsoft-entra-id-empowering-nonprofit.md)
+- [How To - Microsoft 365 - Creating New Users For Organization](./Adding_Users_Into_Your_Microsoft_Tenant)
+- [How To - Microsoft Entra ID - Empowering Your Nonprofit Organization](./how-to-microsoft-entra-id-empowering-nonprofit)
 
 ---
 
