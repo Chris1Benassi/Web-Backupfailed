@@ -118,10 +118,12 @@ const paidServices = [
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {
                     freeServices.map((service) => (
-                        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-                            <div class="flex items-center justify-center text-5xl mb-4">{service.icon}</div>
-                            <h3 class="text-xl font-bold text-gray-900 mb-2">{service.title}</h3>
-                            <p class="text-gray-700">{service.description}</p>
+                        <div class="bg-white p-6 rounded-2xl shadow-2xl border border-gradient-to-r from-blue-400 to-purple-500 transition-all duration-500 hover:scale-[1.015] hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] hover:border-blue-500">
+                            <div class="flex items-center justify-center text-5xl mb-4 transition-transform duration-300 hover:scale-110">{service.icon}</div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2 transition-colors duration-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500">
+                                {service.title}
+                            </h3>
+                            <p class="text-gray-700 transition-colors duration-300 hover:text-blue-700">{service.description}</p>
                         </div>
                     ))
                 }
@@ -141,10 +143,14 @@ const paidServices = [
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {
                         paidServices.map((service) => (
-                            <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-                                <div class="flex items-center justify-center text-5xl mb-4">{service.icon}</div>
-                                <h3 class="text-xl font-bold text-gray-900 mb-2">{service.title}</h3>
-                                <p class="text-gray-700">{service.description}</p>
+                            <div class="bg-white p-6 rounded-2xl shadow-2xl border border-gradient-to-r from-blue-400 to-purple-500 transition-all duration-500 hover:scale-[1.015] hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] hover:border-blue-500">
+                                <div class="flex items-center justify-center text-5xl mb-4 transition-transform duration-300 hover:scale-110">
+                                    {service.icon}
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-900 mb-2 transition-colors duration-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500">
+                                    {service.title}
+                                </h3>
+                                <p class="text-gray-700 transition-colors duration-300 hover:text-blue-700">{service.description}</p>
                                 <p class="mt-4 text-sm text-gray-500 font-semibold" set:html={service.price} />
                                 {service.cta && service.CtaLink ? (
                                     <div class="mt-4" text-align="center">

@@ -32,10 +32,24 @@ interface PostRendered {
 ---
 
 <Layout title={data.title}>
-    <article class="prose max-w-4xl mx-auto px-6 py-12">
-        <h1 class="text-4xl font-bold mb-4">{data.title}</h1>
+    <article
+        class="prose max-w-6xl mx-auto px-6 py-12 rounded-2xl shadow-2xl bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border border-gradient-to-r from-blue-400 to-purple-500 transition-all duration-500 hover:scale-[1.015] hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] hover:border-blue-500"
+    >
+        <h1
+            class="text-4xl font-bold mb-4 transition-colors duration-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500"
+        >
+            {data.title}
+        </h1>
         <p class="text-gray-500 mb-4">{data.date}</p>
-        {data.tags.map((tag) => <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-1 rounded">{tag}</span>)}
+        <div class="flex flex-wrap gap-2 mb-4">
+            {
+                data.tags.map((tag) => (
+                    <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-1 rounded transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-400 hover:to-purple-400 hover:text-white hover:scale-110 shadow-sm cursor-pointer">
+                        {tag}
+                    </span>
+                ))
+            }
+        </div>
         <Content />
     </article>
 </Layout>
