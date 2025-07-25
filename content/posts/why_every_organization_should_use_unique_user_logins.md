@@ -69,5 +69,5 @@ This guide explains why unique user logins are essential for every organization 
 
 <div style="background-color:rgba(46, 154, 255, 0.8); padding: 1em; margin: 1.5rem auto; border-radius: 25px; text-align: center; max-width: 600px; transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='rgba(37, 99, 235, 0.9)';" onmouseout="this.style.backgroundColor='rgba(46, 154, 255, 0.8)';">
     <strong><a href="https://backupfailed.com/contact/" style="color: white; text-decoration: none;">Need help implementing unique logins? Contact us for expert support.</a></strong>
-</div>
+</div> 
 
