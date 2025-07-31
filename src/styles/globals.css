@@ -174,3 +174,7 @@
 .hamburger {
     display: none;
 }
+
+.button-animated-gradient {
+    @apply text-gray-900 mb-2 transition-colors duration-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500;
+}
