@@ -1,5 +1,5 @@
 ---
-title: "How To - Microsoft 365 - Creating New Users For Organization"
+title: "How To - Microsoft 365 - Creating New Users For Your Organization"
 date: "2025-07-17"
 tags: ["Security", "Compliance", "Best Business Practices"]
 author: "Christian Sosa"
