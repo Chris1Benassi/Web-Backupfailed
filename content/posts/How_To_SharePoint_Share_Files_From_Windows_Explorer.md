@@ -10,7 +10,7 @@ image: "https://support.microsoft.com/images/en-us/cce0ec44-0218-4c97-a55e-9aad0
 ---
 
 
-# How To - SharePoint - Share Files with external users
+
 
 ## Overview
 

@@ -9,8 +9,9 @@ excerpt: "Learn when a business needs a real firewall (not just a router), what 
 image: "https://static.vecteezy.com/system/resources/previews/000/600/578/non_2x/network-firewall-icon-illustration-vector-on-white-background.jpg"
 ---
 
+![Photo by Field Engineer: https://www.pexels.com/photo/electronics-engineer-fixing-cables-on-server-442150/](https://storage001backupfailed.blob.core.windows.net/stor-container-web/BLOG_IMG/pexels-field-engineer-Firewall.jpg)
 
-# Guide – Firewalls: When You Need to Upgrade Your Router (and Why It Matters)
+[Source: Photo by Field Engineer Pexels](https://www.pexels.com/photo/electronics-engineer-fixing-cables-on-server-442150/)
 
 <br>
 
