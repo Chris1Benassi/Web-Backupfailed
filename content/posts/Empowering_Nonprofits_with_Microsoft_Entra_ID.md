@@ -12,7 +12,7 @@ image: "https://storage001backupfailed.blob.core.windows.net/stor-container-web/
 ![Microsoft Logo In background](https://storage001backupfailed.blob.core.windows.net/stor-container-web/BLOG_IMG/Microsoft_Decor_Wall.jpg)
 *Photo by Angel Bena: https://www.pexels.com/photo/a-company-logo-on-a-wall-10142683/*
 
-# How To - Microsoft Entra ID - Empowering Your Nonprofit Organization
+
 
 ## Overview
 

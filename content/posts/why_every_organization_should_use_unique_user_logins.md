@@ -11,7 +11,7 @@ image: "https://storage001backupfailed.blob.core.windows.net/stor-container-web/
 ![Photo by panumas nikhomkhai: https://www.pexels.com/photo/man-hacker-concept-17302202/](https://storage001backupfailed.blob.core.windows.net/stor-container-web/BLOG_IMG/blog-unique-logins-mask-hacker.jpg)  
 *Photo by panumas nikhomkhai: [Pexels](https://www.pexels.com/photo/man-hacker-concept-17302202/)*
 
-# How To - Unique User Logins - Why and How Every Organization Should Use Them
+
 
 ## Overview
 
