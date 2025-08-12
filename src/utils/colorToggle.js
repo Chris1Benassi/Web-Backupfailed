@@ -14,7 +14,15 @@ function colorToggle({ containerId, buttonId, labelId, colors }) {
         const container = document.getElementById(containerId);
         const btn = document.getElementById(buttonId);
         const label = document.getElementById(labelId);
-        if (!container || !btn || !label) return;
+        if (!container || !btn || !label) {
+            console.warn(
+                `colorToggle: Missing required DOM element(s):` +
+                (!container ? ` containerId="${containerId}"` : '') +
+                (!btn ? ` buttonId="${buttonId}"` : '') +
+                (!label ? ` labelId="${labelId}"` : '')
+            );
+            return;
+        }
         function updateLabel() {
             label.textContent = colors[currentIdx];
         }
