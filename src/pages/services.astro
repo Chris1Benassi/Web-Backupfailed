@@ -66,7 +66,7 @@ const paidServices = [
     {
         title: 'Endpoint Hardening',
         description: 'Zero-trust security enforcement on organization devices. Stay compliant, secure, and have logs to prove it.',
-        price: 'Nonprofits: $250-$1,000 [Pay What You Can]<br>Businesses: $3,000 for 30 users or less',
+        price: 'Nonprofits: Pay What You Can<br>Businesses: $3,000 for 30 users or less',
         icon: '🔒',
         cta: 'Endpoint Cybersecurity',
         CtaLink: '/contact?topic=Endpoint%20Security'
@@ -74,7 +74,7 @@ const paidServices = [
     {
         title: 'M365 User and Device Onboarding [10 Users or less]',
         description: 'We setup your devices, user accounts, and automation policies to let you focus on your mission.',
-        price: 'Nonprofits: $500[Pay What You Can]<br>Businesses: Consulation Required',
+        price: 'Nonprofits: Pay What You Can<br>Businesses: Consulation Required',
         icon: '🖥️',
         cta: 'Microsoft 365 Support',
         CtaLink: '/contact?topic=Microsoft%20or%20Google%20Workspace%20Questions'
@@ -90,7 +90,7 @@ const paidServices = [
     {
         title: 'Website Management',
         description: 'Does your website require constant monitoring, updates, and tuning? Let us help.',
-        price: 'Nonprofits: $1.50/site/month<br>Businesses: From $10/site/month',
+        price: 'Nonprofits: $30/site/year<br>Businesses: From $10/site/month',
         icon: '🌎',
         cta: 'Website Assistance',
         CtaLink: '/contact?topic=Website%20Management'
@@ -110,7 +110,7 @@ const paidServices = [
 
     <main class="py-16 bg-white-50">
         <!-- Free Services Section -->
-        <section class="mb-20 bg-white px-6 py-12 max-w-7xl mx-auto shadow-lg rounded-3xl fade-in-up-on-scroll">
+        <section class="mb-20 bg-white px-6 py-12 max-w-7xl mx-auto shadow-lg rounded-3xl">
             <div class="text-center mb-12">
                 <h2 class="text-4xl font-extrabold text-gray-900 tracking-tight">Nonprofit exclusive services</h2>
                 <p class="mt-4 text-lg text-gray-600">Helping mission-driven teams stay secure and scale with zero-cost support.</p>
@@ -118,7 +118,7 @@ const paidServices = [
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {
                     freeServices.map((service) => (
-                        <div class="bg-white p-6 rounded-2xl shadow-2xl border border-gradient-to-r from-blue-400 to-purple-500 transition-all duration-500 hover:scale-[1.015] hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] hover:border-blue-500 fade-in-up-on-scroll">
+                        <div class="bg-white/80 backdrop-blur-lg p-6 rounded-2xl shadow-2xl border border-gradient-to-r from-blue-400 to-purple-500 transition-all duration-300 hover:scale-[1.03] hover:shadow-xl hover:border-blue-500 hover:-translate-y-1">
                             <div class="flex items-center justify-center text-5xl mb-4 transition-transform duration-300 hover:scale-110">{service.icon}</div>
                             <h3 class="text-xl font-bold text-gray-900 mb-2 transition-colors duration-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500">
                                 {service.title}
@@ -136,7 +136,7 @@ const paidServices = [
 
         <!-- Paid Services Section -->
 
-        <div class="max-w-7xl mx-auto px-6 py-12 rounded-3xl bg-white shadow-lg fade-in-up-on-scroll">
+        <div class="max-w-7xl mx-auto px-6 py-12 rounded-3xl bg-white shadow-lg">
             <div class="text-center mb-12">
                 <h2 class="text-4xl font-extrabold text-gray-900 tracking-tight">Paid IT Services</h2>
                 <p class="mt-4 text-lg text-gray-600">Smart pricing. Scalable options. Nonprofits always get priority.</p>
@@ -144,7 +144,7 @@ const paidServices = [
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {
                     paidServices.map((service) => (
-                        <div class="bg-white p-6 rounded-2xl shadow-2xl border border-gradient-to-r from-blue-400 to-purple-500 transition-all duration-500 hover:scale-[1.015] hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] hover:border-blue-500 fade-in-up-on-scroll">
+                        <div class="bg-white/80 backdrop-blur-lg p-6 rounded-2xl shadow-2xl border border-gradient-to-r from-blue-400 to-purple-500 transition-all duration-300 hover:scale-[1.03] hover:shadow-xl hover:border-blue-500 hover:-translate-y-1">
                             <div class="flex items-center justify-center text-5xl mb-4 transition-transform duration-300 hover:scale-110">{service.icon}</div>
                             <h3 class="text-xl font-bold text-gray-900 mb-2 transition-colors duration-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500">
                                 {service.title}
@@ -152,7 +152,7 @@ const paidServices = [
                             <p class="text-gray-700 transition-colors duration-300 hover:text-blue-700">{service.description}</p>
                             <p class="mt-4 text-sm text-gray-500 font-semibold" set:html={service.price} />
                             {service.cta && service.CtaLink ? (
-                                <div class="mt-4" text-align="center">
+                                <div class="mt-4 flex justify-center">
                                     <CTAButton text={service.cta} link={service.CtaLink} />
                                 </div>
                             ) : null}
@@ -161,47 +161,6 @@ const paidServices = [
                 }
             </div>
         </div>
-        <style>
-            @keyframes fade-in-up {
-                from {
-                    opacity: 0;
-                    transform: translateY(40px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-            .fade-in-up-on-scroll {
-                opacity: 0;
-                transform: translateY(40px);
-                transition:
-                    opacity 0.7s cubic-bezier(0.23, 1.01, 0.32, 1),
-                    transform 0.7s cubic-bezier(0.23, 1.01, 0.32, 1);
-            }
-            .fade-in-up-on-scroll.visible {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        </style>
-        <script is:inline>
-            // Intersection Observer for fade-in-up effect on scroll
-            document.addEventListener('DOMContentLoaded', () => {
-                const observer = new IntersectionObserver(
-                    (entries, obs) => {
-                        entries.forEach((entry) => {
-                            if (entry.isIntersecting) {
-                                entry.target.classList.add('visible');
-                                obs.unobserve(entry.target);
-                            }
-                        });
-                    },
-                    { threshold: 0.15 }
-                );
-                document.querySelectorAll('.fade-in-up-on-scroll').forEach((el) => {
-                    observer.observe(el);
-                });
-            });
-        </script>
+        <!-- Removed scroll/fly-in animation and related styles/scripts -->
     </main>
 </Layout>
