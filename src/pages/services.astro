@@ -3,104 +3,106 @@ import Layout from '../layouts/Layout.astro';
 import ContextAlert from '../components/ContextAlert.astro';
 import CTAButton from '../components/CTAButton.astro';
 
-const freeServices = [
-    {
-        title: 'IT Consultations',
-        description: 'Talk through your tech needs, problems, or next big project—zero cost.',
-        icon: '💻🖨'
-    },
-    {
-        title: 'Community Help & Articles',
-        description: 'Unlimited access to our Knowledge base, forum access, and one-on-one help when needed through any of our guides.',
-        icon: '📚'
-    },
-    {
-        title: 'Grant & Cloud Credit Guidance',
-        description: 'Apply for Microsoft, Google, or other cloud-based nonprofit credits.',
-        icon: '☁️'
-    }
-];
-
 const paidServices = [
     {
         title: 'Managed IT Support',
-        description: 'Ongoing device support, patching, monitoring, and remote helpdesk. If you have a problem, we are here to help.',
-        price: 'Nonprofits: $3/device/month<br>Businesses: Contact us',
+        description: 'Full-service device management, security patching, monitoring, and remote helpdesk—because downtime isn’t an option.',
+        price: 'Nonprofits: $4/device/month<br>Businesses: Contact us',
         icon: '🛠️',
-        cta: 'Managed IT Services',
+        cta: 'Request Managed IT Support',
         CtaLink: '/contact?topic=Managed%20IT%20Support'
     },
     {
+        title: 'IT Consultations',
+        description: 'Review your IT needs, challenges, and goals in a focused consultation.',
+        price: 'Nonprofits: Free<br>Businesses: First Consultation Free',
+        icon: '💻',
+        cta: 'Book a Consultation',
+        CtaLink: '/contact'
+    },
+    {
         title: 'Domain Migration',
-        description: 'Initial record setup to allow you to use your registered domain for email usage, website, or other services.',
-        price: 'Nonprofits: Free<br>Businesses: $100.00',
+        description: 'We handle the DNS record setup needed to connect your domain to email, websites, and other online tools.',
+        price: 'Nonprofits: Free<br>Businesses: $100',
         icon: '🌐',
-        cta: 'Basic Domain Support',
+        cta: 'Start Domain Migration',
         CtaLink: '/contact?topic=Domain%20Support'
     },
 
     {
-        title: 'Email Migration (10 or less)',
+        title: 'Email Migration – Tier 1 (10 or Fewer)',
         description: 'Smooth migration to Microsoft 365 with mail, calendar, and contact transfer. ',
-        price: 'Nonprofits: Consultation <br> Businesses: $300–$500.',
+        price: 'Nonprofits: Free <br> Businesses: $300–$500 total',
         icon: '📧',
-        cta: 'Email Support',
+        cta: 'Request Email Migration',
         CtaLink: '/contact?topic=Email%20Migration%20Support'
     },
     {
-        title: 'Email Migration (Standard)',
-        description: 'Smooth migration to Microsoft 365 with mail, calendar, and contact transfer.',
-        price: 'Nonprofits: Free<br>Businesses: $50-$300/mailbox',
+        title: 'Standard Email Migration',
+        description: 'Migration to Microsoft 365 including mail, calendar, and contact transfer. Planned for minimal downtime and full data integrity.',
+        price: 'Nonprofits: Free<br>Businesses: $50-$300 per mailbox',
         icon: '📧',
-        cta: 'Email Support',
+        cta: 'Request Email Migration',
         CtaLink: '/contact?topic=Email%20Migration%20Support'
     },
     {
-        title: 'Microsoft 365 or Google Workspace Safety Net',
-        description: 'Continuous backup of your Microsoft 365 or Google Workspace data.',
+        title: 'Microsoft 365 & Google Workspace Safety Net',
+        description: 'Automatic, ongoing backups for Microsoft 365 or Google Workspace—so your emails and files are always recoverable.',
         price: 'Nonprofits: $3.50/account/month<br>Businesses: $5.00/account/month',
         icon: '🔄',
-        cta: 'Backup Cloud Services',
+        cta: 'Start Cloud Backup',
         CtaLink: '/contact?topic=Microsoft%20or%20Google%20Workspace%20Questions'
     },
     {
-        title: 'Endpoint Hardening',
-        description: 'Zero-trust security enforcement on organization devices. Stay compliant, secure, and have logs to prove it.',
-        price: 'Nonprofits: Pay What You Can<br>Businesses: $3,000 for 30 users or less',
+        title: 'Endpoint Security Hardening',
+        description: 'Zero-trust security policies applied to every device—keeping your organization compliant, secure, and ready for audits.',
+        price: 'Nonprofits: Pay What You Can<br>Businesses: $3,000 for up to 30 users',
         icon: '🔒',
-        cta: 'Endpoint Cybersecurity',
+        cta: 'Start Endpoint Hardening',
         CtaLink: '/contact?topic=Endpoint%20Security'
     },
     {
-        title: 'M365 User and Device Onboarding [10 Users or less]',
-        description: 'We setup your devices, user accounts, and automation policies to let you focus on your mission.',
-        price: 'Nonprofits: Pay What You Can<br>Businesses: Consultation Required',
+        title: 'M365 User & Device Onboarding (Up to 10 Users)',
+        description:
+            'Complete Microsoft 365 onboarding with Azure AD join, Intune device management, and policy enforcement for security, compliance, and consistent end-user experience.',
+        price: 'Nonprofits: Pay What You Can<br>Businesses: $1,000 flat',
         icon: '🖥️',
         cta: 'Microsoft 365 Support',
         CtaLink: '/contact?topic=Microsoft%20or%20Google%20Workspace%20Questions'
     },
     {
-        title: 'M365 User and Device Onboarding [11 Users or more]',
-        description: 'We setup your devices, user accounts, and automation policies to let you focus on your mission.',
-        price: 'Nonprofits: $2,500[Pay What You Can]<br>Businesses: Consultation Required',
+        title: 'M365 User & Device Onboarding (11+ Users)',
+        description:
+            'Complete Microsoft 365 onboarding with Azure AD join, Intune device management, and policy enforcement for security, compliance, and consistent end-user experience.',
+        price: 'Nonprofits: Pay What You Can<br>Businesses: $150/user',
         icon: '🖥️',
         cta: 'Microsoft 365 Support',
         CtaLink: '/contact?topic=Microsoft%20or%20Google%20Workspace%20Questions'
     },
     {
-        title: 'Website Management',
-        description: 'Does your website require constant monitoring, updates, and tuning? Let us help.',
+        title: 'Website Monitoring',
+        description: 'Monitoring for uptime, security, and basic functionality, with maintenance updates applied when possible.',
         price: 'Nonprofits: $30/site/year<br>Businesses: From $10/site/month',
         icon: '🌎',
-        cta: 'Website Assistance',
+        cta: 'Start Website Monitoring',
         CtaLink: '/contact?topic=Website%20Management'
     },
     {
         title: 'Custom Automation & Scripting',
-        description: 'PowerShell scripts, Azure Functions, or batch scripts workflows tailored to your needs.',
+        description:
+            'Automation solutions built using PowerShell, Azure Functions, or batch scripting designed to streamline your processes and reduce manual work.',
+        price: 'Nonprofits: Pay What You Can<br>Businesses: Contact Us',
         icon: '⚙️',
-        cta: 'Consultation Required',
+        cta: 'Schedule a Consultation',
         CtaLink: '/contact?topic=Custom%20Automations'
+    },
+    {
+        title: 'Technology Grants',
+        description: 'Guidance for securing IT grants, software discounts, and cloud credits available to nonprofits.',
+        price: 'Nonprofits: Free<br>Businesses: Contact Us',
+        icon: '☁️',
+        cta: 'Schedule a Consultation',
+        CtaLink: '/contact'
     }
 ];
 ---
@@ -109,42 +111,20 @@ const paidServices = [
     <ContextAlert class="mb-8" />
 
     <main class="py-16 bg-white-50">
-        <!-- Free Services Section -->
-        <section class="mb-20 bg-white px-6 py-12 max-w-7xl mx-auto shadow-lg rounded-3xl">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl font-extrabold text-gray-900 tracking-tight">Nonprofit exclusive services</h2>
-                <p class="mt-4 text-lg text-gray-600">Helping mission-driven teams stay secure and scale with zero-cost support.</p>
-            </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {
-                    freeServices.map((service) => (
-                        <div class="bg-white/80 backdrop-blur-lg p-6 rounded-2xl shadow-2xl border border-gradient-to-r from-blue-400 to-purple-500 transition-all duration-300 hover:scale-[1.03] hover:shadow-xl hover:border-blue-500 hover:-translate-y-1">
-                            <div class="flex items-center justify-center text-5xl mb-4 transition-transform duration-300 hover:scale-110">{service.icon}</div>
-                            <h3 class="text-xl font-bold text-gray-900 mb-2 transition-colors duration-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500">
-                                {service.title}
-                            </h3>
-                            <p class="text-gray-700 transition-colors duration-300 hover:text-blue-700">{service.description}</p>
-                        </div>
-                    ))
-                }
-
-                <div class="col-span-full mt-8 flex justify-center">
-                    <CTAButton text="Nonprofit Assistance Click Here" link="/contact" />
-                </div>
-            </div>
-        </section>
-
         <!-- Paid Services Section -->
 
         <div class="max-w-7xl mx-auto px-6 py-12 rounded-3xl bg-white shadow-lg">
             <div class="text-center mb-12">
-                <h2 class="text-4xl font-extrabold text-gray-900 tracking-tight">Paid IT Services</h2>
-                <p class="mt-4 text-lg text-gray-600">Smart pricing. Scalable options. Nonprofits always get priority.</p>
+                <h2 class="text-4xl font-extrabold text-gray-900 tracking-tight">IT Solutions & Services</h2>
+                <p class="mt-4 text-lg text-gray-600">
+                    Serving the Central Coast and San Luis Obispo with affordable IT support, cloud migrations, and cybersecurity solutions. Whether you’re a
+                    nonprofit or a growing business, we make sure your systems run smoothly and securely.
+                </p>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {
                     paidServices.map((service) => (
-                        <div class="bg-white/80 backdrop-blur-lg p-6 rounded-2xl shadow-2xl border border-gradient-to-r from-blue-400 to-purple-500 transition-all duration-300 hover:scale-[1.03] hover:shadow-xl hover:border-blue-500 hover:-translate-y-1">
+                        <div class="bg-white/80 backdrop-blur-lg p-6 rounded-2xl shadow-2xl border border-gradient-to-r from-blue-400 to-purple-500 transition-all duration-500 hover:scale-105 hover:shadow-[0_16px_48px_0_rgba(80,0,120,0.25),0_2px_16px_0_rgba(0,0,0,0.18)] hover:border-blue-500 max-w-md mx-auto">
                             <div class="flex items-center justify-center text-5xl mb-4 transition-transform duration-300 hover:scale-110">{service.icon}</div>
                             <h3 class="text-xl font-bold text-gray-900 mb-2 transition-colors duration-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500">
                                 {service.title}
