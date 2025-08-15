@@ -15,60 +15,70 @@ const beliefs = [
 
 <Layout title="About Us | Backup Failed Foundation">
     <ContextAlert class="mb-8" />
-    <div class="max-w-3xl mx-auto px-6 py-12 text-white bg-gray-900 rounded-lg">
+
+    <div id="color-toggle-container" class="relative max-w-3xl mx-auto my-20 px-6 py-12 text-white bg-sky-900 rounded-lg">
         <img
-            src="https://storage001backupfailed.blob.core.windows.net/stor-container-web/Square-Transparent.png"
+            src="https://storage001backupfailed.blob.core.windows.net/stor-container-web/LOGO/Backup%20failed-NO%20BACKBROUND.png"
             alt="Backup Failed Foundation Logo"
             class="block mx-auto mb-8 max-w-[350px]"
         />
 
-        <!-- <h1 class="text-3xl font-bold mb-4 text-center">Backup Failed Foundation</h1> -->
-        <!-- <p class="text-lg text-center mb-8">Empowering nonprofits in a tech-driven world.</p> -->
+        <section class="my-8">
+            <h2 class="text-2xl font-semibold mb-4">Why We're Here</h2>
+            <p class="mb-4">Tech should be inclusive, not exclusive.</p>
+            <p class="mb-4">
+                I’ve spent years working in IT; hospitals, nonprofits, MSPs and one thing kept standing out: tech is often built in a way that leaves people
+                out. Not because they’re incapable, but because there are too many barriers: jargon, cost, bloated products, or just straight-up complexity.
+            </p>
+            <p class="mb-4">
+                I didn’t want to just point at the problem. I wanted to build something that helps solve it. That’s why I started Backup Failed Foundation.
+            </p>
+            <p class="mb-8">
+                This isn’t about being a hero. It’s about creating a space where nonprofits, community groups, and mission-driven teams can get real support and
+                grow confidently. They might not want to become cloud architects or sysadmins and that’s totally fine. It is their vision of a better world that
+                matters, and we at Backup Failed Foundation are here to help eliminate barriers.
+            </p>
+        </section>
 
-        <h2 class="text-2xl font-semibold mb-4">Why We're Here</h2>
-        <p class="mb-4">Tech should be inclusive, not exclusive.</p>
-        <p class="mb-4">
-            I’ve spent years working in IT; hospitals, nonprofits, MSPs and one thing kept standing out: tech is often built in a way that leaves people out.
-            Not because they’re incapable, but because there are too many barriers: jargon, cost, bloated products, or just straight-up complexity.
-        </p>
-        <p class="mb-4">
-            I didn’t want to just point at the problem. I wanted to build something that helps solve it. That’s why I started Backup Failed Foundation.
-        </p>
-        <p class="mb-8">
-            This isn’t about being a hero. It’s about creating a space where nonprofits, community groups, and mission-driven teams can get real support and
-            grow confidently. They might not want to become cloud architects or sysadmins and that’s totally fine. It is their vision of a better world that
-            matters, and we at Backup Failed Foundation are here to help eliminate barriers.
-        </p>
+        <section class="my-8">
+            <h2 class="text-2xl font-semibold mb-4">Our Mission</h2>
+            <p class="mb-8">{mission}</p>
+        </section>
 
-        <h2 class="text-2xl font-semibold mb-4">Our Mission</h2>
-        <p class="mb-8">{mission}</p>
+        <section class="my-8">
+            <h2 class="text-2xl font-semibold mb-4">What We Believe</h2>
+            <ul class="list-disc pl-6 mb-8">
+                {beliefs.map((belief) => <li class="mb-2">{belief}</li>)}
+            </ul>
+        </section>
 
-        <h2 class="text-2xl font-semibold mb-4">What We Believe</h2>
-        <ul class="list-disc pl-6 mb-8">
-            {beliefs.map((belief) => <li class="mb-2">{belief}</li>)}
-        </ul>
+        <section class="my-8">
+            <h2 class="text-2xl font-semibold mb-4">How We're Funded</h2>
+            <p class="mb-4">
+                We believe nonprofits and community orgs shouldn’t have to stress about tech costs. That’s why our core services are <strong
+                    >completely free</strong
+                >
+                for qualifying nonprofits.
+            </p>
+            <p class="mb-4">
+                To keep the lights on, we charge fair rates to businesses and for-profit groups who want to work with us. That revenue helps fund the free
+                tools, resources, and hands-on help we provide to mission-driven teams.
+            </p>
+            <p class="mb-8">We’re all about transparency and sustainability — and we’ll always be clear about where funds go and why.</p>
+        </section>
 
-        <h2 class="text-2xl font-semibold mb-4">How We're Funded</h2>
-        <p class="mb-4">
-            We believe nonprofits and community orgs shouldn’t have to stress about tech costs. That’s why our core services are <strong>completely free</strong
-            > for qualifying nonprofits.
-        </p>
-        <p class="mb-4">
-            To keep the lights on, we charge fair rates to businesses and for-profit groups who want to work with us. That revenue helps fund the free tools,
-            resources, and hands-on help we provide to mission-driven teams.
-        </p>
-        <p class="mb-8">We’re all about transparency and sustainability — and we’ll always be clear about where funds go and why.</p>
-
-        <h2 class="text-2xl font-semibold mb-4">Our Legal Purpose</h2>
-        <p class="mb-8">
-            This corporation is organized exclusively for charitable, educational, and scientific purposes within the meaning of Section 501(c)(3) of the
-            Internal Revenue Code.
-            <br />
-            <br />
-            We exist to level the playing field by making tech tools, skills, and support available to all who serve their communities. Technology should empower,
-            not exclude; our purpose is to break down barriers in the tech world by offering accessible resources, IT Support, education, and peer-led support to
-            nonprofits and mission-driven groups—so they can focus on what matters most: serving others.
-        </p>
+        <section class="my-8">
+            <h2 class="text-2xl font-semibold mb-4">Our Legal Purpose</h2>
+            <p class="mb-8">
+                This corporation is organized exclusively for charitable, educational, and scientific purposes within the meaning of Section 501(c)(3) of the
+                Internal Revenue Code.
+                <br />
+                <br />
+                We exist to level the playing field by making tech tools, skills, and support available to all who serve their communities. Technology should empower,
+                not exclude; our purpose is to break down barriers in the tech world by offering accessible resources, IT Support, education, and peer-led support
+                to nonprofits and mission-driven groups—so they can focus on what matters most: serving others.
+            </p>
+        </section>
 
         <!-- <img src="/images/team.jpg" alt="Team at work or in action" class="block mx-auto mt-8 rounded-lg shadow-lg" /> -->
     </div>

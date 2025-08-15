@@ -33,11 +33,15 @@ The `.prose` class (from Tailwind Typography) is used for rich text content, mai
 - Responsive design: mobile-first, scales up to large screens.
 
 ## Layout & Spacing
-- Use `max-w-6xl` or `max-w-7xl` for main content containers for a spacious, modern feel.
-- Center content with `mx-auto` and use `px-6` or greater for horizontal padding.
-- Use `py-12` or more for vertical breathing room.
-- Use grid layouts for service cards (e.g., `md:grid-cols-2 lg:grid-cols-3 gap-8`).
-- Cards and sections use `rounded-2xl` or `rounded-3xl` for a modern, soft look.
+
+- Main content containers use `max-w-3xl mx-auto px-6 py-12` for a readable, centered layout.
+- Add vertical margin to main content blocks with `my-20` (or `my-8` for sections).
+- Always separate the header/nav from main content with top margin (`my-20` or similar) to avoid color clash.
+- Section blocks use `<section class="my-8">` for consistent vertical rhythm.
+- Headings use `mb-4` below each `<h2>`.
+- Paragraphs use `mb-4` for spacing, with `mb-8` for the last paragraph in a section.
+- Lists use `pl-6 mb-8` for indentation and spacing.
+- Images use `mb-8` for spacing below.
 
 ## Typography & Card Design
 - Use Inter Variable font for all text (see `globals.css` and `Layout.astro`).
