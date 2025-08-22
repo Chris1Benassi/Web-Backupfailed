@@ -58,9 +58,12 @@ const hasDetails = Boolean(Astro.slots.default);
     {
         hasDetails ? (
             <div class="card-details p-6 border-t border-gray-800">
-                <div class="mt-0 details-content">
-                    <slot />
-                </div>
+                <details class="mt-0 details-content">
+                    <summary class="cursor-pointer font-medium">More details</summary>
+                    <div class="mt-4">
+                        <slot />
+                    </div>
+                </details>
             </div>
         ) : null
     }
