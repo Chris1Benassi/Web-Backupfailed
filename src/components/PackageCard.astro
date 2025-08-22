@@ -1,0 +1,111 @@
+---
+export interface Props {
+    title: string;
+    price?: string;
+    period?: string;
+    features?: string[];
+    highlight?: boolean;
+    link?: string;
+    ctaText?: string;
+}
+
+const { title, price = 'TBD', period = '', features = [], highlight = false, link = '/contact/', ctaText = 'Get this' } = Astro.props as Props;
+
+const hasDetails = Boolean(Astro.slots.default);
+---
+
+<article class={`package-card ${highlight ? 'highlight' : ''} rounded-2xl overflow-hidden shadow-2xl border bg-white/80 backdrop-blur-lg`}>
+    <div class="card-top p-6">
+        {
+            highlight ? (
+                <div class="badge absolute -mt-6 ml-6 inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">
+                    Most popular
+                </div>
+            ) : null
+        }
+        <h3 class="text-xl font-semibold">{title}</h3>
+        <div class="price mt-4 flex items-baseline gap-2">
+            <span class="text-3xl font-bold">{price}</span>
+            {period ? <span class="text-sm text-gray-400">{period}</span> : null}
+        </div>
+    </div>
+
+    <div class="card-body p-6 border-t border-gray-800">
+        <ul class="space-y-3">
+            {
+                features.map((f) => (
+                    <li class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-green-400 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path
+                                fill-rule="evenodd"
+                                d="M16.704 5.04a.75.75 0 010 1.06l-7.07 7.07a.75.75 0 01-1.06 0L3.296 7.85a.75.75 0 111.06-1.06l4.02 4.02 6.69-6.69a.75.75 0 011.06 0z"
+                                clip-rule="evenodd"
+                            />
+                        </svg>
+                        <span>{f}</span>
+                    </li>
+                ))
+            }
+        </ul>
+    </div>
+
+    <div class="card-footer p-6 border-t border-gray-800 text-center">
+        <a href={link} class="cta inline-block px-6 py-2 rounded-full font-semibold">
+            {ctaText}
+        </a>
+    </div>
+
+    {
+        hasDetails ? (
+            <div class="card-details p-6 border-t border-gray-800">
+                <div class="mt-0 details-content">
+                    <slot />
+                </div>
+            </div>
+        ) : null
+    }
+
+    <style>
+        .package-card {
+            position: relative;
+            /* Ensure all text inside the light card is dark and readable (overrides page-level text-white) */
+            color: #0b1220;
+        }
+        /* Make sure common content elements inside the card use dark tones for contrast */
+        .package-card p,
+        .package-card .details-content,
+        .package-card h4,
+        .package-card h5,
+        .package-card li,
+        .package-card .card-details {
+            color: #0f172a;
+        }
+        .package-card .price {
+            color: #0f172a; /* dark on light card */
+        }
+        .package-card h3 {
+            color: #0b1220;
+        }
+        .package-card .cta {
+            background: linear-gradient(90deg, #3b82f6, #7c3aed);
+            color: white;
+            text-decoration: none;
+        }
+        .package-card .cta:hover {
+            filter: brightness(0.95);
+        }
+        .package-card.highlight {
+            border: 1px solid rgba(59, 130, 246, 0.18);
+            box-shadow:
+                0 20px 60px rgba(99, 102, 241, 0.12),
+                0 6px 20px rgba(16, 24, 40, 0.06);
+            transform: translateY(-8px) scale(1.02);
+        }
+        .package-card ul {
+            color: #374151;
+        }
+        .package-card .badge {
+            z-index: 10;
+        }
+    </style>
+</article>

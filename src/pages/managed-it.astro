@@ -1,0 +1,140 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CTAButton from '../components/CTAButton.astro';
+import PackageCard from '../components/PackageCard.astro';
+
+const title = 'Managed IT';
+const description = 'Managed IT — compare our hourly, managed, and full-coverage IT packages. Schedule a review or request a tailored quote.';
+
+const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'Managed IT',
+    description: 'Managed IT packages and hourly support options',
+    mainEntity: {
+        '@type': 'ItemList',
+        name: 'IT Service Packages',
+        itemListElement: []
+    }
+};
+---
+
+<Layout title={title} description={description} jsonLd={jsonLd}>
+    <main class="mx-auto px-6 py-12">
+        <header class="text-center max-w-3xl mx-auto">
+            <h1>Managed IT Services</h1>
+            <p class="lead">
+                Choose the engagement model that fits your organisation. This page lists our Managed IT offerings (hourly, managed, and full-coverage). Paste
+                your canonical package cards into the grid below when ready and I will update schema and copy accordingly.
+            </p>
+            <div class="mt-6">
+                <CTAButton text="Get Started" link="/contact/" />
+            </div>
+        </header>
+
+        <section id="packages-grid" class="mt-12">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
+                    <!-- Example cards: replace titles, prices, and features with your canonical packages -->
+                    <PackageCard
+                        title="Hourly"
+                        price="$120"
+                        period="/hr"
+                        features={['Ad-hoc troubleshooting', 'Per-minute billing', 'No monthly commitment']}
+                        link="/contact/"
+                        ctaText="Help Me Now"
+                    />
+                    <PackageCard
+                        title="Essentials Package"
+                        price="$100"
+                        period="/user"
+                        features={['RMM + Patch Management', 'Helpdesk (M–F)', 'EDR Basic']}
+                        link="/contact/"
+                        ctaText="Get Managed IT"
+                    />
+                    <PackageCard
+                        title="Failsafe+ Package"
+                        price="$170"
+                        period="/user"
+                        features={['24/7 RMM & Support', 'Bitdefender EDR', 'M365 + Intune + Backup']}
+                        highlight={true}
+                        link="/contact/"
+                        ctaText="Contact Sales"
+                    >
+                        <!-- Full package details: moved into the card so users can expand directly on the pricing page -->
+                        <h4 class="mt-4">Remote Monitoring & Management (RMM)</h4>
+                        <p>Software installed on every workstation/server that proactively manages updates, performance, and security.</p>
+                        <h5 class="mt-3">What You Get</h5>
+                        <ul>
+                            <li>24/7 monitoring of devices</li>
+                            <li>Automated OS + 3rd party patching</li>
+                            <li>Remote access for faster troubleshooting</li>
+                            <li>Alerts for failed updates, hardware issues, or disabled security</li>
+                            <li>Proactive fixes to prevent small issues from turning into downtime</li>
+                        </ul>
+
+                        <h4 class="mt-4">Helpdesk Support</h4>
+                        <p>Dedicated support for your staff whenever they run into IT problems.</p>
+                        <h5 class="mt-3">What You Get</h5>
+                        <ul>
+                            <li>Unlimited remote support tickets (phone/email/portal)</li>
+                            <li>Same-day response during support hours (M–F, 8a–9p)</li>
+                            <li>Escalation for urgent issues</li>
+                            <li>Staff coaching on supported apps</li>
+                            <li>Documentation of all issues for accountability</li>
+                        </ul>
+
+                        <h4 class="mt-4">Endpoint Security (Bitdefender EDR)</h4>
+                        <p>
+                            Enterprise-grade endpoint detection & response (EDR) for every device. Protects against malware, ransomware, and suspicious
+                            activity.
+                        </p>
+                        <h5 class="mt-3">What You Get</h5>
+                        <ul>
+                            <li>Bitdefender GravityZone EDR on all devices</li>
+                            <li>Web/DNS content filtering (blocks malicious or inappropriate sites)</li>
+                            <li>Centralized monitoring and policy enforcement</li>
+                            <li>Automatic quarantine/remediation of threats</li>
+                            <li>Endpoint health & incident reporting</li>
+                        </ul>
+
+                        <h4 class="mt-4">Microsoft 365 Business Premium — Highlights</h4>
+                        <ul>
+                            <li>Exchange Online, Office apps, Teams, OneDrive</li>
+                            <li>Defender for Office 365 (Safe Links & Safe Attachments)</li>
+                            <li>Intune device management & Conditional Access</li>
+                        </ul>
+
+                        <h4 class="mt-4">Cloud Backup & Recovery</h4>
+                        <p>
+                            Backups for Microsoft 365 and endpoints, protecting against deletion, mistakes, or hardware failure (Dropsuite / Backblaze, periodic
+                            test restores).
+                        </p>
+
+                        <h4 class="mt-4">Security Awareness Training</h4>
+                        <p>Interactive training and phishing simulations for staff, with reporting and remediation guidance.</p>
+
+                        <h4 class="mt-4">Dark Web Monitoring & Vendor Management</h4>
+                        <p>Credential monitoring and vendor coordination to reduce friction and finger-pointing during incidents.</p>
+                    </PackageCard>
+                </div>
+                <p class="mt-4 text-sm text-gray-400 text-center">
+                    These are placeholders — paste your final package cards here and I’ll update schema accordingly.
+                </p>
+            </div>
+        </section>
+
+        <!-- Detailed package content has been moved into the Everything IT card above to avoid duplication and to allow inline expansion. -->
+        <div class="mt-8">
+            <CTAButton text="Schedule a security & needs review" link="/contact/" />
+        </div>
+    </main>
+
+    <section id="faq" class="mt-12">
+        <h2>FAQ</h2>
+        <p>
+            Placeholder — add questions relevant to your packages. Consider adding: onboarding steps, billing cadence, user/device pricing, SLA details, and
+            cancellation policy.
+        </p>
+    </section>
+</Layout>
