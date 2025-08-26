@@ -101,17 +101,16 @@ const jsonLd = {
                         <CTAButton text="Request a quote" link="/contact/" />
                         <a class="text-sm text-sky-100/90 underline" href="/services/">See Optional Add-Ons</a>
                     </div>
-
+                    <!--
                     <div class="mt-8 flex items-center gap-6 opacity-90">
-                        <!-- Trust logos placeholders -->
                         <img src="/admin/images/noise.png" alt="Client logo 1" class="h-8 opacity-60" />
                         <img src="/admin/images/noise.png" alt="Client logo 2" class="h-8 opacity-60" />
                         <img src="/admin/images/noise.png" alt="Client logo 3" class="h-8 opacity-60" />
                     </div>
+ -->
                 </div>
             </div>
         </section>
-
         <section id="packages-grid" class="mt-12">
             <div class="max-w-7xl mx-auto">
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
@@ -122,9 +121,9 @@ const jsonLd = {
                         period="/hr"
                         features={[
                             'One-off Troubleshooting & Repairs',
-                            'Workstation Support (Windows & Mac)',
-                            'Email & Printer Issue Resolution',
-                            'Basic Server Fixes Available on Request',
+                            'Windows and macOS Support',
+                            'Printer or Peripheral Installations',
+                            'Server Fixes Available on Request',
                             'Best for Emergencies, Not Long-term IT'
                         ]}
                         link="/contact/"
@@ -132,40 +131,90 @@ const jsonLd = {
                     />
                     <PackageCard
                         title="Essentials Package"
-                        price="$100"
+                        price="$100+"
                         period="/user"
                         features={[
-                            '24/7 Monitoring to Catch Problems Early',
-                            'Unlimited Remote Helpdesk Support',
-                            'Managed Updates & Security Patching',
-                            'EDR Antivirus with Alerts and Telemetry Handled by Us',
-                            'From New Hire to Exit: Accounts, Access, and Clean-up Covered',
-                            'Single Point of Contact for IT'
+                            {
+                                title: '24/7 Monitoring',
+                                details:
+                                    'Your systems are monitored 24/7 by our tools. If something goes wrong, we’re alerted immediately. Low storage, failed updates, or security risks can often be fixed in the background before they disrupt your business.'
+                            },
+                            {
+                                title: 'Unlimited Remote Helpdesk Support',
+                                details:
+                                    'Whenever your team hits a snag, our remote helpdesk is here to help, there are no limits, no hidden fees. From password resets to software issues, we provide fast, reliable support during business hours so your staff can stay focused on their work.'
+                            },
+                            {
+                                title: 'Managed Updates & Security Patching',
+                                details:
+                                    'We keep your systems protected and up to date. Critical patches for Windows and other key software are tested and deployed on a schedule, reducing security risks and preventing disruptions. If an update causes problems, we can roll it back quickly to keep your business running smoothly.'
+                            },
+                            {
+                                title: 'Next-Gen Threat Protection (EDR Security)',
+                                details:
+                                    'Traditional antivirus only blocks known viruses. Our EDR (Endpoint Detection & Response) goes beyond; it watches how programs behave to spot new, hidden, or evolving threats. When suspicious activity is detected, we receive alerts and handle the investigation and cleanup for you, so problems don’t spiral into bigger issues.'
+                            },
+                            {
+                                title: 'Employee Lifecycle Management',
+                                details:
+                                    'We handle staff account setup and removal. New employees get the right email, apps, and permissions on day one. When someone leaves, we quickly revoke access to keep your data secure.'
+                            },
+                            {
+                                title: 'One Stop IT Support',
+                                details:
+                                    'Forget sitting on hold with Spectrum or bouncing between different tech vendors. We deal directly with internet providers, software companies, and hardware support so you don’t have to. Whether it’s troubleshooting, billing issues, or escalations, you call us once — we handle the rest and keep you updated.'
+                            }
                         ]}
                         link="/contact/"
                         ctaText="Get Managed IT"
                     />
                     <PackageCard
                         title="Failsafe Package"
-                        price="$170"
+                        price="$170+"
                         period="/user"
                         features={[
-                            'Everything in Essentials Included',
-                            'Advanced Endpoint Protection — we manage and review threat activity so ransomware and malware are stopped early',
-                            'Web Filtering — we keep staff away from malicious and inappropriate sites to prevent malware.',
-                            'USB Device Control — we block unsafe drives to prevent malware infections or data walking out the door',
-                            'Microsoft Office Desktop Apps — the latest Word, Excel, Outlook, and PowerPoint for every user, kept updated and licensed',
-                            'Teams Collaboration — secure chat and file sharing managed under one system',
-                            'Teams Video Calls — reliable video meetings with screen sharing and recording',
-                            'Secure Baselines — we enforce encryption, screen locks, and hardened security settings across Windows and Microsoft 365',
-                            'Access Control — we require multi-factor logins and block risky sign-ins before they become breaches',
-                            'Remote Data Wipe — if a company laptop or phone is lost, we can erase the data and protect the business',
-                            'Cloud Backups — email, SharePoint, and OneDrive are backed up daily with full recovery available when mistakes or deletions happen',
-                            'Endpoint Backups — laptops and desktops are protected so local data isn’t lost to hardware failure or accidents',
-                            'Business App Integration — we securely connect tools like QuickBooks, CRMs, and payroll systems into Microsoft 365',
-                            'Compliance Readiness — we prepare reports and enforce policies so you can pass cyber insurance checks and audits without surprises',
-                            'Regular IT Reviews & Reports — leadership stays informed on risks, trends, and long-term planning',
-                            'Website Monitoring — we track uptime, SSL, and basic security issues so you don’t get blindsided'
+                            { title: 'Everything in Essentials', details: 'Includes all services provided in the Essentials package.' },
+                            {
+                                title: 'Web Filtering',
+                                details:
+                                    'We protect your team by blocking dangerous websites, phishing pages, and other high-risk content. This reduces the chance of malware infections and keeps browsing safe and productive at work.'
+                            },
+                            {
+                                title: 'Removable Media Protection',
+                                details:
+                                    'We prevent unsafe USB drives and external devices from spreading malware or copying sensitive files without permission, keeping your data secure.'
+                            },
+                            {
+                                title: 'Microsoft Office Apps Included',
+                                details:
+                                    'Every user gets the latest Word, Excel, Outlook, and PowerPoint. Your team is fully licensed, updated, and supported by us. We handle setup, renewals, and license management so you never have to worry about mismatched versions or expired subscriptions.'
+                            },
+                            {
+                                title: 'Microsoft Teams Collaboration',
+                                details:
+                                    'A single, secure platform for chat, file sharing, and video meetings. With Teams, your staff can message, share documents, and meet online with screen sharing and recording; all managed under your business account for security and ease.'
+                            },
+                            {
+                                title: 'Secure Configuration Standards',
+                                details:
+                                    'We secure company devices and Microsoft 365 accounts using industry best practices. That means encryption for lost or stolen laptops, automatic screen locks, multi-factor logins, blocked risky sign-ins, and even the ability to remotely wipe data if a device goes missing.'
+                            },
+                            {
+                                title: 'Email and File Cloud Backups',
+                                details:
+                                    'Most people assume Microsoft keeps endless backups, they don’t. We back up your email, OneDrive, and SharePoint every day, so if data is deleted, corrupted, or locked by ransomware, we can restore it and keep your business moving.'
+                            },
+                            { title: 'Endpoint Backups', details: 'Laptops and desktops protected so local data isn’t lost to hardware failure or accidents.' },
+
+                            {
+                                title: 'Website Monitoring',
+                                details: 'Track uptime, SSL, and security issues so customers always reach you and you are not caught off guard.'
+                            },
+                            {
+                                title: 'Regular IT Reviews',
+                                details:
+                                    'No more guessing where your IT stands. We give leadership plain-English reports on risks and trends, with clear next steps to keep your business protected and prepared.'
+                            }
                         ]}
                         link="/contact/"
                         ctaText="Contact Sales"
