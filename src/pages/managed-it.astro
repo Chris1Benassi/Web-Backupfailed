@@ -114,7 +114,6 @@ const jsonLd = {
         <section id="packages-grid" class="mt-12">
             <div class="max-w-7xl mx-auto">
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
-                    <!-- Example cards: replace titles, prices, and features with your canonical packages -->
                     <PackageCard
                         title="Hourly"
                         price="$120"
@@ -220,23 +219,158 @@ const jsonLd = {
                         ctaText="Contact Sales"
                     />
                 </div>
-                <p class="mt-4 text-sm text-gray-400 text-center">
-                    These are placeholders — paste your final package cards here and I’ll update schema accordingly.
-                </p>
             </div>
         </section>
 
-        <!-- Detailed package content has been moved into the Everything IT card above to avoid duplication and to allow inline expansion. -->
-        <div class="mt-8">
-            <CTAButton text="Schedule a security & needs review" link="/contact/" />
-        </div>
-    </main>
+        <section id="compliance-addon" class="mt-12">
+            <div class="max-w-7xl mx-auto relative">
+                <!-- accent stripe -->
+                <div class="absolute left-0 top-6 bottom-6 w-1 md:w-2 rounded-l-2xl bg-gradient-to-b from-sky-600 via-indigo-700 to-purple-800"></div>
 
-    <section id="faq" class="mt-12">
-        <h2>FAQ</h2>
-        <p>
-            Placeholder — add questions relevant to your packages. Consider adding: onboarding steps, billing cadence, user/device pricing, SLA details, and
-            cancellation policy.
-        </p>
-    </section>
+                <div class="bg-white text-slate-900 border border-slate-200 shadow-2xl rounded-2xl p-6 md:p-10 pl-8 md:pl-12 relative overflow-hidden">
+                    <div class="md:grid md:grid-cols-3 md:gap-8">
+                        <div class="md:col-span-2">
+                            <h3 class="text-2xl md:text-3xl font-extrabold">Cyber Readiness Add-On</h3>
+                            <p class="mt-3 text-slate-700 max-w-3xl text-base">
+                                Insurance and clients are asking tougher security questions. This add-on makes sure you can answer yes. From monitoring and
+                                firewall reviews to backup testing and phishing training, you get the proof insurers want and the protection your business
+                                needs.
+                            </p>
+
+                            <div class="mt-5 flex flex-wrap items-center gap-4">
+                                <div class="inline-flex items-center gap-3 bg-slate-50 border border-slate-100 rounded-full px-3 py-1">
+                                    <svg class="w-5 h-5 text-sky-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"
+                                        ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4"></path></svg
+                                    >
+                                    <span class="text-sm text-slate-700">Insurance-ready packs</span>
+                                </div>
+                                <div class="inline-flex items-center gap-3 bg-slate-50 border border-slate-100 rounded-full px-3 py-1">
+                                    <svg class="w-5 h-5 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"
+                                        ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h18M3 12h18M3 17h18"></path></svg
+                                    >
+                                    <span class="text-sm text-slate-700">Quarterly recovery tests</span>
+                                </div>
+                                <div class="inline-flex items-center gap-3 bg-slate-50 border border-slate-100 rounded-full px-3 py-1">
+                                    <svg class="w-5 h-5 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"
+                                        ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m4 0h.01M12 20h.01"
+                                        ></path></svg
+                                    >
+                                    <span class="text-sm text-slate-700">24/7 SOC & documented escalations</span>
+                                </div>
+                            </div>
+
+                            <!-- KPI strip -->
+                            <div class="mt-6 grid grid-cols-3 gap-4 max-w-md">
+                                <div class="bg-slate-50 rounded-lg p-3 text-center">
+                                    <div class="text-sm text-slate-600">Audit packs / quarter</div>
+                                    <div class="text-lg font-semibold text-slate-900">1</div>
+                                </div>
+                                <div class="bg-slate-50 rounded-lg p-3 text-center">
+                                    <div class="text-sm text-slate-600">Avg restore time</div>
+                                    <div class="text-lg font-semibold text-slate-900">&lt; 2 hrs</div>
+                                </div>
+                                <div class="bg-slate-50 rounded-lg p-3 text-center">
+                                    <div class="text-sm text-slate-600">SOC coverage</div>
+                                    <div class="text-lg font-semibold text-slate-900">24/7</div>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 flex items-center gap-4">
+                                <CTAButton text="Request compliance review" link="/contact/" />
+                                <a
+                                    href="/compliance-sample/"
+                                    class="inline-flex items-center px-4 py-2 border border-slate-200 rounded-lg text-sm text-slate-700 hover:bg-slate-50"
+                                    >View sample pack</a
+                                >
+                                <a href="/contact/" class="text-sm underline text-slate-600">Talk to sales</a>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 md:mt-0">
+                            <div class="grid gap-4">
+                                <details class="bg-slate-50 p-4 rounded-lg" open>
+                                    <summary class="font-semibold cursor-pointer">24/7 SOC Monitoring</summary>
+                                    <div class="mt-2 text-sm text-slate-600">
+                                        Your systems are watched around the clock by security analysts. If something serious happens, we’re notified, we respond
+                                        and you’ll have documentation to show insurers that real people reviewed your alerts.
+                                    </div>
+                                </details>
+                                <details class="bg-slate-50 p-4 rounded-lg">
+                                    <summary class="font-semibold cursor-pointer">Firewall Log Reviews</summary>
+                                    <div class="mt-2 text-sm text-slate-600">
+                                        We keep an eye on your firewall activity so unusual traffic doesn’t go unnoticed. These reviews also give you a paper
+                                        trail to satisfy audits and compliance checks.
+                                    </div>
+                                </details>
+                                <details class="bg-slate-50 p-4 rounded-lg">
+                                    <summary class="font-semibold cursor-pointer">Quarterly Backup Testing</summary>
+                                    <div class="mt-2 text-sm text-slate-600">
+                                        Backups only matter if they actually work. Every quarter we test restoring your data and include proof, so you know your
+                                        business can recover quickly if disaster hits.
+                                    </div>
+                                </details>
+                                <details class="bg-slate-50 p-4 rounded-lg">
+                                    <summary class="font-semibold cursor-pointer">Dark Web Monitoring</summary>
+                                    <div class="mt-2 text-sm text-slate-600">
+                                        If an employee’s password or data shows up for sale online, you’ll know. We reset credentials fast and enforce MFA, and
+                                        you’ll have documentation showing the incident was handled.
+                                    </div>
+                                </details>
+
+                                <details class="bg-slate-50 p-4 rounded-lg">
+                                    <summary class="font-semibold cursor-pointer">Incident Response Plan</summary>
+                                    <div class="mt-2 text-sm text-slate-600">
+                                        When something goes wrong, everyone knows their role. We maintain a written response plan tailored to your business and
+                                        review it annually with leadership.
+                                    </div>
+                                </details>
+                                <details class="bg-slate-50 p-4 rounded-lg">
+                                    <summary class="font-semibold cursor-pointer">Phishing Training & Simulations</summary>
+                                    <div class="mt-2 text-sm text-slate-600">
+                                        Your staff are the front line against cyberattacks. We run safe test emails to see who clicks, then train them, and
+                                        bundle the results in a leadership report so you can track progress.
+                                    </div>
+                                </details>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 text-sm text-slate-500">This add-on complements Failsafe Package exclusively; scope and pricing vary by environment.</div>
+
+                    <!-- trust badges -->
+                    <div class="mt-6 flex items-center gap-3 flex-wrap">
+                        <span
+                            title="Includes packaged evidence: logs, config snapshots, screenshots, EDR alerts and signed pass/fail report"
+                            class="inline-flex items-center gap-2 bg-slate-50 px-3 py-1 rounded-full text-xs border border-slate-100">📄 Audit-ready</span
+                        >
+
+                        <a
+                            href="https://www.bitdefender.com/business/"
+                            target="_blank"
+                            rel="noopener"
+                            title="Bitdefender EDR (link opens in new tab)"
+                            class="inline-flex items-center gap-2 bg-slate-50 px-3 py-1 rounded-full text-xs border border-slate-100"
+                        >
+                            <!-- simple shield icon + vendor name to avoid external image dependency -->
+                            <svg class="w-4 h-4 text-slate-700" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path
+                                    d="M12 2L3 5v6c0 5 3.8 9.7 9 11 5.2-1.3 9-6 9-11V5l-9-3z"
+                                    stroke="currentColor"
+                                    stroke-width="1.2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path d="M8.5 12.5l2 2 5-5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                            <span>Bitdefender EDR</span>
+                        </a>
+
+                        <span
+                            title="Quarterly recovery tests: full/partial backup restores, restore-time verification and tabletop incident exercises with evidence"
+                            class="inline-flex items-center gap-2 bg-slate-50 px-3 py-1 rounded-full text-xs border border-slate-100">✅ Quarterly tests</span
+                        >
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 </Layout>

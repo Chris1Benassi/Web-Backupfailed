@@ -3167,7 +3167,7 @@ const { title, description, jsonLd } = Astro.props as Props;
     </head>
 
     <body class="antialiased text-white bg-slate-50 bg-noise">
-        <Header />
+    <Header />
         {
             title === 'Home | Backup Failed Foundation' ? (
                 <main class="grow w-full">
@@ -3182,6 +3182,8 @@ const { title, description, jsonLd } = Astro.props as Props;
                 </div>
             )
         }
-        {title === 'Home | Backup Failed Foundation' && <Footer />}
+    {title === 'Home | Backup Failed Foundation' && <Footer />}
+
+    <!-- New Relic is used for telemetry; removed custom analytics helper to avoid duplicate instrumentation -->
     </body>
 </html>

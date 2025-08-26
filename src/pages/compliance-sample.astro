@@ -1,0 +1,33 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CTAButton from '../components/CTAButton.astro';
+
+const title = 'Sample Compliance Pack';
+const description = 'Preview a sample compliance report pack we deliver to leadership.';
+---
+
+<Layout title={title} description={description}>
+    <main class="max-w-4xl mx-auto px-6 py-12">
+        <h1 class="text-2xl font-extrabold">Sample Compliance Report Pack</h1>
+        <p class="mt-4 text-slate-700">
+            This is a preview of the packaged PDF we deliver: quarterly test results, SOC summaries, firewall log excerpts, MFA compliance, and proof of
+            recoverability.
+        </p>
+
+        <div class="mt-8 bg-white border border-slate-100 rounded-lg shadow p-6">
+            <h2 class="font-semibold">What's included</h2>
+            <ul class="mt-4 list-disc ml-6 text-slate-700 space-y-2">
+                <li>Executive summary with audit-friendly language</li>
+                <li>Backup test results and screenshots</li>
+                <li>Firewall log export excerpt with anomaly notes</li>
+                <li>SOC incident summary and remediation timeline</li>
+                <li>MFA and patch compliance snapshot</li>
+            </ul>
+
+            <div class="mt-6 flex gap-3">
+                <CTAButton text="Download sample (PDF)" link="/contact/" />
+                <a class="text-sm underline text-slate-600" href="/contact/">Request a custom sample</a>
+            </div>
+        </div>
+    </main>
+</Layout>
