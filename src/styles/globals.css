@@ -178,3 +178,34 @@
 .button-animated-gradient {
     @apply text-gray-900 mb-2 transition-colors duration-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500;
 }
+
+/* Edge-to-edge section: sits visually full viewport width while inside a centered container */
+.edge-to-edge {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+  box-sizing: border-box; /* keep padding inside the viewport width */
+}
+
+/* Smooth scrolling and anchor offset for sticky header */
+:root {
+    --header-offset: 72px; /* fallback, overridden at runtime */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Utility: apply to elements that are anchor targets so they sit below the header */
+.anchor, .anchor-target {
+    scroll-margin-top: var(--header-offset);
+}
+
+/* Ensure :target respects the header offset as a fallback */
+:target {
+    scroll-margin-top: calc(var(--header-offset) + 0.5rem);
+}
+

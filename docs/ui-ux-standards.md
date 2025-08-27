@@ -34,14 +34,13 @@ The `.prose` class (from Tailwind Typography) is used for rich text content, mai
 
 ## Layout & Spacing
 
-- Main content containers use `max-w-3xl mx-auto px-6 py-12` for a readable, centered layout.
-- Add vertical margin to main content blocks with `my-20` (or `my-8` for sections).
-- Always separate the header/nav from main content with top margin (`my-20` or similar) to avoid color clash.
-- Section blocks use `<section class="my-8">` for consistent vertical rhythm.
-- Headings use `mb-4` below each `<h2>`.
-- Paragraphs use `mb-4` for spacing, with `mb-8` for the last paragraph in a section.
-- Lists use `pl-6 mb-8` for indentation and spacing.
-- Images use `mb-8` for spacing below.
+- Main content containers generally use `max-w-7xl mx-auto px-6 py-12` for full-width landing sections (cards and service grids), and `max-w-3xl` for focused long-form pages (articles, docs).
+- Use consistent vertical rhythm: section blocks should use `<section class="my-8">` (or `my-12` for larger lead sections).
+- Give hero/header blocks more breathing room (`py-12`–`py-16`) and separate the nav from main content with `mt-12`–`mt-20` as appropriate.
+- Grid cards (services, pricing) typically use `grid md:grid-cols-2 lg:grid-cols-3 gap-8` inside a `max-w-7xl` container so cards scale nicely across breakpoints.
+- Headings use `mb-4`; paragraphs and list items use `mb-4` for readable spacing.
+- Lists use `pl-6 mb-8` for indentation and spacing when used inside long-form content; inside cards prefer `space-y-3` for compact lists.
+- Images in cards are small or iconographic; feature images inside articles use `mb-8`.
 
 ## Typography & Card Design
 - Use Inter Variable font for all text (see `globals.css` and `Layout.astro`).
@@ -50,17 +49,23 @@ The `.prose` class (from Tailwind Typography) is used for rich text content, mai
 - Service and blog cards use bold headings, subtle shadows, and gradient borders for visual interest.
 
 ## Color & Theming
-- Use Tailwind's blue, purple, and complementary color palette.
-- Gradients are used for backgrounds and borders (see header, nav, and card borders).
-- Cards and main sections use white backgrounds for contrast.
-- Use `bg-noise` for subtle texture on page backgrounds (see `globals.css`).
+
+- The canonical site palette used by live pages (services) is a blue → purple gradient. Prefer `from-blue-400 to-purple-500` for gradients used in borders, accents, and hover states.
+- Card backgrounds use a soft white/translucent surface `bg-white/80` with `backdrop-blur-md` to create depth over textured backgrounds.
+- Primary CTA / accent color is a clear blue (`blue-500` / `blue-600` on hover). Keep CTA text white on gradients for good contrast.
+- Text colors: primary headings use `text-gray-900` on light cards and `text-white` or `text-gray-100` on dark surfaces; body copy should use `text-gray-700` (on white) or `text-gray-300` (on dark).
+- Continue to use `bg-noise` for subtle texture where appropriate (hero backgrounds, site shells) but keep content cards relatively clean for legibility.
 
 ## Components
+
 - Use reusable Astro components for header, footer, CTA buttons, alerts, and navigation.
-- All buttons use the `.cta-button` or `.btn` classes for consistency.
+- Buttons: primary CTAs use a gradient background (`bg-gradient-to-r from-blue-500 to-purple-500`), white text, `rounded-lg`, and a short transition (`transition-all duration-300`).
+- Service / pricing cards: match the services page pattern:
+   - container: `bg-white/80 backdrop-blur-lg p-6 rounded-2xl shadow-2xl border border-gradient-to-r from-blue-400 to-purple-500`
+   - hover: `hover:scale-105 hover:shadow-[0_16px_48px_0_rgba(80,0,120,0.25),0_2px_16px_0_rgba(0,0,0,0.18)] hover:border-blue-500`
 - Navigation is handled by `Header.astro` and `Navigation.astro`.
 - Footer includes phone number and legal links.
-- Hamburger menu and scroll-to-top button are mobile-friendly.
+- Keep hamburger menu and scroll-to-top button mobile-friendly.
 
 ## Animation & Interactivity
 - Use Tailwind's transition and hover utilities for interactive effects on cards, buttons, and links.
@@ -159,12 +164,16 @@ The `.prose` class (from Tailwind Typography) is used for rich text content, mai
 5. **Component Isolation**:
    - Create a separate test page or component in your project to isolate and preview changes without affecting the main site.
 
-### Service Card
+### Service Card (canonical)
 ```astro
-<div class="bg-white p-6 rounded-2xl shadow-2xl border border-gradient-to-r from-blue-400 to-purple-500 transition-all duration-500 hover:scale-[1.015] hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] hover:border-blue-500">
-  <div class="flex items-center justify-center text-5xl mb-4 transition-transform duration-300 hover:scale-110">Icon</div>
-  <h3 class="text-xl font-bold text-gray-900 mb-2 transition-colors duration-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500">Service Title</h3>
-  <p class="text-gray-700 transition-colors duration-300 hover:text-blue-700">Service description</p>
+<div class="max-w-md mx-auto bg-white/80 backdrop-blur-lg p-6 rounded-2xl shadow-2xl border border-gradient-to-r from-blue-400 to-purple-500 transition-all duration-500 hover:scale-105 hover:shadow-[0_16px_48px_0_rgba(80,0,120,0.25),0_2px_16px_0_rgba(0,0,0,0.18)] hover:border-blue-500">
+   <div class="flex items-center justify-center text-5xl mb-4 transition-transform duration-300 hover:scale-110">Icon</div>
+   <h3 class="text-xl font-bold text-gray-900 mb-2 transition-colors duration-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500">Service Title</h3>
+   <p class="text-gray-700 transition-colors duration-300 hover:text-blue-700">Service description</p>
+   <p class="mt-4 text-sm text-gray-500 font-semibold">Price or short note</p>
+   <div class="mt-4 flex justify-center">
+      <button class="btn btn-lg" role="link">Primary CTA</button>
+   </div>
 </div>
 ```
 

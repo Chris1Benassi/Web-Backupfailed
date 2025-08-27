@@ -1,0 +1,367 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CTAButton from '../components/CTAButton.astro';
+import PackageCard from '../components/PackageCard.astro';
+
+const title = 'Managed IT';
+const description = 'Managed IT — compare our hourly, managed, and full-coverage IT packages. Schedule a review or request a tailored quote.';
+
+const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'Managed IT',
+    description: 'Managed IT packages and hourly support options',
+    mainEntity: {
+        '@type': 'ItemList',
+        name: 'IT Service Packages',
+        itemListElement: [
+            {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Hourly',
+                url: '/managed-it/#hourly',
+                item: {
+                    '@type': 'Offer',
+                    price: '120',
+                    priceCurrency: 'USD'
+                }
+            },
+            {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Essentials Package',
+                url: '/managed-it/#essentials',
+                item: {
+                    '@type': 'Offer',
+                    price: '100',
+                    priceCurrency: 'USD'
+                }
+            },
+            {
+                '@type': 'ListItem',
+                position: 3,
+                name: 'Failsafe Package',
+                url: '/managed-it/#failsafe',
+                item: {
+                    '@type': 'Offer',
+                    price: '170',
+                    priceCurrency: 'USD'
+                }
+            }
+        ]
+    }
+};
+
+const kpis = [
+    { id: 'proof', question: 'Proof?', answer: 'Audit Ready Reports. Always.', accent: 'from-sky-500 to-indigo-600' },
+    {
+        id: 'backups',
+        question: 'Backups?',
+        answer: 'Tested. Not Assumed.',
+        accent: 'from-emerald-500 to-teal-600'
+    },
+    { id: 'soc', question: 'SOC?', answer: '24/7 Threat Monitoring. Real People, Not Just Software.', accent: 'from-purple-500 to-pink-600' }
+];
+---
+
+<Layout title={title} description={description} jsonLd={jsonLd}>
+    <main class="mx-auto px-6 pt-0 pb-12">
+        <section class="edge-to-edge bg-gradient-to-r from-sky-900 via-indigo-900 to-purple-900 text-white" aria-labelledby="managed-it-hero">
+            <div class="grid md:grid-cols-2 items-center">
+                <!-- visual panel (edge) -->
+                <div
+                    class="h-72 md:h-[420px] bg-cover bg-center rounded-none"
+                    style="background-image:url('https://images.pexels.com/photos/1181316/pexels-photo-1181316.jpeg');"
+                    role="img"
+                    aria-label="Team collaborating on devices"
+                >
+                    <div class="h-full w-full bg-black/40"></div>
+                </div>
+
+                <!-- content panel -->
+                <div id="managed-it-hero" class="anchor px-6 md:px-12 py-12 md:py-20">
+                    <h2 class="text-3xl md:text-4xl font-extrabold">Managed IT Services for All.</h2>
+                    <p class="mt-4 text-sky-100 max-w-2xl">
+                        Proactive solutions, not reactive support. From Microsoft 365 to everyday IT needs, we manage it all for one clear monthly price.
+                    </p>
+
+                    <ul class="mt-6 space-y-3 text-sky-100">
+                        <li class="flex items-start gap-3">
+                            <span class="text-green-300">✓</span><span>Enterprise-level IT practices for small business.</span>
+                        </li>
+                        <li class="flex items-start gap-3"><span class="text-green-300">✓</span><span>Comprehensive helpdesk coverage for your staff</span></li>
+                        <li class="flex items-start gap-3"><span class="text-green-300">✓</span><span>Security you don’t have to think about</span></li>
+                    </ul>
+
+                    <div class="mt-6 grid grid-cols-3 gap-4 text-center text-sky-100">
+                        <div>
+                            <div class="text-2xl font-bold">100%</div>
+                            <div class="text-sm">Same Day Response</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold">24/7</div>
+                            <div class="text-sm">Monitoring</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold">10+</div>
+                            <div class="text-sm">Years experience</div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 flex gap-4 items-center">
+                        <CTAButton text="Request a quote" link="/contact?topic=Managed%20IT%20Support" />
+                        <a class="text-sm text-sky-100/90 underline" href="#compliance-addon">See Optional Add-Ons</a>
+                    </div>
+                    <!--
+                    <div class="mt-8 flex items-center gap-6 opacity-90">
+                        <img src="/admin/images/noise.png" alt="Client logo 1" class="h-8 opacity-60" />
+                        <img src="/admin/images/noise.png" alt="Client logo 2" class="h-8 opacity-60" />
+                        <img src="/admin/images/noise.png" alt="Client logo 3" class="h-8 opacity-60" />
+                    </div>
+ -->
+                </div>
+            </div>
+        </section>
+        <section id="packages-grid" class="mt-12">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
+                    <PackageCard
+                        title="Hourly"
+                        price="$120"
+                        period="/hr"
+                        features={[
+                            'One-off Troubleshooting & Repairs',
+                            'Windows and macOS Support',
+                            'Printer or Peripheral Installations',
+                            'Server Fixes Available on Request',
+                            'Best for Emergencies, Not Long-term IT'
+                        ]}
+                        link="/contact/"
+                        ctaText="Get Help Now"
+                    />
+                    <PackageCard
+                        title="Essentials Package"
+                        price="$100+"
+                        period="/user"
+                        features={[
+                            {
+                                title: '24/7 Monitoring',
+                                details:
+                                    'Your systems are monitored 24/7 by our tools. If something goes wrong, we’re alerted immediately. Low storage, failed updates, or security risks can often be fixed in the background before they disrupt your business.'
+                            },
+                            {
+                                title: 'Unlimited Remote Helpdesk Support',
+                                details:
+                                    'Whenever your team hits a snag, our remote helpdesk is here to help, there are no limits, no hidden fees. From password resets to software issues, we provide fast, reliable support during business hours so your staff can stay focused on their work.'
+                            },
+                            {
+                                title: 'Managed Updates & Security Patching',
+                                details:
+                                    'We keep your systems protected and up to date. Critical patches for Windows and other key software are tested and deployed on a schedule, reducing security risks and preventing disruptions. If an update causes problems, we can roll it back quickly to keep your business running smoothly.'
+                            },
+                            {
+                                title: 'Next-Gen Threat Protection (EDR Security)',
+                                details:
+                                    'Traditional antivirus only blocks known viruses. Our EDR (Endpoint Detection & Response) goes beyond; it watches how programs behave to spot new, hidden, or evolving threats. When suspicious activity is detected, we receive alerts and handle the investigation and cleanup for you, so problems don’t spiral into bigger issues.'
+                            },
+                            {
+                                title: 'Employee Lifecycle Management',
+                                details:
+                                    'We handle staff account setup and removal. New employees get the right email, apps, and permissions on day one. When someone leaves, we quickly revoke access to keep your data secure.'
+                            },
+                            {
+                                title: 'One Stop IT Support',
+                                details:
+                                    'Forget sitting on hold with Spectrum or bouncing between different tech vendors. We deal directly with internet providers, software companies, and hardware support so you don’t have to. Whether it’s troubleshooting, billing issues, or escalations, you call us once — we handle the rest and keep you updated.'
+                            }
+                        ]}
+                        link="/contact?topic=Managed%20IT%20Support"
+                        ctaText="Get Managed IT"
+                    />
+                    <PackageCard
+                        title="Failsafe Package"
+                        price="$170+"
+                        period="/user"
+                        features={[
+                            { title: 'Everything in Essentials', details: 'Includes all services provided in the Essentials package.' },
+                            {
+                                title: 'Web Filtering',
+                                details:
+                                    'We protect your team by blocking dangerous websites, phishing pages, and other high-risk content. This reduces the chance of malware infections and keeps browsing safe and productive at work.'
+                            },
+                            {
+                                title: 'Removable Media Protection',
+                                details:
+                                    'We prevent unsafe USB drives and external devices from spreading malware or copying sensitive files without permission, keeping your data secure.'
+                            },
+                            {
+                                title: 'Microsoft Office Apps Included',
+                                details:
+                                    'Every user gets the latest Word, Excel, Outlook, and PowerPoint. Your team is fully licensed, updated, and supported by us. We handle setup, renewals, and license management so you never have to worry about mismatched versions or expired subscriptions.'
+                            },
+                            {
+                                title: 'Microsoft Teams Collaboration',
+                                details:
+                                    'A single, secure platform for chat, file sharing, and video meetings. With Teams, your staff can message, share documents, and meet online with screen sharing and recording; all managed under your business account for security and ease.'
+                            },
+                            {
+                                title: 'Secure Configuration Standards',
+                                details:
+                                    'We secure company devices and Microsoft 365 accounts using industry best practices. That means encryption for lost or stolen laptops, automatic screen locks, multi-factor logins, blocked risky sign-ins, and even the ability to remotely wipe data if a device goes missing.'
+                            },
+                            {
+                                title: 'Email and File Cloud Backups',
+                                details:
+                                    'Most people assume Microsoft keeps endless backups, they don’t. We back up your email, OneDrive, and SharePoint every day, so if data is deleted, corrupted, or locked by ransomware, we can restore it and keep your business moving.'
+                            },
+                            { title: 'Endpoint Backups', details: 'Laptops and desktops protected so local data isn’t lost to hardware failure or accidents.' },
+
+                            {
+                                title: 'Website Monitoring',
+                                details: 'Track uptime, SSL, and security issues so customers always reach you and you are not caught off guard.'
+                            },
+                            {
+                                title: 'Regular IT Reviews',
+                                details:
+                                    'No more guessing where your IT stands. We give leadership plain-English reports on risks and trends, with clear next steps to keep your business protected and prepared.'
+                            }
+                        ]}
+                        link="/contact?topic=Managed%20IT%20Support"
+                        ctaText="Get Managed IT"
+                    />
+                </div>
+            </div>
+        </section>
+
+        <section id="compliance-addon" class="anchor mt-12">
+            <div class="max-w-7xl mx-auto relative">
+                <!-- accent stripe -->
+                <div class="absolute left-0 top-6 bottom-6 w-1 md:w-2 rounded-l-2xl bg-gradient-to-b from-sky-600 via-indigo-700 to-purple-800"></div>
+
+                <div class="bg-white text-slate-900 border border-slate-200 shadow-2xl rounded-2xl p-6 md:p-10 pl-8 md:pl-12 relative overflow-hidden">
+                    <div class="md:grid md:grid-cols-3 md:gap-8">
+                        <div class="md:col-span-2">
+                            <h3 class="text-2xl md:text-3xl font-extrabold">Cyber Readiness Add-On</h3>
+                            <p class="mt-3 text-slate-700 max-w-3xl text-base">
+                                Insurance and clients are asking tougher security questions. This add-on makes sure you can answer yes. From monitoring and
+                                firewall reviews to backup testing and phishing training, you get the proof insurers want and the protection your business
+                                needs.
+                            </p>
+
+                            <!-- Dominant KPI cards (edgier flavor B) -->
+                            <div class="mt-8">
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                                    {
+                                        kpis.map((kpi) => (
+                                            <div class="flex">
+                                                <div
+                                                    class={`w-full rounded-xl p-6 shadow-lg bg-gradient-to-br ${kpi.accent} text-white flex flex-col justify-center`}
+                                                    role="region"
+                                                    aria-label={kpi.question}
+                                                >
+                                                    <div class="text-sm font-semibold opacity-90">{kpi.question}</div>
+                                                    <div class="mt-3 text-lg md:text-xl font-extrabold leading-tight">{kpi.answer}</div>
+                                                </div>
+                                            </div>
+                                        ))
+                                    }
+                                </div>
+                            </div>
+
+                            <div class="mt-6 flex items-center gap-4"></div>
+                        </div>
+
+                        <div class="mt-6 md:mt-0">
+                            <div class="grid gap-4">
+                                <details class="bg-slate-50 p-4 rounded-lg" open>
+                                    <summary class="font-semibold cursor-pointer">24/7 SOC Monitoring</summary>
+                                    <div class="mt-2 text-sm text-slate-600">
+                                        Your systems are watched around the clock by security analysts. If something serious happens, we’re notified, we respond
+                                        and you’ll have documentation to show insurers that real people reviewed your alerts.
+                                    </div>
+                                </details>
+                                <details class="bg-slate-50 p-4 rounded-lg">
+                                    <summary class="font-semibold cursor-pointer">Firewall Log Reviews</summary>
+                                    <div class="mt-2 text-sm text-slate-600">
+                                        We keep an eye on your firewall activity so unusual traffic doesn’t go unnoticed. These reviews also give you a paper
+                                        trail to satisfy audits and compliance checks.
+                                    </div>
+                                </details>
+                                <details class="bg-slate-50 p-4 rounded-lg">
+                                    <summary class="font-semibold cursor-pointer">Quarterly Backup Testing</summary>
+                                    <div class="mt-2 text-sm text-slate-600">
+                                        Backups only matter if they actually work. Every quarter we test restoring your data and include proof, so you know your
+                                        business can recover quickly if disaster hits.
+                                    </div>
+                                </details>
+                                <details class="bg-slate-50 p-4 rounded-lg">
+                                    <summary class="font-semibold cursor-pointer">Dark Web Monitoring</summary>
+                                    <div class="mt-2 text-sm text-slate-600">
+                                        If an employee’s password or data shows up for sale online, you’ll know. We reset credentials fast and enforce MFA, and
+                                        you’ll have documentation showing the incident was handled.
+                                    </div>
+                                </details>
+
+                                <details class="bg-slate-50 p-4 rounded-lg">
+                                    <summary class="font-semibold cursor-pointer">Incident Response Plan</summary>
+                                    <div class="mt-2 text-sm text-slate-600">
+                                        When something goes wrong, everyone knows their role. We maintain a written response plan tailored to your business and
+                                        review it annually with leadership.
+                                    </div>
+                                </details>
+                                <details class="bg-slate-50 p-4 rounded-lg">
+                                    <summary class="font-semibold cursor-pointer">Phishing Training & Simulations</summary>
+                                    <div class="mt-2 text-sm text-slate-600">
+                                        Your staff are the front line against cyberattacks. We run safe test emails to see who clicks, then train them, and
+                                        bundle the results in a leadership report so you can track progress.
+                                    </div>
+                                </details>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 text-sm text-slate-500">This add-on complements Failsafe Package exclusively; scope and pricing vary by environment.</div>
+
+                    <!-- Logo Section to be used once I have more logos/trust icons
+                    <div class="mt-8 border-t pt-6">
+                        <h4 class="text-sm font-semibold text-slate-700">
+                            We work with established vendors and industry tools to keep your business secure and productive.
+                        </h4>
+                        <p class="text-sm text-slate-500 mt-2 max-w-2xl"></p>
+
+
+                        <div class="mt-4 flex items-center justify-between gap-4 flex-wrap">
+                            <div class="flex items-center gap-6 flex-wrap">
+                                <a
+                                    href="https://www.bitdefender.com/en-us/business/"
+                                    class="block opacity-90 hover:opacity-100 transition"
+                                    target="_blank"
+                                    rel="noopener"
+                                >
+                                    <img
+                                        src="https://storage001backupfailed.blob.core.windows.net/stor-container-web/BLOG_IMG/BitdefenderTransparent2.png"
+                                        alt="Bitdefender"
+                                        class="h-8 md:h-16"
+                                    />
+                                </a>
+                                <a href="https://dropsuite.com/" class="block opacity-90 hover:opacity-100 transition" target="_blank" rel="noopener">
+                                    <img
+                                        src="https://storage001backupfailed.blob.core.windows.net/stor-container-web/BLOG_IMG/DropSuiteLogo1.png"
+                                        alt="DropSuite"
+                                        class="h-8 md:h-22"
+                                    />
+                                </a>
+                                <div class="flex items-center h-10 px-3 rounded-md bg-slate-50 border border-slate-100 text-slate-700 text-sm font-semibold">
+                                    Google Workspace
+                                </div>
+                                <div class="flex items-center h-10 px-3 rounded-md bg-slate-50 border border-slate-100 text-slate-700 text-sm font-semibold">
+                                    Cisco
+                                </div>
+                            </div>
+                        </div>
+ -->
+                </div>
+            </div>
+        </section>
+    </main>
+</Layout>

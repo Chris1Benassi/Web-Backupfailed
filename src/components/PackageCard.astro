@@ -1,0 +1,214 @@
+---
+export interface FeatureItem {
+    title: string;
+    details?: string;
+}
+
+export interface Props {
+    title: string;
+    price?: string;
+    period?: string;
+    // features can be simple strings or objects with a title + optional details
+    features?: Array<string | FeatureItem>;
+    highlight?: boolean;
+    link?: string;
+    ctaText?: string;
+}
+
+const { title, price = 'TBD', period = '', features = [], highlight = false, link = '/contact/', ctaText = 'Get this' } = Astro.props as Props;
+
+const hasDetails = Boolean(Astro.slots.default);
+---
+
+<article class={`package-card ${highlight ? 'highlight' : ''} rounded-2xl overflow-hidden shadow-2xl border bg-white/80 backdrop-blur-lg`}>
+    <div class="card-top p-6">
+        {
+            highlight ? (
+                <div class="badge absolute -mt-6 ml-6 inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">
+                    Most popular
+                </div>
+            ) : null
+        }
+        <h3 class="text-xl font-semibold">{title}</h3>
+        <div class="price mt-4 flex items-baseline gap-2">
+            <span class="text-3xl font-bold">{price}</span>
+            {period ? <span class="text-sm text-gray-400">{period}</span> : null}
+        </div>
+    </div>
+
+    <div class="card-body p-6 border-t border-gray-800">
+        <ul class="space-y-3">
+            {
+                features.map((f) => {
+                    const isString = typeof f === 'string';
+                    const item = isString ? { title: f as string } : (f as FeatureItem);
+
+                    return (
+                        <li>
+                            {item.details ? (
+                                <details class="feature-item border-b border-gray-100 py-3">
+                                    <summary class="flex items-start gap-3 cursor-pointer py-1">
+                                        <svg class="w-5 h-5 text-green-400 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                            <path
+                                                fill-rule="evenodd"
+                                                d="M16.704 5.04a.75.75 0 010 1.06l-7.07 7.07a.75.75 0 01-1.06 0L3.296 7.85a.75.75 0 111.06-1.06l4.02 4.02 6.69-6.69a.75.75 0 011.06 0z"
+                                                clip-rule="evenodd"
+                                            />
+                                        </svg>
+                                        <span class="feature-title flex-1">{item.title}</span>
+                                        <svg
+                                            class="w-4 h-4 text-gray-500 chev"
+                                            viewBox="0 0 20 20"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            aria-hidden="true"
+                                        >
+                                            <path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </summary>
+                                    <div class="mt-2 text-sm text-gray-600">{item.details}</div>
+                                </details>
+                            ) : (
+                                <div class="flex items-start gap-3 py-2">
+                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                        <path
+                                            fill-rule="evenodd"
+                                            d="M16.704 5.04a.75.75 0 010 1.06l-7.07 7.07a.75.75 0 01-1.06 0L3.296 7.85a.75.75 0 111.06-1.06l4.02 4.02 6.69-6.69a.75.75 0 011.06 0z"
+                                            clip-rule="evenodd"
+                                        />
+                                    </svg>
+                                    <span class="feature-title">{item.title}</span>
+                                </div>
+                            )}
+                        </li>
+                    );
+                })
+            }
+        </ul>
+    </div>
+
+    <div class="card-footer p-6 border-t border-gray-800 text-center">
+        <a href={link} class="cta inline-block px-6 py-2 rounded-full font-semibold">
+            {ctaText}
+        </a>
+    </div>
+
+    {
+        hasDetails ? (
+            <div class="card-details p-6 border-t border-gray-800">
+                <details class="mt-0 details-content">
+                    <summary class="cursor-pointer font-medium">More details</summary>
+                    <div class="mt-4">
+                        <slot />
+                    </div>
+                </details>
+            </div>
+        ) : null
+    }
+
+    <style>
+        .package-card {
+            position: relative;
+            /* Ensure all text inside the light card is dark and readable (overrides page-level text-white) */
+            color: #0b1220;
+        }
+        /* Make sure common content elements inside the card use dark tones for contrast */
+        .package-card p,
+        .package-card .details-content,
+        .package-card h4,
+        .package-card h5,
+        .package-card li,
+        .package-card .card-details {
+            color: #0f172a;
+        }
+        .package-card .price {
+            color: #0f172a; /* dark on light card */
+        }
+        .package-card h3 {
+            color: #0b1220;
+        }
+        .package-card .cta {
+            background: linear-gradient(90deg, #3b82f6, #7c3aed);
+            color: white;
+            text-decoration: none;
+        }
+        .package-card .cta:hover {
+            filter: brightness(0.95);
+        }
+        .package-card.highlight {
+            border: 1px solid rgba(59, 130, 246, 0.18);
+            box-shadow:
+                0 20px 60px rgba(99, 102, 241, 0.12),
+                0 6px 20px rgba(16, 24, 40, 0.06);
+            transform: translateY(-8px) scale(1.02);
+        }
+        .package-card ul {
+            color: #374151;
+        }
+        .package-card .badge {
+            z-index: 10;
+        }
+        /* Feature item styles */
+        .package-card details.feature-item {
+            background: transparent;
+            padding: 0.25rem 0;
+        }
+        .package-card summary {
+            list-style: none;
+            outline: none;
+        }
+        .package-card .chev {
+            transition:
+                transform 180ms ease,
+                opacity 180ms ease;
+            opacity: 0.9;
+        }
+        .package-card details[open] .chev {
+            transform: rotate(180deg);
+            opacity: 1;
+        }
+        .package-card .feature-title {
+            color: #0b1220;
+        }
+        /* details content animation and open highlight */
+        .package-card details .mt-2 {
+            opacity: 0;
+            transform: translateY(-6px);
+            transition:
+                opacity 220ms ease,
+                transform 220ms ease;
+        }
+        .package-card details[open] .mt-2 {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .package-card details[open] {
+            background: linear-gradient(180deg, rgba(99, 102, 241, 0.03), rgba(99, 102, 241, 0.02));
+            border-radius: 6px;
+            padding: 0.5rem 0.5rem;
+        }
+    </style>
+    <script type="module">
+        // Small accordion behavior: only one <details> open at a time per package-card
+        // Runs on client only.
+        if (typeof window !== 'undefined') {
+            window.addEventListener('load', () => {
+                document.querySelectorAll('.package-card').forEach((card) => {
+                    const details = card.querySelectorAll('details.feature-item');
+                    details.forEach((d) => {
+                        d.addEventListener('toggle', (e) => {
+                            const tgt = e.target;
+                            if (tgt && tgt.open) {
+                                details.forEach((other) => {
+                                    if (other !== tgt) {
+                                        other.open = false;
+                                    }
+                                });
+                            }
+                        });
+                    });
+                });
+            });
+        }
+    </script>
+</article>
