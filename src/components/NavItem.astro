@@ -1,0 +1,19 @@
+---
+// Small NavItem component to centralize active logic and styles
+const { href, closeOnClick = false, extraClasses = '' } = Astro.props as { href: string; closeOnClick?: boolean; extraClasses?: string };
+const { pathname } = Astro.url;
+const isActive = pathname === href || (href !== '/' && pathname.startsWith(href));
+---
+
+<li>
+    <a
+        href={href}
+        class={`nav-link ${isActive ? 'nav-active' : ''} ${extraClasses}`}
+        aria-current={isActive ? 'page' : undefined}
+        onclick={closeOnClick ? 'closeMobileMenu()' : undefined}
+    >
+        <slot />
+    </a>
+</li>
+
+<!-- Note: keep this component minimal and style via global CSS (.nav-link / .nav-active) -->
