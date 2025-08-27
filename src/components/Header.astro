@@ -178,4 +178,18 @@ const { pathname } = Astro.url;
             }
         });
     });
+    // Compute header height and set a CSS variable for anchor offset
+    function updateHeaderOffset() {
+        const header = document.querySelector('header');
+        if (!header) return;
+        const height = header.getBoundingClientRect().height || 72;
+        document.documentElement.style.setProperty('--header-offset', `${Math.ceil(height)}px`);
+    }
+    // Run on load and on resize to handle dynamic header sizes
+    window.addEventListener('load', updateHeaderOffset);
+    window.addEventListener('resize', () => {
+        // throttle resize updates
+        clearTimeout(window._headerOffsetTimer);
+        window._headerOffsetTimer = setTimeout(updateHeaderOffset, 150);
+    });
 </script>

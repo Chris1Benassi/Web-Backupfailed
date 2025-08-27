@@ -190,3 +190,22 @@
   box-sizing: border-box; /* keep padding inside the viewport width */
 }
 
+/* Smooth scrolling and anchor offset for sticky header */
+:root {
+    --header-offset: 72px; /* fallback, overridden at runtime */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Utility: apply to elements that are anchor targets so they sit below the header */
+.anchor, .anchor-target {
+    scroll-margin-top: var(--header-offset);
+}
+
+/* Ensure :target respects the header offset as a fallback */
+:target {
+    scroll-margin-top: calc(var(--header-offset) + 0.5rem);
+}
+
