@@ -161,6 +161,7 @@
 .hamburger {
     padding-right: 20px;
     cursor: pointer;
+    display: none;
 }
 
 .hamburger .line {
@@ -169,10 +170,6 @@
     height: 5px;
     margin-bottom: 10px;
     background-color: #ff9776;
-}
-
-.hamburger {
-    display: none;
 }
 
 .button-animated-gradient {
