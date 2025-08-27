@@ -1,14 +1,15 @@
 ---
 import Logo from '../components/Logo.astro';
 import Hamburger from './Hamburger.astro';
+import NavItem from './NavItem.astro';
 
 // Dont forget to update Navigation.astro as well
 const navItems = [
     { linkText: 'Home', href: '/' },
     { linkText: 'Solutions', href: '/services' },
     { linkText: 'Managed IT', href: '/managed-it' },
-    { linkText: 'IT Guides', href: '/blog' },
-    { linkText: 'Contact Us', href: '/contact' },
+    { linkText: 'Resources', href: '/blog' },
+    { linkText: 'Get Support', href: '/contact' },
     { linkText: 'About Us', href: '/About' }
 ];
 
@@ -54,20 +55,7 @@ const { pathname } = Astro.url;
                 <ul class="flex flex-row gap-2 w-full sm:w-auto">
                     {
                         navItems.map((item) => {
-                            const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href));
-                            return (
-                                <li>
-                                    <a
-                                        href={item.href}
-                                        class={`text-base px-3 py-1.5 rounded-full font-semibold tracking-wide transition-all duration-200
-                        ${isActive ? 'bg-blue-100 text-blue-900 shadow-md' : 'text-gray-900 hover:bg-blue-50 hover:text-blue-700'}
-                        hover:underline underline-offset-4`}
-                                        aria-current={isActive ? 'page' : undefined}
-                                    >
-                                        {item.linkText}
-                                    </a>
-                                </li>
-                            );
+                            return <NavItem href={item.href}>{item.linkText}</NavItem>;
                         })
                     }
                 </ul>
@@ -95,20 +83,10 @@ const { pathname } = Astro.url;
     <ul class="flex flex-col gap-6 text-right mt-10">
         {
             navItems.map((item) => {
-                const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href));
                 return (
-                    <li>
-                        <a
-                            href={item.href}
-                            class={`block text-lg px-4 py-3 rounded-lg font-semibold tracking-wide transition-all duration-200
-                ${isActive ? 'bg-blue-100/80 text-blue-900 shadow-md' : 'text-gray-900 hover:bg-blue-50/80 hover:text-blue-700'}
-                hover:underline underline-offset-4`}
-                            aria-current={isActive ? 'page' : undefined}
-                            onclick="closeMobileMenu()"
-                        >
-                            {item.linkText}
-                        </a>
-                    </li>
+                    <NavItem href={item.href} closeOnClick={true} extraClasses="block text-lg px-4 py-3 rounded-lg tracking-wide">
+                        {item.linkText}
+                    </NavItem>
                 );
             })
         }
@@ -189,7 +167,7 @@ const { pathname } = Astro.url;
     window.addEventListener('load', updateHeaderOffset);
     window.addEventListener('resize', () => {
         // throttle resize updates
-        clearTimeout(window._headerOffsetTimer);
-        window._headerOffsetTimer = setTimeout(updateHeaderOffset, 150);
+        clearTimeout((window as any)._headerOffsetTimer);
+        (window as any)._headerOffsetTimer = setTimeout(updateHeaderOffset, 150);
     });
 </script>
