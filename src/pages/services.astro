@@ -7,7 +7,7 @@ const paidServices = [
     {
         title: 'Managed IT Support',
         description: 'Full-service device management, security patching, monitoring, and remote helpdesk—because downtime isn’t an option.',
-        price: 'Nonprofits: $4/device/month<br>Businesses: Contact us',
+        price: 'Nonprofits: Starting at $4/device<br>Businesses: Starting at $100/user',
         icon: '🛠️',
         cta: 'Request Managed IT Support',
         CtaLink: '/contact?topic=Managed%20IT%20Support'
@@ -23,23 +23,26 @@ const paidServices = [
     {
         title: 'Domain Migration',
         description: 'We handle the DNS record setup needed to connect your domain to email, websites, and other online tools.',
-        price: 'Nonprofits: Free<br>Businesses: $100',
+        price: 'Nonprofits: Free<br>Businesses: $150',
         icon: '🌐',
         cta: 'Start Domain Migration',
         CtaLink: '/contact?topic=Domain%20Support'
     },
 
     {
-        title: 'Email Migration – Tier 1 (10 or Fewer)',
-        description: 'Smooth migration to Microsoft 365 with mail, calendar, and contact transfer. ',
-        price: 'Nonprofits: Free <br> Businesses: $300–$500 total',
-        icon: '📧',
-        cta: 'Request Email Migration',
-        CtaLink: '/contact?topic=Email%20Migration%20Support'
+        title: 'Office Move and Tech Setup',
+        description:
+            'Moving your business? We handle the entire IT setup — internet, Wi-Fi, phones, printers, and workstations — so your team walks into a fully working office on day one. No downtime, no chaos, just business as usual in your new space.',
+        price: 'Nonprofits: Pay What You Can<br>Businesses: Starting at $1,500',
+        icon: '📦',
+        cta: 'Schedule Office Move',
+        CtaLink: '/contact'
     },
+
     {
         title: 'Standard Email Migration',
-        description: 'Migration to Microsoft 365 including mail, calendar, and contact transfer. Planned for minimal downtime and full data integrity.',
+        description:
+            'Migration to Microsoft 365 including mail, calendar, and contact transfer. Planned for minimal downtime and full data integrity. Custom pricing available for organizations with 1-10 mailboxes.',
         price: 'Nonprofits: Free<br>Businesses: $50-$300 per mailbox',
         icon: '📧',
         cta: 'Request Email Migration',
@@ -47,8 +50,9 @@ const paidServices = [
     },
     {
         title: 'Microsoft 365 & Google Workspace Safety Net',
-        description: 'Automatic, ongoing backups for Microsoft 365 or Google Workspace—so your emails and files are always recoverable.',
-        price: 'Nonprofits: $3.50/account/month<br>Businesses: $5.00/account/month',
+        description:
+            'We handle the setup and ongoing management of backups for Microsoft 365 or Google Workspace giving you peace of mind that your business data is safe and recoverable',
+        price: 'Nonprofits: $4.00/Mailbox<br>Businesses: $5.00/Mailbox',
         icon: '🔄',
         cta: 'Start Cloud Backup',
         CtaLink: '/contact?topic=Microsoft%20or%20Google%20Workspace%20Questions'
@@ -62,18 +66,9 @@ const paidServices = [
         CtaLink: '/contact?topic=Endpoint%20Security'
     },
     {
-        title: 'M365 User & Device Onboarding (Up to 10 Users)',
+        title: 'M365 User & Device Onboarding',
         description:
-            'Complete Microsoft 365 onboarding with Azure AD join, Intune device management, and policy enforcement for security, compliance, and consistent end-user experience.',
-        price: 'Nonprofits: Pay What You Can<br>Businesses: $1,000 flat',
-        icon: '🖥️',
-        cta: 'Microsoft 365 Support',
-        CtaLink: '/contact?topic=Microsoft%20or%20Google%20Workspace%20Questions'
-    },
-    {
-        title: 'M365 User & Device Onboarding (11+ Users)',
-        description:
-            'Complete Microsoft 365 onboarding with Azure AD join, Intune device management, and policy enforcement for security, compliance, and consistent end-user experience.',
+            'Complete Microsoft 365 onboarding with Azure AD join, Intune device management, and policy enforcement for security, compliance, and consistent end-user experience. Custom pricing available for organizations with 1-10 users.',
         price: 'Nonprofits: Pay What You Can<br>Businesses: $150/user',
         icon: '🖥️',
         cta: 'Microsoft 365 Support',
@@ -99,7 +94,7 @@ const paidServices = [
     {
         title: 'Technology Grants',
         description: 'Guidance for securing IT grants, software discounts, and cloud credits available to nonprofits.',
-        price: 'Nonprofits: Free<br>Businesses: Contact Us',
+        price: 'Nonprofits: Free',
         icon: '☁️',
         cta: 'Schedule a Consultation',
         CtaLink: '/contact'
@@ -117,8 +112,13 @@ const paidServices = [
             <div class="text-center mb-12">
                 <h2 class="text-4xl font-extrabold text-gray-900 tracking-tight">IT Solutions & Services</h2>
                 <p class="mt-4 text-lg text-gray-600">
-                    Serving the Central Coast and San Luis Obispo with affordable IT support, cloud migrations, and cybersecurity solutions. Whether you’re a
-                    nonprofit or a growing business, we make sure your systems run smoothly and securely.
+                    Serving local businesses and nonprofits across the Central Coast and San Luis Obispo with affordable IT support and managed services. We
+                    handle short-term projects like cloud and email migrations, emergency restores, domain changes, and custom automations. We also offer
+                    ongoing, proactive IT management (monitoring, patching, and helpdesk). For comprehensive coverage see our <a
+                        href="/managed-it"
+                        class="underline font-semibold">Managed IT</a
+                    >
+                    plans.
                 </p>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
