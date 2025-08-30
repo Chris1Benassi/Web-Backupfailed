@@ -1,5 +1,5 @@
 ---
-title: "Why Every Organization Should Use Unique User Logins"
+title: "Reference - Security - Why Every Organization Should Avoid Sharing Accounts"
 date: "2025-04-20"
 tags: ["Security", "Compliance", "Best Business Practices"]
 author: "Christian Sosa"
