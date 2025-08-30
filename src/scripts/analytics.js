@@ -17,10 +17,21 @@
     var target = e.target;
     while (target && target !== document.body) {
       if (target.dataset && (target.dataset.ctaId || target.dataset.ctaLabel)) {
+        function getCtaLabel(target) {
+          if (target.dataset && target.dataset.ctaLabel) {
+            return target.dataset.ctaLabel;
+          }
+          var text = target.textContent.trim();
+          if (text.length > 0) {
+            return text.slice(0, 50);
+          }
+          return 'unknown';
+        }
+
         var evt = {
           event: 'cta_click',
           ctaId: target.dataset.ctaId || null,
-          label: target.dataset.ctaLabel || target.textContent.trim(),
+          label: getCtaLabel(target),
           href: target.getAttribute('href') || null,
           timestamp: new Date().toISOString()
         };

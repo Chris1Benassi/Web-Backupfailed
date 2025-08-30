@@ -66,7 +66,7 @@ const hasDetails = Boolean(Astro.slots.default);
                                             <path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                         </svg>
                                     </summary>
-                                    <div class="mt-2 text-sm text-gray-600">{item.details}</div>
+                                    <div class="feature-details text-sm text-gray-600">{item.details}</div>
                                 </details>
                             ) : (
                                 <div class="flex items-start gap-3 py-2">
@@ -171,14 +171,14 @@ const hasDetails = Boolean(Astro.slots.default);
             color: #0b1220;
         }
         /* details content animation and open highlight */
-        .package-card details .mt-2 {
+        .package-card details .feature-details {
             opacity: 0;
             transform: translateY(-6px);
             transition:
                 opacity 220ms ease,
                 transform 220ms ease;
         }
-        .package-card details[open] .mt-2 {
+        .package-card details[open] .feature-details {
             opacity: 1;
             transform: translateY(0);
         }
