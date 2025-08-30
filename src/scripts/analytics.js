@@ -17,14 +17,6 @@
     var target = e.target;
     while (target && target !== document.body) {
       if (target.dataset && (target.dataset.ctaId || target.dataset.ctaLabel)) {
-        var evt = {
-          event: 'cta_click',
-          ctaId: target.dataset.ctaId || null,
-          label: getCtaLabel(target),
-          href: target.getAttribute('href') || null,
-          timestamp: new Date().toISOString()
-        };
-
         function getCtaLabel(target) {
           if (target.dataset && target.dataset.ctaLabel) {
             return target.dataset.ctaLabel;
@@ -35,6 +27,14 @@
           }
           return 'unknown';
         }
+
+        var evt = {
+          event: 'cta_click',
+          ctaId: target.dataset.ctaId || null,
+          label: getCtaLabel(target),
+          href: target.getAttribute('href') || null,
+          timestamp: new Date().toISOString()
+        };
         pushEvent(evt);
         return;
       }
