@@ -74,328 +74,469 @@ import ContextAlert from '../components/ContextAlert.astro';
             color: inherit;
             line-height: 1.7;
         }
+        /* Layout for table of contents (mobile: top, desktop: left sticky) */
+        .tos-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            align-items: start;
+        }
+        /* Make the TOC look like a compact, scrollable card so the sidebar doesn't feel empty */
+        .tos-toc {
+            background: #f1f5f9; /* subtle gray-blue to stand apart from the page */
+            border: 1px solid rgba(2, 6, 23, 0.04);
+            border-radius: 0.5rem;
+            box-shadow: 0 6px 16px rgba(2, 6, 23, 0.03);
+            padding: 0.75rem;
+            max-height: 50vh; /* keep the TOC to ~half the viewport height */
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            transition:
+                transform 160ms ease,
+                box-shadow 160ms ease;
+        }
+        .tos-toc h2.sr-only {
+            margin: 0 0 0.5rem 0;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #0f172a;
+        }
+        .tos-toc ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .tos-toc li + li {
+            margin-top: 0.5rem;
+        }
+        .tos-toc a {
+            color: #0b5ed7;
+            text-decoration: none;
+            font-size: 0.92rem;
+            display: inline-block;
+            padding: 0.2rem 0.25rem;
+            border-radius: 0.25rem;
+            transition: background-color 120ms ease-in-out;
+        }
+        .tos-toc a:hover {
+            background: rgba(99, 102, 241, 0.06);
+            text-decoration: none;
+        }
+        /* visually hidden utility */
+        .sr-only {
+            position: absolute !important;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        @media (min-width: 1024px) {
+            .tos-grid {
+                grid-template-columns: 260px 1fr; /* wider TOC column */
+            }
+            .tos-toc {
+                position: sticky;
+                top: 6rem;
+                align-self: start;
+                padding-right: 0.5rem;
+                margin-top: 2rem; /* visually separate from top so it's not full-height */
+            }
+            /* reveal the visually-hidden heading on larger screens */
+            .tos-toc h2.sr-only {
+                position: static !important;
+                width: auto !important;
+                height: auto !important;
+                padding: 0 !important;
+                margin-bottom: 0.5rem !important;
+                overflow: visible !important;
+                clip: auto !important;
+                white-space: normal !important;
+                border: 0 !important;
+            }
+            .tos-card {
+                padding: 1.5rem;
+            }
+        }
+        /* Removed duplicate/conflicting TOC rules to keep styles deterministic (desktop column set above). */
     </style>
 
-    <section class="tos-safe max-w-3xl mx-auto py-16 px-4 text-stone-900">
-        <div class="tos-card">
-            <h1 class="text-4xl font-extrabold mb-6">Terms of Service</h1>
-            <p class="mb-4 text-sm text-red-700">Last updated: September 3, 2025</p>
+    <section class="tos-safe max-w-5xl mx-auto py-16 px-4 text-stone-900">
+        <div class="tos-grid">
+            <nav class="tos-toc" aria-label="Terms index">
+                <h2 class="sr-only">On this page</h2>
+                <ul>
+                    <li><a href="#acceptance-of-terms">1. Acceptance of Terms</a></li>
+                    <li><a href="#services-and-eligibility">2. Services &amp; Eligibility</a></li>
+                    <li><a href="#user-accounts-and-data">3. User Accounts &amp; Data</a></li>
+                    <li><a href="#fees-and-payments">4. Fees &amp; Payments</a></li>
+                    <li><a href="#availability-and-limitation-of-liability">5. Service Availability &amp; Limitation of Liability</a></li>
+                    <li><a href="#acceptable-use">6. Acceptable Use</a></li>
+                    <li><a href="#geographic-restrictions">7. Geographic Restrictions</a></li>
+                    <li><a href="#changes-to-terms">8. Changes to Terms</a></li>
+                    <li><a href="#sms-messaging-terms">9. SMS Messaging Terms</a></li>
+                    <li><a href="#intellectual-property">10. Intellectual Property</a></li>
+                    <li><a href="#third-party-services">11. Third-Party Services</a></li>
+                    <li><a href="#termination-and-suspension">12. Termination and Suspension</a></li>
+                    <li><a href="#indemnification">13. Indemnification</a></li>
+                    <li><a href="#dispute-resolution-and-governing">14. Dispute Resolution and Governing</a></li>
+                    <li><a href="#confidentiality">15. Confidentiality</a></li>
+                    <li><a href="#support-and-maintenance">16. Support and Maintenance</a></li>
+                    <li><a href="#changes-to-services">17. Changes to Services</a></li>
+                    <li><a href="#assignment-and-subcontracting">18. Assignment and Subcontracting</a></li>
+                    <li><a href="#compliance-and-export-sanctions">19. Compliance with Laws; Export and Sanctions</a></li>
+                    <li><a href="#independent-contractor-no-agency">20. Independent Contractor; No Agency</a></li>
+                    <li><a href="#waiver-and-severability">21. Waiver; Severability</a></li>
+                    <li><a href="#entire-agreement-order-of-precedence">22. Entire Agreement; Order of Precedence</a></li>
+                    <li><a href="#notices-electronic-communications">23. Notices; Electronic Communications</a></li>
+                    <li><a href="#contact">24. Contact</a></li>
+                </ul>
+            </nav>
 
-            <h2 class="text-2xl font-bold mt-10 mb-4">1. Acceptance of Terms</h2>
-            <p>
-                These Terms of Service (“Terms”) are a binding agreement between you (“you,” “your,” or “Client”) and Backup Failed Foundation (“Backup Failed,”
-                “we,” “us,” or “our”). By accessing or using our services—including but not limited to IT consulting, managed services, hosted solutions, and
-                SMS communications—you agree to comply with and be bound by these Terms, as well as all applicable laws and regulations. If you do not agree to
-                these Terms, you must not use our services. Your continued use after updates are posted constitutes acceptance of the revised Terms.
-            </p>
+            <div class="tos-card tos-content">
+                <h1 class="text-4xl font-extrabold mb-6">Terms of Service</h1>
+                <p class="mb-4 text-sm text-red-700">Last updated: September 3, 2025</p>
 
-            <h2 class="text-2xl font-bold mt-10 mb-4">2. Services & Eligibility</h2>
-            <p>
-                Backup Failed provides IT consulting, managed services, and related technology solutions to nonprofits and businesses. While our primary
-                operations are based in the United States, our services may be available to organizations in other countries. Certain offerings, including SMS
-                communications, may be limited or unavailable outside the U.S. depending on local laws, carriers, or provider restrictions. By using our
-                services, you represent that your use is lawful in your jurisdiction and that you have the authority to enter into these Terms on behalf of
-                yourself or your organization.
-            </p>
+                <h2 id="acceptance-of-terms" class="text-2xl font-bold mt-10 mb-4">1. Acceptance of Terms</h2>
+                <p>
+                    These Terms of Service (“Terms”) are a binding agreement between you (“you,” “your,” or “Client”) and Backup Failed Foundation (“Backup
+                    Failed,” “we,” “us,” or “our”). By accessing or using our services—including but not limited to IT consulting, managed services, hosted
+                    solutions, and SMS communications—you agree to comply with and be bound by these Terms, as well as all applicable laws and regulations. If
+                    you do not agree to these Terms, you must not use our services. Your continued use after updates are posted constitutes acceptance of the
+                    revised Terms.
+                </p>
 
-            <h2 class="text-2xl font-bold mt-10 mb-4">3. User Accounts & Data</h2>
-            <p>
-                Some services may require the creation of an account or the provision of contact information (including email addresses and mobile numbers). You
-                agree to provide accurate, complete, and current information and to keep it updated. You are responsible for maintaining the confidentiality of
-                your login credentials and for all activities that occur under your account. We reserve the right to suspend or terminate accounts that are
-                incomplete, inaccurate, or used in violation of these Terms. Your personal information and communications data are handled in accordance with
-                our Privacy Policy .
-            </p>
+                <h2 id="services-and-eligibility" class="text-2xl font-bold mt-10 mb-4">2. Services & Eligibility</h2>
+                <p>
+                    Backup Failed provides IT consulting, managed services, and related technology solutions to nonprofits and businesses. While our primary
+                    operations are based in the United States, our services may be available to organizations in other countries. Certain offerings, including
+                    SMS communications, may be limited or unavailable outside the U.S. depending on local laws, carriers, or provider restrictions. By using our
+                    services, you represent that your use is lawful in your jurisdiction and that you have the authority to enter into these Terms on behalf of
+                    yourself or your organization.
+                </p>
 
-            <h2 class="text-2xl font-bold mt-10 mb-4">4. Fees & Payments</h2>
-            <p>
-                Backup Failed offers both free and paid services. Paid services are billed according to the rates or agreements outlined in your invoice,
-                service order, or written contract. Payment is due by the date stated on the invoice and must be made in U.S. dollars using the methods we
-                accept. Unless otherwise noted, payments are non-refundable once services have begun. Prepaid services, including software licensing bundles or
-                block hours, are considered earned at the time of activation and cannot be refunded if service is discontinued. If you believe a charge is
-                incorrect, you must let us know in writing within ten (10) business days of the invoice date so we can review it. We may adjust pricing or fees
-                in the future, but will provide at least thirty (30) days’ notice before any changes take effect, unless you are under a fixed-term agreement
-                that states otherwise.
-            </p>
+                <h2 id="user-accounts-and-data" class="text-2xl font-bold mt-10 mb-4">3. User Accounts & Data</h2>
+                <p>
+                    Some services may require the creation of an account or the provision of contact information (including email addresses and mobile numbers).
+                    You agree to provide accurate, complete, and current information and to keep it updated. You are responsible for maintaining the
+                    confidentiality of your login credentials and for all activities that occur under your account. We reserve the right to suspend or terminate
+                    accounts that are incomplete, inaccurate, or used in violation of these Terms. Your personal information and communications data are handled
+                    in accordance with our Privacy Policy.
+                </p>
 
-            <h2 class="text-2xl font-bold mt-10 mb-4">5. Service Availability & Limitation of Liability</h2>
-            <p>
-                We make every effort to provide reliable and secure services; however, you acknowledge and agree that no service can be guaranteed to be
-                uninterrupted, error-free, or free from delays. This includes, without limitation, failures or disruptions caused by internet outages,
-                third-party service providers such as Microsoft or Twilio, natural disasters, or events beyond our reasonable control. All services are provided
-                “as is” and “as available” without warranties of any kind, whether express or implied, including but not limited to warranties of
-                merchantability, fitness for a particular purpose, or non-infringement. To the fullest extent permitted by law, Backup Failed shall not be
-                liable for any indirect, incidental, special, consequential, or punitive damages, including loss of revenue, profits, goodwill, data, or
-                business opportunities, even if we have been advised of the possibility of such damages. Our maximum total liability for any claim arising out
-                of or relating to our services shall not exceed the amount you paid us for services in the twelve (12) months preceding the event giving rise to
-                the claim. You expressly acknowledge that SMS communications may be subject to carrier delays, filtering, or failures, and that Backup Failed is
-                not responsible for messages that are delayed, blocked, or undelivered.
-            </p>
+                <h2 id="fees-and-payments" class="text-2xl font-bold mt-10 mb-4">4. Fees & Payments</h2>
+                <p>
+                    Backup Failed offers both free and paid services. Paid services are billed according to the rates or agreements outlined in your invoice,
+                    service order, or written contract. Payment is due by the date stated on the invoice and must be made in U.S. dollars using the methods we
+                    accept. Unless otherwise noted, payments are non-refundable once services have begun. Prepaid services, including software licensing bundles
+                    or block hours, are considered earned at the time of activation and cannot be refunded if service is discontinued. If you believe a charge
+                    is incorrect, you must let us know in writing within ten (10) business days of the invoice date so we can review it. We may adjust pricing
+                    or fees in the future, but will provide at least thirty (30) days’ notice before any changes take effect, unless you are under a fixed-term
+                    agreement that states otherwise.
+                </p>
 
-            <h2 class="text-2xl font-bold mt-10 mb-4">6. Acceptable Use</h2>
-            <p>
-                You agree to use our services only for lawful purposes and in a manner consistent with these Terms of Service and all applicable laws and
-                regulations. You must not use our services in connection with fraudulent, abusive, harassing, or otherwise unlawful activity, nor may you
-                attempt to gain unauthorized access to any system or network. Activities that disrupt or interfere with the normal operation of our
-                infrastructure or the experience of other clients are strictly prohibited. You may not use SMS services to send unsolicited or unauthorized
-                messages, to distribute prohibited content such as hate speech, pornography, or controlled substances, or in any way that violates the rules of
-                our carriers or providers, including Twilio’s Acceptable Use Policy. You may not misrepresent your identity or affiliation when using our
-                services, nor may you upload or transmit materials that infringe the intellectual property rights of others. Backup Failed reserves the right to
-                investigate suspected violations and to suspend or terminate services that, in our sole discretion, are used in violation of this Acceptable Use
-                section.
-            </p>
+                <h2 id="availability-and-limitation-of-liability" class="text-2xl font-bold mt-10 mb-4">5. Service Availability & Limitation of Liability</h2>
+                <p>
+                    We make every effort to provide reliable and secure services; however, you acknowledge and agree that no service can be guaranteed to be
+                    uninterrupted, error-free, or free from delays. This includes, without limitation, failures or disruptions caused by internet outages,
+                    third-party service providers such as Microsoft or Twilio, natural disasters, or events beyond our reasonable control. All services are
+                    provided “as is” and “as available” without warranties of any kind, whether express or implied, including but not limited to warranties of
+                    merchantability, fitness for a particular purpose, or non-infringement. To the fullest extent permitted by law, Backup Failed shall not be
+                    liable for any indirect, incidental, special, consequential, or punitive damages, including loss of revenue, profits, goodwill, data, or
+                    business opportunities, even if we have been advised of the possibility of such damages. Our maximum total liability for any claim arising
+                    out of or relating to our services shall not exceed the amount you paid us for services in the twelve (12) months preceding the event giving
+                    rise to the claim. You expressly acknowledge that SMS communications may be subject to carrier delays, filtering, or failures, and that
+                    Backup Failed is not responsible for messages that are delayed, blocked, or undelivered.
+                </p>
 
-            <h2 class="text-2xl font-bold mt-10 mb-4">7. Geographic Restrictions</h2>
-            <p>
-                Our services are operated from the United States, but may be accessible to clients in other regions. We do not guarantee that every feature,
-                including SMS delivery or third-party integrations, will function the same way outside the United States. If you choose to access or use our
-                services from another location, you are responsible for complying with local laws and regulations. Backup Failed makes no representation that
-                our services are appropriate, permitted, or available for use in every jurisdiction.
-            </p>
+                <h2 id="acceptable-use" class="text-2xl font-bold mt-10 mb-4">6. Acceptable Use</h2>
+                <p>
+                    You agree to use our services only for lawful purposes and in a manner consistent with these Terms of Service and all applicable laws and
+                    regulations. You must not use our services in connection with fraudulent, abusive, harassing, or otherwise unlawful activity, nor may you
+                    attempt to gain unauthorized access to any system or network. Activities that disrupt or interfere with the normal operation of our
+                    infrastructure or the experience of other clients are strictly prohibited. You may not use SMS services to send unsolicited or unauthorized
+                    messages, to distribute prohibited content such as hate speech, pornography, or controlled substances, or in any way that violates the rules
+                    of our carriers or providers, including Twilio’s Acceptable Use Policy. You may not misrepresent your identity or affiliation when using our
+                    services, nor may you upload or transmit materials that infringe the intellectual property rights of others. Backup Failed reserves the
+                    right to investigate suspected violations and to suspend or terminate services that, in our sole discretion, are used in violation of this
+                    Acceptable Use section.
+                </p>
 
-            <h2 class="text-2xl font-bold mt-10 mb-4">8. Changes to Terms</h2>
-            <p>
-                We may update or modify these Terms of Service at any time. When changes are made, we will update the “Last Updated” date at the top of this
-                page. Significant changes may also be communicated by email or other reasonable means if you have an active account with us. Continued use of
-                our services after changes take effect will constitute your acceptance of the revised Terms. If you do not agree to the new Terms, you must
-                discontinue your use of our services.
-            </p>
+                <h2 id="geographic-restrictions" class="text-2xl font-bold mt-10 mb-4">7. Geographic Restrictions</h2>
+                <p>
+                    Our services are operated from the United States, but may be accessible to clients in other regions. We do not guarantee that every feature,
+                    including SMS delivery or third-party integrations, will function the same way outside the United States. If you choose to access or use our
+                    services from another location, you are responsible for complying with local laws and regulations. Backup Failed makes no representation
+                    that our services are appropriate, permitted, or available for use in every jurisdiction.
+                </p>
 
-            <h2 class="text-2xl font-bold mt-10 mb-4">9. SMS Messaging Terms</h2>
-            <p>
-                The name “Backup Failed Foundation,” our logos, designs, service names, website content, documentation, training materials, and any other
-                original works we create are proprietary to us. These materials may be protected by copyright, trademark, trade dress, or other intellectual
-                property laws, whether or not they are formally registered. You may not copy, reproduce, distribute, display, or publish our materials on any
-                medium, including websites, social platforms, or subscription-based services, without our prior written permission. This restriction applies
-                even if attribution or credit is provided. You also may not modify our materials or create derivative works from them in a way that implies
-                endorsement, partnership, or co-ownership. Limited personal use of our publicly available resources—for example, linking to our website or
-                downloading a copy for your own reference—is permitted. However, republication, redistribution, or hosting our materials on your own platform,
-                whether free or behind a paywall, is not allowed without our explicit written authorization. We reserve the right to enforce these protections
-                and to seek appropriate remedies in the event of unauthorized use. All data, files, and materials that you provide to us remain your property.
-                By submitting or sharing them with us, you grant Backup Failed Foundation a limited license to access, use, and process that material solely as
-                needed to deliver consulting, managed services, or related support. We do not claim ownership of your content and will never use it for purposes
-                beyond delivering services to you. In some cases, our services may include software, tools, or content licensed from third parties. Your use of
-                such third-party components is subject to their respective license agreements, and nothing in these Terms grants you rights beyond what those
-                agreements allow.
-            </p>
+                <h2 id="changes-to-terms" class="text-2xl font-bold mt-10 mb-4">8. Changes to Terms</h2>
+                <p>
+                    We may update or modify these Terms of Service at any time. When changes are made, we will update the “Last Updated” date at the top of this
+                    page. Significant changes may also be communicated by email or other reasonable means if you have an active account with us. Continued use
+                    of our services after changes take effect will constitute your acceptance of the revised Terms. If you do not agree to the new Terms, you
+                    must discontinue your use of our services.
+                </p>
 
-            <h2 class="text-2xl font-bold mt-10 mb-4">11. Third-Party Services</h2>
-            <p>
-                Our services often rely on third-party platforms and providers, including but not limited to Microsoft, Google, Twilio, Bitdefender, and other
-                technology vendors. While we may integrate, configure, or manage these services on your behalf, Backup Failed Foundation does not own or control
-                them and cannot guarantee their uptime, pricing, or long-term availability. Your use of third-party services may be subject to additional terms,
-                conditions, or licensing agreements set by the provider. It is your responsibility to review and comply with those agreements, and nothing in
-                these Terms overrides the obligations you may have under them. Backup Failed is not liable for outages, delays, data loss, or changes in
-                functionality caused by third-party providers. However, part of our role as a managed service provider is to act on your behalf when issues with
-                third-party services arise. This includes opening and managing support tickets, escalating problems through the vendor’s channels, and making
-                best efforts to resolve or minimize disruption to your business. We cannot promise resolution timelines for issues outside of our control, but
-                we do commit to working diligently to advocate for you with third-party providers.
-            </p>
+                <h2 id="sms-messaging-terms" class="text-2xl font-bold mt-10 mb-4">9. SMS Messaging Terms</h2>
+                <p>
+                    By providing mobile phone numbers and opting into SMS messaging, you consent to receive informational and transactional messages from Backup
+                    Failed Foundation and our service providers (for example, Twilio). Message frequency varies based on service activity. Standard message and
+                    data rates from your carrier may apply. You can opt out of non-essential messages at any time by replying STOP to a message, or by following
+                    the alternative unsubscribe instructions provided in the message. Opting out will not affect transactional or service-related messages
+                    necessary to maintain your account. We are not responsible for delays, failures, or carrier filtering that prevent message delivery. You
+                    must comply with all applicable laws, including obtaining any required consent for recipients when sending messages through our services.
+                </p>
 
-            <h2 class="text-2xl font-bold mt-10 mb-4">12. Termination and Suspension</h2>
+                <h2 id="intellectual-property" class="text-2xl font-bold mt-10 mb-4">10. Intellectual Property</h2>
+                <p>
+                    The name “Backup Failed Foundation,” our logos, designs, service names, website content, documentation, training materials, and any other
+                    original works we create are proprietary to us. These materials may be protected by copyright, trademark, trade dress, or other intellectual
+                    property laws, whether or not they are formally registered. You may not copy, reproduce, distribute, display, or publish our materials on
+                    any medium, including websites, social platforms, or subscription-based services, without our prior written permission. This restriction
+                    applies even if attribution or credit is provided. You also may not modify our materials or create derivative works from them in a way that
+                    implies endorsement, partnership, or co-ownership.
+                </p>
+                <p>
+                    Limited personal use of our publicly available resources—for example, linking to our website or downloading a copy for your own reference—is
+                    permitted. However, republication, redistribution, or hosting our materials on your own platform, whether free or behind a paywall, is not
+                    allowed without our explicit written authorization. We reserve the right to enforce these protections and to seek appropriate remedies in
+                    the event of unauthorized use.
+                </p>
+                <p>
+                    All data, files, and materials that you provide to us remain your property. By submitting or sharing them with us, you grant Backup Failed
+                    Foundation a limited license to access, use, and process that material solely as needed to deliver consulting, managed services, or related
+                    support. We do not claim ownership of your content and will not use it for purposes beyond delivering services to you, except as otherwise
+                    permitted by law or a separate written agreement.
+                </p>
+                <p>
+                    In some cases, our services may include software, tools, or content licensed from third parties. Your use of such third-party components is
+                    subject to their respective license agreements, and nothing in these Terms grants you rights beyond what those agreements allow.
+                </p>
 
-            <p>
-                You and Backup Failed Foundation may end the working relationship, but it must be clear how termination occurs and what follows. You may
-                terminate at any time by providing written notice. If you are on a fixed-term agreement or have prepaid services, the terms of that agreement
-                control; otherwise, termination takes effect at the end of the current billing period. Fees already paid are not refundable once services have
-                begun, and any amounts accrued but unpaid through the effective date of termination remain due. If a separate contract includes an
-                early-termination clause or minimum commitment, that clause applies. We may suspend or terminate services, in whole or in part, if you
-                materially breach these Terms or any applicable service order; if you fail to pay when due; if you reverse or charge back a payment; if your
-                payment method is invalid or repeatedly fails; if your use creates a security or operational risk to our systems or other clients; if you use
-                services in violation of law, the Acceptable Use section, or carrier/Twilio rules; if you refuse to implement a critical security remediation we
-                reasonably require within a stated timeframe; if you are or become subject to trade sanctions, export restrictions, or similar legal
-                prohibitions; if you misuse credentials, attempt unauthorized access, or permit unmanaged third parties to do so; if you materially misrepresent
-                your identity or authorization; if you engage in abusive, harassing, or threatening conduct toward our personnel; if a change in control or
-                ownership creates a conflict of interest or compliance risk we cannot reasonably resolve; if you become insolvent, enter bankruptcy, or cease
-                business operations; or if a third-party provider discontinues, restricts, or materially alters a dependency in a way that prevents us from
-                delivering the affected portion of the services. In situations that threaten security, integrity, payment integrity, or legal compliance, we may
-                suspend immediately and will notify you promptly with the reason for the action and what is required to restore service. Where practical and
-                appropriate, we will allow a reasonable cure period for remediable breaches; emergencies and unlawful activity may be acted on without a cure
-                period. If you discontinue use without notice—such as by stopping payment, becoming unresponsive for thirty (30) consecutive days, or revoking
-                the access needed for us to perform our work—we may treat that as termination for convenience effective on the last day of that thirty-day
-                period or on the date access was revoked, whichever occurs first. In that case, we will cease work, all amounts accrued to date remain due, and
-                pass-through costs for third-party services we activated on your behalf remain your responsibility through the end of their current billing
-                cycles or committed terms. We will not be responsible for service lapses resulting from your failure to provide notice, access, or payment.
-                Because our services rely on outside vendors, a vendor’s decision to discontinue, modify, or restrict its offering may require us to change,
-                suspend, or end related features. We do not control those decisions, but as your managed service provider we will act on your behalf: we will
-                open and manage support tickets, escalate through the vendor’s channels, and make best efforts to resolve or minimize disruption. We do not
-                promise timelines for issues outside our control. Upon termination for any reason, your access to our portals, tooling, and managed environments
-                we control ends as of the effective date. At your written request within thirty (30) days after termination, we will provide a commercially
-                reasonable export of client-provided data and configuration information that we actually possess and control. This export does not include our
-                internal notes, playbooks, scripts, tooling, or other materials that constitute our intellectual property. After the thirty-day window, we may
-                delete client-provided data from active systems and will delete it from backups during our normal retention cycle, except where retention is
-                required by law or necessary to establish, exercise, or defend legal claims. We may retain de-identified operational metrics and logs. If you
-                request transition assistance—such as handing off documentation, coordinating with a new provider, transferring tenant ownership, or
-                reconfiguring third-party services—we will provide reasonable cooperation. Unless otherwise stated in a separate agreement, transition work is
-                billed at our then-current rates and scheduled subject to availability. You are responsible for ensuring continuity of licensing and payment
-                obligations with third-party providers; where possible, we will help transfer or assign accounts that are in your organization’s name, but we
-                cannot guarantee a vendor will approve a transfer. If a force majeure event prevents a party from performing for more than thirty (30)
-                consecutive days, either party may terminate the affected services on written notice without liability other than payment for services rendered
-                and non-cancelable pass-through costs incurred before the effective date. All obligations that by their nature should survive termination do
-                survive, including confidentiality, intellectual property, limitations of liability, disclaimers, and payment of amounts due. Termination or
-                suspension does not limit any other rights or remedies available to either party.
-            </p>
+                <h2 id="third-party-services" class="text-2xl font-bold mt-10 mb-4">11. Third-Party Services</h2>
+                <p>
+                    Our services often rely on third-party platforms and providers, including but not limited to Microsoft, Google, Twilio, Bitdefender, and
+                    other technology vendors. While we may integrate, configure, or manage these services on your behalf, Backup Failed Foundation does not own
+                    or control them and cannot guarantee their uptime, pricing, or long-term availability. Your use of third-party services may be subject to
+                    additional terms, conditions, or licensing agreements set by the provider. It is your responsibility to review and comply with those
+                    agreements, and nothing in these Terms overrides the obligations you may have under them. Backup Failed is not liable for outages, delays,
+                    data loss, or changes in functionality caused by third-party providers. However, part of our role as a managed service provider is to act on
+                    your behalf when issues with third-party services arise. This includes opening and managing support tickets, escalating problems through the
+                    vendor’s channels, and making best efforts to resolve or minimize disruption to your business. We cannot promise resolution timelines for
+                    issues outside of our control, but we do commit to working diligently to advocate for you with third-party providers.
+                </p>
 
-            <h2 class="text-2xl font-bold mt-10 mb-4">13. Indemnification</h2>
-            <p>
-                You agree to defend, indemnify, and hold harmless Backup Failed Foundation and our directors, officers, employees, and contractors from and
-                against any claim, demand, action, investigation, fine, penalty, loss, liability, damage, cost, or expense (including reasonable attorneys’
-                fees) arising out of or related to your acts or omissions, your content or data, your misuse of the services, or your failure to comply with
-                these Terms, applicable laws, or third-party provider rules. This includes claims alleging unauthorized or unlawful communications, violations
-                of carrier and A2P 10DLC requirements, lack of required consent for SMS or email outreach, infringement or misappropriation of intellectual
-                property or privacy rights based on materials you supplied, security incidents resulting from your configurations or refusal to implement
-                recommended remediations, and any use of third-party services in a way that breaches their terms. If a claim is brought against us that is
-                attributable to your conduct or materials, we will promptly notify you and provide reasonable cooperation at your expense. You will control the
-                defense and settlement of the claim, except that you may not settle any matter that imposes an admission of fault, a financial obligation on us
-                beyond amounts you agree to pay, or any non-monetary obligation on us, without our prior written consent. We may participate in the defense with
-                counsel of our own choosing at our own expense. If a claim reasonably implicates both parties or creates a conflict of interest, we may assume
-                control of our defense while you remain responsible for the indemnified losses to the extent they arise from your conduct or materials. We also
-                stand behind our own work. Subject to the exclusions below and the liability limits elsewhere in these Terms, we will defend, indemnify, and
-                hold you harmless from third-party claims alleging that our proprietary materials, when provided by us and used by you as permitted under these
-                Terms, directly infringe a United States copyright or trademark, or misappropriate a trade secret. If such a claim arises, we may, at our
-                option, procure the right for you to continue using the affected material, replace or modify it so it is non-infringing with materially
-                equivalent functionality, or terminate the affected portion of the services and, if you prepaid fees specifically for that portion, refund the
-                unused, prorated amount as your sole and exclusive remedy for that claim. Our indemnity does not apply to claims that arise from your content or
-                configurations, from use of third-party products or services, from combinations of our materials with items we did not supply, from
-                modifications you or a third party made without our written approval, from your use in violation of these Terms or documentation, or from your
-                failure to install updates or changes we make available for the purpose of avoiding an alleged infringement. Open-source and third-party
-                components are governed by their own licenses; any indemnity for those components, if any, is provided by the original licensor and not by us.
-                Each party must promptly notify the other of any claim for which it seeks indemnity and must provide the information and cooperation reasonably
-                requested to conduct the defense, provided that a delay in notice will not relieve the indemnifying party of its obligations except to the
-                extent it is materially prejudiced. The obligations in this Section 13 are in addition to, and not in lieu of, any other remedies available at
-                law or in equity, and they survive termination.
-            </p>
+                <h2 id="termination-and-suspension" class="text-2xl font-bold mt-10 mb-4">12. Termination and Suspension</h2>
 
-            <h2 class="text-2xl font-bold mt-10 mb-4">14. Dispute Resolution and Governing</h2>
-            <p>
-                Before either of us files a claim, we both agree to try to resolve the issue informally. Send a written notice that describes the problem and
-                what you want; we will do the same. We will each have thirty (30) days to discuss and try to work it out. If we cannot resolve it in that
-                window, either party may bring a claim as described below. These Terms are governed by the laws of the State of California, without regard to
-                its conflict of laws rules. If a lawsuit is filed, the exclusive venue and jurisdiction will be the state or federal courts located in San Luis
-                Obispo County, California, and both parties consent to those courts for all proceedings that are not required to be handled elsewhere by this
-                section. Either party may still seek temporary or emergency injunctive relief in any court with jurisdiction to protect its confidential
-                information or intellectual property while a dispute is being resolved. You and Backup Failed agree to bring disputes only in our individual
-                capacities and not as a class action or other representative proceeding. Class actions and private attorney general actions are not permitted. A
-                jury trial is waived to the fullest extent allowed by law; any permitted court proceeding will be heard by a judge. Nothing in this section
-                prevents either party from using small claims court if the claim qualifies, or from working with regulators or law enforcement when required by
-                law. Any claim must be brought within one (1) year after it first could be filed; after that, it is permanently barred. This limitations period
-                does not apply to claims for nonpayment of amounts owed or to claims for misuse of a party’s confidential information or intellectual property.
-                If a part of this section is found unenforceable, the remainder stays in effect to the extent permitted by law. This section survives
-                termination of the services.
-            </p>
+                <p>
+                    You and Backup Failed Foundation may end the working relationship, but it must be clear how termination occurs and what follows. You may
+                    terminate at any time by providing written notice. If you are on a fixed-term agreement or have prepaid services, the terms of that
+                    agreement control; otherwise, termination takes effect at the end of the current billing period. Fees already paid are not refundable once
+                    services have begun, and any amounts accrued but unpaid through the effective date of termination remain due. If a separate contract
+                    includes an early-termination clause or minimum commitment, that clause applies. We may suspend or terminate services, in whole or in part,
+                    if you materially breach these Terms or any applicable service order; if you fail to pay when due; if you reverse or charge back a payment;
+                    if your payment method is invalid or repeatedly fails; if your use creates a security or operational risk to our systems or other clients;
+                    if you use services in violation of law, the Acceptable Use section, or carrier/Twilio rules; if you refuse to implement a critical security
+                    remediation we reasonably require within a stated timeframe; if you are or become subject to trade sanctions, export restrictions, or
+                    similar legal prohibitions; if you misuse credentials, attempt unauthorized access, or permit unmanaged third parties to do so; if you
+                    materially misrepresent your identity or authorization; if you engage in abusive, harassing, or threatening conduct toward our personnel; if
+                    a change in control or ownership creates a conflict of interest or compliance risk we cannot reasonably resolve; if you become insolvent,
+                    enter bankruptcy, or cease business operations; or if a third-party provider discontinues, restricts, or materially alters a dependency in a
+                    way that prevents us from delivering the affected portion of the services. In situations that threaten security, integrity, payment
+                    integrity, or legal compliance, we may suspend immediately and will notify you promptly with the reason for the action and what is required
+                    to restore service. Where practical and appropriate, we will allow a reasonable cure period for remediable breaches; emergencies and
+                    unlawful activity may be acted on without a cure period. If you discontinue use without notice—such as by stopping payment, becoming
+                    unresponsive for thirty (30) consecutive days, or revoking the access needed for us to perform our work—we may treat that as termination for
+                    convenience effective on the last day of that thirty-day period or on the date access was revoked, whichever occurs first. In that case, we
+                    will cease work, all amounts accrued to date remain due, and pass-through costs for third-party services we activated on your behalf remain
+                    your responsibility through the end of their current billing cycles or committed terms. We will not be responsible for service lapses
+                    resulting from your failure to provide notice, access, or payment. Because our services rely on outside vendors, a vendor’s decision to
+                    discontinue, modify, or restrict its offering may require us to change, suspend, or end related features. We do not control those decisions,
+                    but as your managed service provider we will act on your behalf: we will open and manage support tickets, escalate through the vendor’s
+                    channels, and make best efforts to resolve or minimize disruption. We do not promise timelines for issues outside our control. Upon
+                    termination for any reason, your access to our portals, tooling, and managed environments we control ends as of the effective date. At your
+                    written request within thirty (30) days after termination, we will provide a commercially reasonable export of client-provided data and
+                    configuration information that we actually possess and control. This export does not include our internal notes, playbooks, scripts,
+                    tooling, or other materials that constitute our intellectual property. After the thirty-day window, we may delete client-provided data from
+                    active systems and will delete it from backups during our normal retention cycle, except where retention is required by law or necessary to
+                    establish, exercise, or defend legal claims. We may retain de-identified operational metrics and logs. If you request transition
+                    assistance—such as handing off documentation, coordinating with a new provider, transferring tenant ownership, or reconfiguring third-party
+                    services—we will provide reasonable cooperation. Unless otherwise stated in a separate agreement, transition work is billed at our
+                    then-current rates and scheduled subject to availability. You are responsible for ensuring continuity of licensing and payment obligations
+                    with third-party providers; where possible, we will help transfer or assign accounts that are in your organization’s name, but we cannot
+                    guarantee a vendor will approve a transfer. If a force majeure event prevents a party from performing for more than thirty (30) consecutive
+                    days, either party may terminate the affected services on written notice without liability other than payment for services rendered and
+                    non-cancelable pass-through costs incurred before the effective date. All obligations that by their nature should survive termination do
+                    survive, including confidentiality, intellectual property, limitations of liability, disclaimers, and payment of amounts due. Termination or
+                    suspension does not limit any other rights or remedies available to either party.
+                </p>
 
-            <h2 class="text-2xl font-bold mt-10 mb-4">15. Confidentiality</h2>
-            <p>
-                Each party may receive non-public information from the other in the course of evaluating, setting up, or delivering services. “Confidential
-                Information” means any information disclosed by one party to the other, whether oral, written, visual, or electronic, that a reasonable person
-                would understand to be confidential under the circumstances. For clarity, your Confidential Information includes things like credentials, tenant
-                details, configurations, network diagrams, security findings and remediation plans, ticket histories, and business or client data you share with
-                us. Our Confidential Information includes our pricing not publicly posted, proposals, playbooks, scripts, tooling, documentation, internal
-                processes, and non-public business information. Confidential Information does not include information that becomes public through no fault of
-                the receiving party, was already known to the receiving party without restriction, is independently developed without reference to the
-                disclosing party’s information, or is rightfully received from a third party without confidentiality obligations. If a court, regulator, or
-                other authority compels disclosure, the receiving party may disclose only what is legally required after giving prompt notice to the disclosing
-                party (if legally permitted) so the disclosing party can seek a protective order or other remedy. The receiving party will use the disclosing
-                party’s Confidential Information only as needed to perform or receive the services and will not disclose it to anyone except its employees,
-                contractors, and professional advisors who have a legitimate need to know and who are bound by written obligations no less protective than those
-                in this Section. Each party will safeguard the other’s Confidential Information with at least the level of care it uses to protect its own
-                information of a similar nature, and in any case no less than a commercially reasonable standard for an MSP. We implement reasonable
-                administrative, technical, and physical safeguards designed to protect client Confidential Information within our control and to limit access
-                under the principle of least privilege. No system is perfectly secure, but we take security seriously and will not share client credentials or
-                sensitive configuration details with unauthorized persons. If either party discovers unauthorized access, use, or disclosure of the other
-                party’s Confidential Information within its control, it will notify the other party without undue delay after confirming the incident, share the
-                information it reasonably has about what happened, and cooperate in good faith to mitigate harm. Incident notices are not an admission of fault
-                and do not expand liability beyond what these Terms provide. Upon request or upon termination of the services, the receiving party will, at the
-                disclosing party’s choice, return or securely delete the disclosing party’s Confidential Information that it actually possesses and controls.
-                The receiving party may retain copies that are required by law or bona fide record-keeping practices (including routine backups created in the
-                ordinary course of business), provided those retained copies remain subject to this Section and are not restored to active use except as
-                required by law. We may retain de-identified operational metrics. Nothing in this Section grants ownership rights in the other party’s
-                information. Feedback, suggestions, or improvement ideas you voluntarily provide about our services are not treated as your Confidential
-                Information, and we may use them without obligation, provided we do not disclose your identity or your Confidential Information in doing so. The
-                obligations in this Section last for five (5) years from the date of disclosure, except that trade secrets and credentials remain protected for
-                as long as they qualify as such. These confidentiality obligations are in addition to any separate non-disclosure agreement; if a separate NDA
-                is in place, the more protective terms control for the subject matter they cover. If you require a data processing agreement or business
-                associate agreement for regulated data, we can execute a separate agreement, and that agreement will govern to the extent of any conflict for
-                that subject matter.
-            </p>
+                <h2 id="indemnification" class="text-2xl font-bold mt-10 mb-4">13. Indemnification</h2>
+                <p>
+                    You agree to defend, indemnify, and hold harmless Backup Failed Foundation and our directors, officers, employees, and contractors from and
+                    against any claim, demand, action, investigation, fine, penalty, loss, liability, damage, cost, or expense (including reasonable attorneys’
+                    fees) arising out of or related to your acts or omissions, your content or data, your misuse of the services, or your failure to comply with
+                    these Terms, applicable laws, or third-party provider rules. This includes claims alleging unauthorized or unlawful communications,
+                    violations of carrier and A2P 10DLC requirements, lack of required consent for SMS or email outreach, infringement or misappropriation of
+                    intellectual property or privacy rights based on materials you supplied, security incidents resulting from your configurations or refusal to
+                    implement recommended remediations, and any use of third-party services in a way that breaches their terms. If a claim is brought against us
+                    that is attributable to your conduct or materials, we will promptly notify you and provide reasonable cooperation at your expense. You will
+                    control the defense and settlement of the claim, except that you may not settle any matter that imposes an admission of fault, a financial
+                    obligation on us beyond amounts you agree to pay, or any non-monetary obligation on us, without our prior written consent. We may
+                    participate in the defense with counsel of our own choosing at our own expense. If a claim reasonably implicates both parties or creates a
+                    conflict of interest, we may assume control of our defense while you remain responsible for the indemnified losses to the extent they arise
+                    from your conduct or materials. We also stand behind our own work. Subject to the exclusions below and the liability limits elsewhere in
+                    these Terms, we will defend, indemnify, and hold you harmless from third-party claims alleging that our proprietary materials, when provided
+                    by us and used by you as permitted under these Terms, directly infringe a United States copyright or trademark, or misappropriate a trade
+                    secret. If such a claim arises, we may, at our option, procure the right for you to continue using the affected material, replace or modify
+                    it so it is non-infringing with materially equivalent functionality, or terminate the affected portion of the services and, if you prepaid
+                    fees specifically for that portion, refund the unused, prorated amount as your sole and exclusive remedy for that claim. Our indemnity does
+                    not apply to claims that arise from your content or configurations, from use of third-party products or services, from combinations of our
+                    materials with items we did not supply, from modifications you or a third party made without our written approval, from your use in
+                    violation of these Terms or documentation, or from your failure to install updates or changes we make available for the purpose of avoiding
+                    an alleged infringement. Open-source and third-party components are governed by their own licenses; any indemnity for those components, if
+                    any, is provided by the original licensor and not by us. Each party must promptly notify the other of any claim for which it seeks indemnity
+                    and must provide the information and cooperation reasonably requested to conduct the defense, provided that a delay in notice will not
+                    relieve the indemnifying party of its obligations except to the extent it is materially prejudiced. The obligations in this Section 13 are
+                    in addition to, and not in lieu of, any other remedies available at law or in equity, and they survive termination.
+                </p>
 
-            <h2 class="text-2xl font-bold mt-10 mb-4">16. Support and Maintenance</h2>
-            <p>
-                We provide support during our posted business hours, and we handle urgent issues outside those hours on a best-effort basis. We may schedule
-                maintenance windows for updates, security patches, or infrastructure work; when practical, we will give advance notice and perform maintenance
-                during low-impact times. Emergency maintenance may occur without prior notice if required to protect security or restore service. We work issues
-                in priority order based on impact and urgency. Because many incidents involve third-party platforms, resolution times can vary; we will keep you
-                informed and continue pushing vendors until the matter is resolved or a reasonable workaround is in place. Unless a separate service-level
-                agreement is executed in writing, we do not guarantee specific response or resolution times.
-            </p>
+                <h2 id="dispute-resolution-and-governing" class="text-2xl font-bold mt-10 mb-4">14. Dispute Resolution and Governing</h2>
+                <p>
+                    Before either of us files a claim, we both agree to try to resolve the issue informally. Send a written notice that describes the problem
+                    and what you want; we will do the same. We will each have thirty (30) days to discuss and try to work it out. If we cannot resolve it in
+                    that window, either party may bring a claim as described below. These Terms are governed by the laws of the State of California, without
+                    regard to its conflict of laws rules. If a lawsuit is filed, the exclusive venue and jurisdiction will be the state or federal courts
+                    located in San Luis Obispo County, California, and both parties consent to those courts for all proceedings that are not required to be
+                    handled elsewhere by this section. Either party may still seek temporary or emergency injunctive relief in any court with jurisdiction to
+                    protect its confidential information or intellectual property while a dispute is being resolved. You and Backup Failed agree to bring
+                    disputes only in our individual capacities and not as a class action or other representative proceeding. Class actions and private attorney
+                    general actions are not permitted. A jury trial is waived to the fullest extent allowed by law; any permitted court proceeding will be heard
+                    by a judge. Nothing in this section prevents either party from using small claims court if the claim qualifies, or from working with
+                    regulators or law enforcement when required by law. Any claim must be brought within one (1) year after it first could be filed; after that,
+                    it is permanently barred. This limitations period does not apply to claims for nonpayment of amounts owed or to claims for misuse of a
+                    party’s confidential information or intellectual property. If a part of this section is found unenforceable, the remainder stays in effect
+                    to the extent permitted by law. This section survives termination of the services.
+                </p>
 
-            <h2 class="text-2xl font-bold mt-10 mb-4">17. Changes to Services</h2>
-            <p>
-                Technology changes. We may enhance, modify, or discontinue features to improve performance, security, or usability, or to respond to vendor
-                changes. If a change materially reduces functionality you actively use, we will provide reasonable notice and, where feasible, a path to an
-                equivalent alternative. If a third-party provider discontinues or restricts a dependency, we may need to alter or remove the affected portion of
-                the services; in that event we will make best efforts to minimize disruption and to help you transition. Your continued use after changes take
-                effect constitutes acceptance of the changed services.
-            </p>
+                <h2 id="confidentiality" class="text-2xl font-bold mt-10 mb-4">15. Confidentiality</h2>
+                <p>
+                    Each party may receive non-public information from the other in the course of evaluating, setting up, or delivering services. “Confidential
+                    Information” means any information disclosed by one party to the other, whether oral, written, visual, or electronic, that a reasonable
+                    person would understand to be confidential under the circumstances. For clarity, your Confidential Information includes things like
+                    credentials, tenant details, configurations, network diagrams, security findings and remediation plans, ticket histories, and business or
+                    client data you share with us. Our Confidential Information includes our pricing not publicly posted, proposals, playbooks, scripts,
+                    tooling, documentation, internal processes, and non-public business information. Confidential Information does not include information that
+                    becomes public through no fault of the receiving party, was already known to the receiving party without restriction, is independently
+                    developed without reference to the disclosing party’s information, or is rightfully received from a third party without confidentiality
+                    obligations. If a court, regulator, or other authority compels disclosure, the receiving party may disclose only what is legally required
+                    after giving prompt notice to the disclosing party (if legally permitted) so the disclosing party can seek a protective order or other
+                    remedy. The receiving party will use the disclosing party’s Confidential Information only as needed to perform or receive the services and
+                    will not disclose it to anyone except its employees, contractors, and professional advisors who have a legitimate need to know and who are
+                    bound by written obligations no less protective than those in this Section. Each party will safeguard the other’s Confidential Information
+                    with at least the level of care it uses to protect its own information of a similar nature, and in any case no less than a commercially
+                    reasonable standard for an MSP. We implement reasonable administrative, technical, and physical safeguards designed to protect client
+                    Confidential Information within our control and to limit access under the principle of least privilege. No system is perfectly secure, but
+                    we take security seriously and will not share client credentials or sensitive configuration details with unauthorized persons. If either
+                    party discovers unauthorized access, use, or disclosure of the other party’s Confidential Information within its control, it will notify the
+                    other party without undue delay after confirming the incident, share the information it reasonably has about what happened, and cooperate in
+                    good faith to mitigate harm. Incident notices are not an admission of fault and do not expand liability beyond what these Terms provide.
+                    Upon request or upon termination of the services, the receiving party will, at the disclosing party’s choice, return or securely delete the
+                    disclosing party’s Confidential Information that it actually possesses and controls. The receiving party may retain copies that are required
+                    by law or bona fide record-keeping practices (including routine backups created in the ordinary course of business), provided those retained
+                    copies remain subject to this Section and are not restored to active use except as required by law. We may retain de-identified operational
+                    metrics. Nothing in this Section grants ownership rights in the other party’s information. Feedback, suggestions, or improvement ideas you
+                    voluntarily provide about our services are not treated as your Confidential Information, and we may use them without obligation, provided we
+                    do not disclose your identity or your Confidential Information in doing so. The obligations in this Section last for five (5) years from the
+                    date of disclosure, except that trade secrets and credentials remain protected for as long as they qualify as such. These confidentiality
+                    obligations are in addition to any separate non-disclosure agreement; if a separate NDA is in place, the more protective terms control for
+                    the subject matter they cover. If you require a data processing agreement or business associate agreement for regulated data, we can execute
+                    a separate agreement, and that agreement will govern to the extent of any conflict for that subject matter.
+                </p>
 
-            <h2 class="text-2xl font-bold mt-10 mb-4">18. Assignment and Subcontracting</h2>
-            <p>
-                You may not assign these Terms or transfer your rights or obligations without our prior written consent, and any attempt to do so without
-                consent is void. We may assign these Terms in connection with a merger, acquisition, corporate reorganization, or sale of substantially all
-                assets, or to an affiliate that can perform our obligations, provided your rights are not materially reduced. We may use qualified
-                subcontractors and service providers to deliver portions of the services. When we do, they are bound by confidentiality and security obligations
-                no less protective than those in these Terms, and we remain responsible for their performance.
-            </p>
+                <h2 id="support-and-maintenance" class="text-2xl font-bold mt-10 mb-4">16. Support and Maintenance</h2>
+                <p>
+                    We provide support during our posted business hours, and we handle urgent issues outside those hours on a best-effort basis. We may schedule
+                    maintenance windows for updates, security patches, or infrastructure work; when practical, we will give advance notice and perform
+                    maintenance during low-impact times. Emergency maintenance may occur without prior notice if required to protect security or restore
+                    service. We work issues in priority order based on impact and urgency. Because many incidents involve third-party platforms, resolution
+                    times can vary; we will keep you informed and continue pushing vendors until the matter is resolved or a reasonable workaround is in place.
+                    Unless a separate service-level agreement is executed in writing, we do not guarantee specific response or resolution times.
+                </p>
 
-            <h2 class="text-2xl font-bold mt-10 mb-4">19. Compliance with Laws; Export and Sanctions</h2>
-            <p>
-                Each party will comply with all laws that apply to its performance or use of the services. You represent that you are not located in, organized
-                under the laws of, or ordinarily resident in a country or region subject to comprehensive sanctions, and that you, your owners, and your
-                authorized users are not on any U.S. or EU denied-party list. You will not use the services for, or permit access by, any prohibited person or
-                in any prohibited jurisdiction. Cross-border use of communications services, including SMS, may be restricted by local carriers or regulations;
-                you are responsible for ensuring your use is lawful where you operate.
-            </p>
+                <h2 id="changes-to-services" class="text-2xl font-bold mt-10 mb-4">17. Changes to Services</h2>
+                <p>
+                    Technology changes. We may enhance, modify, or discontinue features to improve performance, security, or usability, or to respond to vendor
+                    changes. If a change materially reduces functionality you actively use, we will provide reasonable notice and, where feasible, a path to an
+                    equivalent alternative. If a third-party provider discontinues or restricts a dependency, we may need to alter or remove the affected
+                    portion of the services; in that event we will make best efforts to minimize disruption and to help you transition. Your continued use after
+                    changes take effect constitutes acceptance of the changed services.
+                </p>
 
-            <h2 class="text-2xl font-bold mt-10 mb-4">20. Independent Contractor; No Agency</h2>
-            <p>
-                We provide services as an independent contractor. These Terms do not create a partnership, joint venture, fiduciary duty, or employment
-                relationship. Neither party has authority to bind the other or to incur obligations on the other’s behalf except as expressly stated in a
-                written agreement.
-            </p>
+                <h2 id="assignment-and-subcontracting" class="text-2xl font-bold mt-10 mb-4">18. Assignment and Subcontracting</h2>
+                <p>
+                    You may not assign these Terms or transfer your rights or obligations without our prior written consent, and any attempt to do so without
+                    consent is void. We may assign these Terms in connection with a merger, acquisition, corporate reorganization, or sale of substantially all
+                    assets, or to an affiliate that can perform our obligations, provided your rights are not materially reduced. We may use qualified
+                    subcontractors and service providers to deliver portions of the services. When we do, they are bound by confidentiality and security
+                    obligations no less protective than those in these Terms, and we remain responsible for their performance.
+                </p>
 
-            <h2 class="text-2xl font-bold mt-10 mb-4">21. Waiver; Severability</h2>
-            <p>
-                A party’s failure to enforce a provision is not a waiver of its right to do so later. If any provision of these Terms is held unenforceable, the
-                remaining provisions will remain in full force and will be interpreted to effect the original intent as closely as possible. If a narrower
-                construction would make a provision enforceable, that construction will be adopted.
-            </p>
+                <h2 id="compliance-and-export-sanctions" class="text-2xl font-bold mt-10 mb-4">19. Compliance with Laws; Export and Sanctions</h2>
+                <p>
+                    Each party will comply with all laws that apply to its performance or use of the services. You represent that you are not located in,
+                    organized under the laws of, or ordinarily resident in a country or region subject to comprehensive sanctions, and that you, your owners,
+                    and your authorized users are not on any U.S. or EU denied-party list. You will not use the services for, or permit access by, any
+                    prohibited person or in any prohibited jurisdiction. Cross-border use of communications services, including SMS, may be restricted by local
+                    carriers or regulations; you are responsible for ensuring your use is lawful where you operate.
+                </p>
 
-            <h2 class="text-2xl font-bold mt-10 mb-4">22. Entire Agreement; Order of Precedence</h2>
-            <p>
-                These Terms, together with any signed service orders or statements of work, our Privacy Policy, and any separate data processing, business
-                associate, or partner addenda that we execute with you, form the entire agreement regarding the subject matter and supersede prior or
-                contemporaneous understandings. If there is a direct conflict, a signed service order or statement of work controls over these Terms for the
-                specific services it covers; these Terms control over the Privacy Policy on contractual matters; and any required regulatory addendum (such as a
-                DPA or BAA) controls for the regulated subject matter it addresses.
-            </p>
+                <h2 id="independent-contractor-no-agency" class="text-2xl font-bold mt-10 mb-4">20. Independent Contractor; No Agency</h2>
+                <p>
+                    We provide services as an independent contractor. These Terms do not create a partnership, joint venture, fiduciary duty, or employment
+                    relationship. Neither party has authority to bind the other or to incur obligations on the other’s behalf except as expressly stated in a
+                    written agreement.
+                </p>
 
-            <h2 class="text-2xl font-bold mt-10 mb-4">23. Notices; Electronic Communications</h2>
-            <p>
-                We may send you legal or account notices by email to the addresses you provide, by posting within an authenticated client portal, or by posting
-                on our website for general updates. You agree that electronic notices satisfy any legal requirement that communications be in writing. You are
-                responsible for keeping your contact information current and for monitoring the channels you designate. Formal legal notices to Backup Failed
-                must be sent to the email and mailing address we publish on our website or specify in a service order. Notices are deemed received when
-                delivered, except that portal or website postings are deemed received when made available.
-            </p>
+                <h2 id="waiver-and-severability" class="text-2xl font-bold mt-10 mb-4">21. Waiver; Severability</h2>
+                <p>
+                    A party’s failure to enforce a provision is not a waiver of its right to do so later. If any provision of these Terms is held unenforceable,
+                    the remaining provisions will remain in full force and will be interpreted to effect the original intent as closely as possible. If a
+                    narrower construction would make a provision enforceable, that construction will be adopted.
+                </p>
 
-            <h2 class="text-2xl font-bold mt-10 mb-4">24. Contact</h2>
-            <p>If you have questions about these Terms or your relationship with us, contact:</p>
-            <p class="mt-2">
-                Backup Failed Foundation<br />
-                Email: <a href="mailto:support@backupfailed.com" class="underline">support@backupfailed.com</a><br />
-                Phone: <a href="tel:8059004505" class="underline">805-900-4505</a><br />
-                Website: <a href="https://backupfailed.com" class="underline">https://backupfailed.com</a>
-            </p>
+                <h2 id="entire-agreement-order-of-precedence" class="text-2xl font-bold mt-10 mb-4">22. Entire Agreement; Order of Precedence</h2>
+                <p>
+                    These Terms, together with any signed service orders or statements of work, our Privacy Policy, and any separate data processing, business
+                    associate, or partner addenda that we execute with you, form the entire agreement regarding the subject matter and supersede prior or
+                    contemporaneous understandings. If there is a direct conflict, a signed service order or statement of work controls over these Terms for the
+                    specific services it covers; these Terms control over the Privacy Policy on contractual matters; and any required regulatory addendum (such
+                    as a DPA or BAA) controls for the regulated subject matter it addresses.
+                </p>
+
+                <h2 id="notices-electronic-communications" class="text-2xl font-bold mt-10 mb-4">23. Notices; Electronic Communications</h2>
+                <p>
+                    We may send you legal or account notices by email to the addresses you provide, by posting within an authenticated client portal, or by
+                    posting on our website for general updates. You agree that electronic notices satisfy any legal requirement that communications be in
+                    writing. You are responsible for keeping your contact information current and for monitoring the channels you designate. Formal legal
+                    notices to Backup Failed must be sent to the email and mailing address we publish on our website or specify in a service order. Notices are
+                    deemed received when delivered, except that portal or website postings are deemed received when made available.
+                </p>
+
+                <h2 id="contact" class="text-2xl font-bold mt-10 mb-4">24. Contact</h2>
+                <p>If you have questions about these Terms or your relationship with us, contact:</p>
+                <p class="mt-2">
+                    Backup Failed Foundation<br />
+                    Email: <a href="mailto:support@backupfailed.com" class="underline">support@backupfailed.com</a><br />
+                    Phone: <a href="tel:8059004505" class="underline">805-900-4505</a><br />
+                    Website: <a href="https://backupfailed.com" class="underline">https://backupfailed.com</a>
+                </p>
+            </div>
         </div>
     </section>
 </Layout>
