@@ -3,13 +3,22 @@ import Layout from '../layouts/Layout.astro';
 import ContextAlert from '../components/ContextAlert.astro';
 
 const mission = `
-We empower nonprofits, community groups, and purpose driven businesses with accessible tech resources, education, and peer support. Our goal is to bridge the digital divide so all organizations regardless of size or budget can thrive in a tech-driven world. We’re guided by inclusivity, collaboration, and a commitment to public good.
+We empower nonprofits, community groups, and purpose driven businesses with accessible tech resources, education, and peer support. Our goal is to bridge the digital divide so organizations of any size or budget can thrive in a tech driven world. We’re guided by inclusivity, collaboration, and a commitment to public good.
 `;
 
 const beliefs = [
-    'Tech should empower, not exclude.',
-    'No one should feel small for asking for help.',
-    'Strong communities are built by sharing knowledge — not hoarding it.'
+    {
+        title: 'Empowering Tech',
+        text: 'We choose tools and workflows that reduce friction, not introduce support burdens. Our goal is predictable, usable systems people can rely on.'
+    },
+    {
+        title: 'Ask Confidently',
+        text: 'Asking for help is progress. We meet teams where they are, explain plainly, and leave them able to manage their systems with confidence.'
+    },
+    {
+        title: 'Share Knowledge',
+        text: 'We document, teach, and open-source patterns where possible so helpful practices spread and organisations aren’t dependent on one person or vendor.'
+    }
 ];
 ---
 
@@ -19,24 +28,25 @@ const beliefs = [
     <div id="color-toggle-container" class="relative max-w-3xl mx-auto my-20 px-6 py-12 text-white bg-sky-900 rounded-lg">
         <img
             src="https://storage001backupfailed.blob.core.windows.net/stor-container-web/LOGO/Backup%20failed-NO%20BACKBROUND.png"
-            alt="Backup Failed Foundation Logo"
-            class="block mx-auto mb-8 max-w-[350px]"
+            alt="Backup Failed Foundation — nonprofit MSP and tech support"
+            class="block mx-auto mb-4 max-w-[350px]"
         />
+
+        <!-- CTAs intentionally removed: About page focused on mission and trust -->
 
         <section class="my-8">
             <h2 class="text-2xl font-semibold mb-4">Why We're Here</h2>
             <p class="mb-4">Tech should be inclusive, not exclusive.</p>
             <p class="mb-4">
-                I’ve spent years working in IT; hospitals, nonprofits, MSPs and one thing kept standing out: tech is often built in a way that leaves people
-                out. Not because they’re incapable, but because there are too many barriers: jargon, cost, bloated products, or just straight-up complexity.
+                I’ve worked across hospitals, nonprofits, and MSPs. The pattern was the same: good people blocked by jargon, cost, and bloated tools. Backup
+                Failed Foundation exists to remove those blockers, so mission-driven teams can focus on their work, not their IT.
             </p>
             <p class="mb-4">
                 I didn’t want to just point at the problem. I wanted to build something that helps solve it. That’s why I started Backup Failed Foundation.
             </p>
             <p class="mb-8">
-                This isn’t about being a hero. It’s about creating a space where nonprofits, community groups, and mission-driven teams can get real support and
-                grow confidently. They might not want to become cloud architects or sysadmins and that’s totally fine. It is their vision of a better world that
-                matters, and we at Backup Failed Foundation are here to help eliminate barriers.
+                We’re not trying to be heroes. We’re building a place where nonprofits, community groups, and small teams get clear answers, working systems,
+                and a partner who speaks human.
             </p>
         </section>
 
@@ -46,25 +56,52 @@ const beliefs = [
         </section>
 
         <section class="my-8">
-            <h2 class="text-2xl font-semibold mb-4">What We Believe</h2>
-            <ul class="list-disc pl-6 mb-8">
-                {beliefs.map((belief) => <li class="mb-2">{belief}</li>)}
+            <h2 class="text-2xl font-semibold mb-3">What we believe</h2>
+            <p class="mb-4 text-sky-100/85">Three guiding commitments that shape how we work with people and organizations.</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
+                {
+                    beliefs.map((b) => (
+                        <article class="relative bg-sky-800/40 p-5 rounded-lg border border-sky-700 hover:shadow-lg transition-transform transform hover:-translate-y-1">
+                            <div class="absolute left-4 top-4 h-8 w-1 rounded bg-white/10" />
+                            <h3 class="font-semibold text-lg mb-2">{b.title}</h3>
+                            <p class="text-sm text-sky-100/80">{b.text}</p>
+                        </article>
+                    ))
+                }
+            </div>
+        </section>
+
+        <!-- MSP teaser for business visitors -->
+        <section id="for-business" class="my-8">
+            <h2 class="text-2xl font-semibold mb-4">MSP services for businesses</h2>
+            <p class="mb-4">Enterprise-grade managed IT, security, and backups, with predictable pricing and a named account lead.</p>
+            <ul class="list-disc pl-6 mb-4">
+                <li>Managed Microsoft 365 & Entra ID: secure identity and conditional access</li>
+                <li>Managed backups & disaster recovery with tested restores</li>
+                <li>24/7 monitoring and SLA-backed incident response</li>
+                <li>Endpoint protection, patching, and vulnerability scanning</li>
+                <li>Compliance and audit support (HIPAA, PCI, SOC readiness)</li>
             </ul>
+            <p class="mb-6">
+                <strong>Why choose us:</strong> predictable monthly pricing and straightforward vendor relationships. A portion of revenue supports our programs
+                that provide no-cost technical assistance and capacity building for nonprofits, so partnering with us delivers operational value and long-term social
+                impact.
+            </p>
+            <a href="/contact" class="inline-block bg-white text-sky-900 font-semibold px-5 py-2 rounded-lg shadow">Request a custom quote</a>
         </section>
 
         <section class="my-8">
             <h2 class="text-2xl font-semibold mb-4">How We're Funded</h2>
             <p class="mb-4">
-                We believe nonprofits and community orgs shouldn’t have to stress about tech costs. That’s why our core services are <strong
-                    >completely free</strong
-                >
-                for qualifying nonprofits.
+                Our core services remain free for qualifying nonprofits. To keep the mission sustainable we offer enterprise-grade MSP services to businesses at
+                fair, transparent rates — and a portion of that revenue directly funds free technical support for nonprofits.
             </p>
             <p class="mb-4">
-                To keep the lights on, we charge fair rates to businesses and for-profit groups who want to work with us. That revenue helps fund the free
-                tools, resources, and hands-on help we provide to mission-driven teams.
+                That means when businesses purchase managed IT from us they also create social impact — reliable IT for you, and support for organizations that
+                need it most.
             </p>
-            <p class="mb-8">We’re all about transparency and sustainability — and we’ll always be clear about where funds go and why.</p>
+            <p class="mb-8">We’re all about transparency and sustainability. We’ll always be clear about where funds go and why.</p>
         </section>
 
         <section class="my-8">
@@ -79,6 +116,18 @@ const beliefs = [
                 to nonprofits and mission-driven groups—so they can focus on what matters most: serving others.
             </p>
         </section>
+
+        <!-- Trust signals: small testimonial + badges -->
+        <div class="mt-8 mb-6 text-center">
+            <blockquote class="italic text-sky-100 mb-4">
+                “Backup Failed transformed our IT in three months — better uptime, simple pricing, and a partner who understands nonprofit constraints.”
+            </blockquote>
+            <div class="flex justify-center items-center gap-4">
+                <span class="px-3 py-1 rounded bg-white text-sky-900 text-xs font-semibold">501(c)(3)</span>
+                <span class="px-3 py-1 rounded bg-white text-sky-900 text-xs font-semibold">MSP</span>
+                <span class="px-3 py-1 rounded bg-white text-sky-900 text-xs font-semibold">HIPAA-aware</span>
+            </div>
+        </div>
 
         <!-- <img src="/images/team.jpg" alt="Team at work or in action" class="block mx-auto mt-8 rounded-lg shadow-lg" /> -->
     </div>

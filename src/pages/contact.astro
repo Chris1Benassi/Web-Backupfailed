@@ -6,43 +6,47 @@ const currentYear = new Date().getFullYear(); // Dynamically get the current yea
 const faqItems = [
     {
         question: 'Who qualifies for free support?',
-        answer: 'We provide low to no‑cost IT assistance to actively engaged, mission‑driven nonprofits. If you’re a registered 501(c)(3) (or equivalent) running ongoing projects that benefit your community, reach out and we’ll determine if we’re a good fit to support your mission—no invoices, no fine print.'
+        answer: 'We prioritize low or no‑cost help for mission‑driven nonprofits without reliable operational IT. Registered nonprofits (501(c)(3) or equivalent) running ongoing community programs are fastest to qualify; we review requests case‑by‑case and focus pro‑bono capacity on measurable impact.'
     },
     {
         question: 'What if I’m not a nonprofit?',
-        answer: 'No sweat. If you’re a small business, startup, or other organization, we offer honest, market‑competitive rates. We’ll give you a clear quote up front so you know exactly what to expect.'
+        answer: 'We work with businesses of all sizes. For paid work we offer hourly support, fixed‑price projects, managed plans, and co‑managed services where we partner with your team or existing provider. You’ll get a clear scope, deliverables, and price up front.'
     },
     {
         question: 'How do I submit a request?',
-        answer: 'Just fill out our contact form with your organization’s name, a brief description of your goals, and how you’d like us to help. Tell us if you’re a nonprofit or a business so we can route you correctly.'
+        answer: 'Use the contact form and include: organization name, whether you’re a nonprofit or business, a short problem description, and any timeline constraints. We triage requests and reply with next steps or a short intake checklist.'
     },
     {
         question: 'Do you offer training or workshops?',
-        answer: 'We don’t do one-on-one training or live workshops, but we publish step‑by‑step guides and processes on our website. Check back often—we’re always adding fresh content to cover the latest IT trends.'
+        answer: 'We provide hands‑on, project‑based training as part of engagements (for example: admin handovers, staff onboarding, or operational runbooks). For standalone team training we offer short, paid sessions tailored to your needs, please tell us the outcomes you want and we’ll propose an option.'
     },
     {
-        question: 'Can I volunteer or donate?',
-        answer: 'You bet! Whether you’ve got IT expertise or just want to lend a hand, we’d love to have you. Fill out our contact form and let us know your skills or why you’d like to join the team. You can also donate—your support keeps our servers humming and our pro‑bono work going strong.'
+        question: 'Privacy & Data handling',
+        answer: 'Please see our Privacy Policy for full details on how we collect, store, and protect data.'
     },
     {
         question: 'What technologies do you support?',
-        answer: 'Our wheelhouse includes Microsoft 365 administration, Azure Cloud, open‑source CMS (WordPress, Ghost, etc.), limited web development, networking, cyber security, and custom automation scripts. Need HIPAA, PCI, or FINRA compliant logins for staff and volunteers? We’ve got you. Got something else in mind? Just ask!'
+        answer: 'Common areas: Microsoft 365, Azure, WordPress/Ghost, basic web work, networking, endpoint security, and automation scripting. We assist with compliance controls (HIPAA/PCI/CJIS) and will recommend partners for large product builds.'
     },
     {
-        question: 'How do you protect my data?',
-        answer: 'We treat your data with the utmost care. We follow industry best practices, and never sell or share your information. We make an effort to reduce data collection to the bare minimum needed to provide our services. For additional information please check our privacy policy.'
-    },
-    {
-        question: 'I’m not very technical—can you still help me?',
-        answer: 'Absolutely. We walk you through every step in plain English, without jargon or complexity overload. Everyone has different strengths—together, we’ll fill in the gaps.'
+        question: 'I’m not very technical — can you still help me?',
+        answer: 'Yes. We act as your technical team when needed: we do the hands‑on work, explain choices in plain language, and leave clear documentation so your staff can manage day‑to‑day tasks later.'
     },
     {
         question: 'Do you provide on‑site visits or only remote support?',
-        answer: 'We primarily deliver fast, efficient remote support. If you require on‑site assistance, let us know and we’ll see if we can accommodate or refer you to a local partner.'
+        answer: 'We focus on remote support for speed and cost‑efficiency. On‑site visits are available for local clients or scoped projects and may include travel or site‑visit fees; we’ll confirm logistics and cost in the intake.'
     },
     {
         question: 'What if I already have an IT provider?',
-        answer: 'We focus our limited pro‑bono resources on organizations without existing IT support. If you already have a provider, we may not be the best fit. We still encourage you to reach out to us and let us know what you need help with and where your current IT service provider or in-house technical staff is unable to meet your needs.'
+        answer: 'Nonprofits with existing IT coverage are lower priority for pro‑bono help. For paid engagements we can collaborate with or complement your current provider — audits, gap fixes, co‑managed services, or short projects are common. Tell us what you need and we’ll recommend the best path.'
+    },
+    {
+        question: 'How long until you respond?',
+        answer: 'We typically reply within 1 business day. If your request is time‑sensitive, mark it as urgent in the form and include the best way to reach you; we’ll prioritize urgent requests when possible.'
+    },
+    {
+        question: 'Do you handle emergencies?',
+        answer: 'Yes. For emergencies, calling us is the fastest option we’ll triage immediately and, subject to availability, work to squeeze critical incidents in. Emergency work may be handled as a prioritized paid engagement; we’ll confirm scope and next steps when we respond.'
     }
 ];
 ---
