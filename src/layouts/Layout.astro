@@ -3167,23 +3167,14 @@ const { title, description, jsonLd } = Astro.props as Props;
     </head>
 
     <body class="antialiased text-white bg-slate-50 bg-noise">
-    <Header />
-        {
-            title === 'Home | Backup Failed Foundation' ? (
-                <main class="grow w-full">
-                    <slot />
-                </main>
-            ) : (
-                <div class="flex flex-col w-full max-w-5xl lg:max-w-7xl mx-auto grow">
-                    <main class="grow">
-                        <slot />
-                    </main>
-                    <Footer />
-                </div>
-            )
-        }
-    {title === 'Home | Backup Failed Foundation' && <Footer />}
+        <Header />
+        <div class="flex flex-col w-full max-w-5xl lg:max-w-7xl mx-auto grow">
+            <main class="grow">
+                <slot />
+            </main>
+            <Footer />
+        </div>
 
-    <!-- New Relic is used for telemetry; removed custom analytics helper to avoid duplicate instrumentation -->
+        <!-- New Relic is used for telemetry; removed custom analytics helper to avoid duplicate instrumentation -->
     </body>
 </html>
