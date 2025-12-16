@@ -1,0 +1,178 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContextAlert from '../components/ContextAlert.astro';
+import CTAButton from '../components/CTAButton.astro';
+
+const title = 'Projects';
+const description =
+    'Projects & custom solutions — scoped work like automations, migrations, security hardening, and infrastructure builds. Pricing ranges are shown where applicable; final quotes are confirmed after scoping.';
+
+const projectServices = [
+    {
+        title: 'Custom Automation & Scripting',
+        description:
+            'Targeted automations delivered with clear requirements, tested output, and a handoff package (scripts, runbooks, and maintenance guidance).',
+        price: 'Contact us',
+        cta: 'Discuss an automation',
+        CtaLink: '/contact?topic=Custom%20Automations'
+    },
+    {
+        title: 'Custom Servers & Infrastructure',
+        description: 'Right-sized infrastructure (on‑prem or cloud) with architecture notes, implementation plan, and a clean operational handoff.',
+        price: 'Contact us',
+        cta: 'Plan infrastructure',
+        CtaLink: '/contact?topic=Servers%20and%20Infrastructure'
+    },
+    {
+        title: 'Hosted Applications',
+        description: 'Hosting and operational support for line‑of‑business applications: patching, backups, monitoring, and accountable ownership.',
+        price: 'Contact us',
+        cta: 'Talk app hosting',
+        CtaLink: '/contact?topic=Hosted%20Applications'
+    },
+    {
+        title: 'Domain Migration',
+        description: 'DNS and domain cutover work to connect email, websites, and cloud services with minimal disruption.',
+        price: '$150',
+        cta: 'Start domain work',
+        CtaLink: '/contact?topic=Domain%20Support'
+    },
+    {
+        title: 'Office Move & Tech Setup',
+        description: 'Internet, Wi‑Fi, phones, printers, and workstations—planned and executed so your team walks into a working office on day one.',
+        price: '$1,500+',
+        cta: 'Plan an office move',
+        CtaLink: '/contact?topic=Office%20Move'
+    },
+    {
+        title: 'Standard Email Migration',
+        description:
+            'Migration to Microsoft 365 including mail, calendar, and contacts—planned for minimal downtime, data integrity, and post-cutover validation.',
+        price: '$50–$300 per mailbox',
+        cta: 'Request email migration',
+        CtaLink: '/contact?topic=Email%20Migration%20Support'
+    },
+    {
+        title: 'Microsoft 365 & Google Workspace Backups',
+        description: 'Setup and ongoing management of Microsoft 365 or Google Workspace backups so your data is recoverable with tested restores.',
+        price: '$5.00/mailbox',
+        cta: 'Set up backups',
+        CtaLink: '/contact?topic=Microsoft%20or%20Google%20Workspace%20Questions'
+    },
+    {
+        title: 'Endpoint Security Hardening',
+        description: 'Security baselines and endpoint policies applied to reduce risk and support audit, insurance, and compliance requirements.',
+        price: '$3,000 (up to 30 users)',
+        cta: 'Harden endpoints',
+        CtaLink: '/contact?topic=Endpoint%20Security'
+    },
+    {
+        title: 'Microsoft 365 User & Device Onboarding',
+        description: 'Onboarding with Entra ID join, Intune enrollment, and baseline policies so access is consistent, predictable, and supportable.',
+        price: '$150/user',
+        cta: 'Plan onboarding',
+        CtaLink: '/contact?topic=Microsoft%20or%20Google%20Workspace%20Questions'
+    },
+    {
+        title: 'Website Monitoring',
+        description: 'Uptime monitoring plus basic maintenance updates when possible, with alert routing and reporting.',
+        price: '$10/site/month+',
+        cta: 'Monitor a site',
+        CtaLink: '/contact?topic=Website%20Management'
+    }
+];
+---
+
+<Layout title={`${title} | Backup Failed Foundation`} description={description}>
+    <ContextAlert class="mb-8" />
+
+    <main class="mx-auto px-6 pt-0 pb-12">
+        <section class="edge-to-edge bg-gradient-to-r from-sky-900 via-indigo-900 to-purple-900 text-white" aria-labelledby="projects-hero">
+            <div class="grid md:grid-cols-2 items-center">
+                <div
+                    class="h-72 md:h-[420px] bg-cover bg-center rounded-none"
+                    style="background-image:url('https://storage001backupfailed.blob.core.windows.net/stor-container-web/BLOG_IMG/pexels-jeshoots-com-147458-834892.jpg');"
+                    role="img"
+                    aria-label="Laptop and IT work environment"
+                >
+                    <div class="h-full w-full bg-black/40"></div>
+                </div>
+
+                <div id="projects-hero" class="anchor px-6 md:px-12 py-12 md:py-20">
+                    <h1 class="text-3xl md:text-4xl font-extrabold">Projects & custom solutions</h1>
+                    <p class="mt-4 text-sky-100 max-w-2xl">
+                        This page is for scoped engagements: automations, migrations, security hardening, and infrastructure builds. If you want ongoing
+                        coverage, see
+                        <a href="/managed-it" class="underline font-semibold">Managed IT</a>.
+                    </p>
+
+                    <ul class="mt-6 space-y-3 text-sky-100">
+                        <li class="flex items-start gap-3">
+                            <span class="text-green-300">✓</span><span>Clear scope, timeline, and documented handoff</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-green-300">✓</span><span>Senior-level execution with white-glove communication</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-green-300">✓</span><span>Transparent pricing ranges where applicable</span>
+                        </li>
+                    </ul>
+
+                    <div class="mt-8 flex gap-4 items-center">
+                        <CTAButton text="Request a project quote" link="/contact?topic=Projects" />
+                        <a class="text-sm text-sky-100/90 underline" href="/managed-it">Prefer monthly coverage?</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="edge-to-edge bg-white mt-12">
+            <div class="px-6">
+                <div class="max-w-7xl mx-auto py-12 md:py-16">
+                    <div>
+                        <div>
+                            <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900">What we build and fix</h2>
+                            <p class="mt-3 text-slate-700 max-w-3xl">
+                                Pick the closest match and reach out. If it’s not listed, that’s fine—describe the outcome you want and the constraints you have
+                                (timeline, users, apps) and we’ll tell you quickly if we’re a fit.
+                            </p>
+                            <p class="mt-3 text-sm text-slate-600">
+                                Starting prices are listed below. Final quotes are confirmed after scoping (environment review, success criteria, and
+                                implementation plan).
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="mt-10 border-t border-slate-200 divide-y divide-slate-200">
+                        {
+                            projectServices.map((service) => (
+                                <div class="py-8 grid gap-6 md:grid-cols-12 md:items-start">
+                                    <div class="md:col-span-8">
+                                        <div class="text-xs font-semibold tracking-wide uppercase text-slate-500">Project</div>
+                                        <h3 class="mt-2 text-xl font-semibold text-slate-900">{service.title}</h3>
+                                        <p class="mt-3 text-slate-700 max-w-3xl">{service.description}</p>
+                                    </div>
+
+                                    <div class="md:col-span-4 md:flex md:justify-end">
+                                        <div class="flex flex-col items-start md:items-end gap-3">
+                                            {service.price ? (
+                                                <div class="text-sm text-slate-600 md:text-right">
+                                                    <span class="font-semibold text-slate-700">Starting price:</span> {service.price}
+                                                </div>
+                                            ) : null}
+                                            {service.cta && service.CtaLink ? (
+                                                <CTAButton text={service.cta} link={service.CtaLink} />
+                                            ) : (
+                                                <CTAButton text="Discuss this project" link="/contact?topic=Projects" />
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</Layout>
