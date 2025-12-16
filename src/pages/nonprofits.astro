@@ -1,0 +1,230 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CTAButton from '../components/CTAButton.astro';
+
+const title = 'Nonprofit IT';
+const description =
+    'Nonprofit IT support focused on getting the most from nonprofit pricing, reducing day-to-day friction, and keeping Microsoft 365 secure and reliable.';
+
+const freeForNonprofits = [
+    {
+        title: 'IT consultation',
+        detail: 'A focused review of what you have today, what’s risky, and a simple next-step plan.'
+    },
+    {
+        title: 'Domain migration (DNS + setup)',
+        detail: 'DNS changes needed to connect email and cloud services to your domain.'
+    },
+    {
+        title: 'Standard email migration to Microsoft 365',
+        detail: 'Mail, calendar, and contacts moved with minimal downtime.'
+    },
+    {
+        title: 'Technology grants guidance',
+        detail: 'Help identifying nonprofit discounts, software programs, and cloud credits that may apply.'
+    }
+];
+
+const flexibleForNonprofits = [
+    {
+        title: 'Office moves & tech setup',
+        detail: 'Internet/Wi‑Fi, printers, phones, and workstations—set up so day one isn’t chaos.'
+    },
+    {
+        title: 'Endpoint security hardening',
+        detail: 'Practical security baselines and policies to reduce risk without breaking day-to-day work.'
+    },
+    {
+        title: 'Microsoft 365 user & device onboarding',
+        detail: 'Device standards and onboarding that keep logins and access predictable.'
+    },
+    {
+        title: 'Custom automation & scripting',
+        detail: 'Small automations that remove repetitive manual work from your team.'
+    }
+];
+---
+
+<Layout title={title} description={description}>
+    <main class="mx-auto px-6 pt-0 pb-12">
+        <section class="edge-to-edge bg-gradient-to-r from-sky-900 via-indigo-900 to-purple-900 text-white" aria-labelledby="nonprofits-hero">
+            <div class="grid md:grid-cols-2 items-center">
+                <div
+                    class="h-72 md:h-[420px] bg-cover bg-center rounded-none"
+                    style="background-image:url('https://storage001backupfailed.blob.core.windows.net/stor-container-web/BLOG_IMG/IT-Problems.jpg');"
+                    role="img"
+                    aria-label="IT professional helping an organization"
+                >
+                    <div class="h-full w-full bg-black/40"></div>
+                </div>
+
+                <div id="nonprofits-hero" class="anchor px-6 md:px-12 py-12 md:py-20">
+                    <h1 class="text-3xl md:text-4xl font-extrabold">Nonprofit IT, Done Right.</h1>
+                    <p class="mt-4 text-sky-100 max-w-2xl">
+                        Your mission shouldn’t be held hostage by email problems, login confusion, or “the printer is down again.” We help nonprofits get the
+                        most from nonprofit pricing and keep Microsoft 365 reliable.
+                    </p>
+
+                    <ul class="mt-6 space-y-3 text-sky-100">
+                        <li class="flex items-start gap-3">
+                            <span class="text-green-300">✓</span><span>Clear guidance on what may be free vs discounted</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-green-300">✓</span><span>Practical security and access standards that staff can follow</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-green-300">✓</span><span>Support that’s calm, accountable, and easy to work with</span>
+                        </li>
+                    </ul>
+
+                    <div class="mt-6 grid grid-cols-3 gap-4 text-center text-sky-100">
+                        <div>
+                            <div class="text-2xl font-bold">Free</div>
+                            <div class="text-sm">Consultation</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold">From</div>
+                            <div class="text-sm">$4/device (Managed IT)</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold">Flexible</div>
+                            <div class="text-sm">Pay‑what‑you‑can options</div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 flex gap-4 items-center">
+                        <CTAButton text="Book a nonprofit consult" link="/contact?topic=Nonprofit%20IT" />
+                        <a class="text-sm text-sky-100/90 underline" href="#what-can-be-free">See what can be free</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="what-can-be-free" class="anchor mt-12">
+            <div class="max-w-7xl mx-auto">
+                <div class="bg-white text-slate-900 border border-slate-200 shadow-2xl rounded-2xl p-6 md:p-10">
+                    <h2 class="text-2xl md:text-3xl font-extrabold">What’s free (or flexible) for nonprofits</h2>
+                    <p class="mt-3 text-slate-700 max-w-3xl">
+                        These are the nonprofit-friendly options we offer directly. (If you’re a business, see our project options on the Projects page.)
+                    </p>
+
+                    <div class="mt-8 grid lg:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-lg font-bold text-slate-900">Free for nonprofits</h3>
+                            <ul class="mt-4 space-y-4">
+                                {
+                                    freeForNonprofits.map((item) => (
+                                        <li>
+                                            <div class="font-semibold">{item.title}</div>
+                                            <div class="text-slate-700">{item.detail}</div>
+                                        </li>
+                                    ))
+                                }
+                            </ul>
+                            <p class="mt-4 text-sm text-slate-600 max-w-xl">
+                                Free options are for eligible nonprofits and standard scenarios. If your environment is unusually complex, we’ll confirm scope
+                                and options up front.
+                            </p>
+                        </div>
+
+                        <div>
+                            <h3 class="text-lg font-bold text-slate-900">Pay‑what‑you‑can / flexible</h3>
+                            <ul class="mt-4 space-y-4">
+                                {
+                                    flexibleForNonprofits.map((item) => (
+                                        <li>
+                                            <div class="font-semibold">{item.title}</div>
+                                            <div class="text-slate-700">{item.detail}</div>
+                                        </li>
+                                    ))
+                                }
+                            </ul>
+                            <p class="mt-4 text-sm text-slate-600 max-w-xl">
+                                Flexible pricing is designed to keep progress moving when budgets are tight. We’ll agree on a clear plan, boundaries, and
+                                timeline before work begins.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 flex flex-wrap gap-4">
+                        <CTAButton text="Talk to us" link="/contact?topic=Nonprofit%20IT" />
+                        <a class="text-sm text-slate-700 underline" href="/projects">View projects</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-12">
+            <div class="max-w-7xl mx-auto">
+                <div class="bg-white text-slate-900 border border-slate-200 shadow-2xl rounded-2xl p-6 md:p-10">
+                    <h2 class="text-2xl md:text-3xl font-extrabold">What can be free through nonprofit programs</h2>
+                    <p class="mt-3 text-slate-700 max-w-3xl">
+                        Many nonprofits qualify for donated or discounted software. The exact offers change over time and depend on eligibility, but the common
+                        categories are consistent.
+                    </p>
+
+                    <ul class="mt-6 space-y-3 text-slate-700">
+                        <li class="flex items-start gap-3">
+                            <span class="text-emerald-600">✓</span><span
+                                ><span class="font-semibold">Microsoft 365 nonprofit pricing</span> (donated/discounted licensing based on eligibility)</span
+                            >
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-emerald-600">✓</span><span
+                                ><span class="font-semibold">Cloud credits</span> that can offset hosting or project work</span
+                            >
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-emerald-600">✓</span><span
+                                ><span class="font-semibold">Software discounts</span> for common nonprofit tooling (varies by provider)</span
+                            >
+                        </li>
+                    </ul>
+
+                    <p class="mt-6 text-sm text-slate-600 max-w-3xl">
+                        We can help you understand what you’re eligible for, set it up correctly, and avoid surprise gaps (like missing security defaults or
+                        messy access).
+                    </p>
+
+                    <div class="mt-8 flex flex-wrap gap-4">
+                        <CTAButton text="Get help with nonprofit setup" link="/contact?topic=Nonprofit%20IT" />
+                        <a class="text-sm text-slate-700 underline" href="https://nonprofit.microsoft.com/" target="_blank" rel="noreferrer"
+                            >Microsoft Nonprofits portal</a
+                        >
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-12">
+            <div class="max-w-7xl mx-auto">
+                <div class="bg-white text-slate-900 border border-slate-200 shadow-2xl rounded-2xl p-6 md:p-10">
+                    <h2 class="text-2xl md:text-3xl font-extrabold">How we support your nonprofit</h2>
+                    <p class="mt-3 text-slate-700 max-w-3xl">
+                        Some nonprofits just need a clean setup and a plan. Others need ongoing managed support. Either way, the goal is the same: fewer
+                        surprises, fewer interruptions, and a system your team can actually use.
+                    </p>
+
+                    <div class="mt-8 grid md:grid-cols-3 gap-6">
+                        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-6">
+                            <div class="font-bold">Identity & access</div>
+                            <div class="mt-2 text-slate-700">Logins that make sense, MFA that’s usable, and access that’s easy to manage.</div>
+                        </div>
+                        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-6">
+                            <div class="font-bold">Devices & standards</div>
+                            <div class="mt-2 text-slate-700">Consistent device setup so new staff/volunteers can get working quickly.</div>
+                        </div>
+                        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-6">
+                            <div class="font-bold">Backup & recovery</div>
+                            <div class="mt-2 text-slate-700">Backups configured so you can recover when something goes wrong.</div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8">
+                        <CTAButton text="See managed plans" link="/managed-it" />
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</Layout>
