@@ -4,7 +4,7 @@ import CTAButton from '../components/CTAButton.astro';
 import PackageCard from '../components/PackageCard.astro';
 
 const title = 'Managed IT';
-const description = 'Managed IT — compare our hourly, managed, and full-coverage IT packages. Schedule a review or request a tailored quote.';
+const description = 'Managed IT: compare our hourly, managed, and full-coverage IT packages. Schedule a review or request a tailored quote.';
 
 const jsonLd = {
     '@context': 'https://schema.org',
@@ -79,32 +79,37 @@ const kpis = [
                 </div>
 
                 <!-- content panel -->
-                <div id="managed-it-hero" class="anchor px-6 md:px-12 py-12 md:py-20">
-                    <h2 class="text-3xl md:text-4xl font-extrabold">Managed IT Services for Your Business.</h2>
+                <div class="anchor px-6 md:px-12 py-12 md:py-20">
+                    <h1 id="managed-it-hero" class="text-3xl md:text-4xl font-extrabold">Managed IT Services for Your Business.</h1>
                     <p class="mt-4 text-sky-100 max-w-2xl">
                         Proactive solutions, not reactive support. From Microsoft 365 to everyday IT needs, we manage it all for one clear monthly price.
                     </p>
 
                     <ul class="mt-6 space-y-3 text-sky-100">
                         <li class="flex items-start gap-3">
-                            <span class="text-green-300">✓</span><span>Enterprise-level IT practices for small business.</span>
+                            <span class="text-green-300">✓</span><span>Enterprise-level IT practices for small businesses.</span>
                         </li>
                         <li class="flex items-start gap-3"><span class="text-green-300">✓</span><span>Comprehensive helpdesk coverage for your staff</span></li>
                         <li class="flex items-start gap-3"><span class="text-green-300">✓</span><span>Security you don’t have to think about</span></li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-green-300">✓</span><span>Transparent pricing. Clearly scoped. No sales theater.</span>
+                        </li>
                     </ul>
 
                     <div class="mt-6 grid grid-cols-3 gap-4 text-center text-sky-100">
                         <div>
-                            <div class="text-2xl font-bold">100%</div>
-                            <div class="text-sm">Same Day Response</div>
+                            <div class="text-2xl font-bold">365</div>
+                            <div class="text-sm">Days a Year</div>
                         </div>
+
                         <div>
                             <div class="text-2xl font-bold">24/7</div>
                             <div class="text-sm">Monitoring</div>
                         </div>
+
                         <div>
                             <div class="text-2xl font-bold">10+</div>
-                            <div class="text-sm">Years experience</div>
+                            <div class="text-sm">Years of experience</div>
                         </div>
                     </div>
 
@@ -112,123 +117,127 @@ const kpis = [
                         <CTAButton text="Request a quote" link="/contact?topic=Managed%20IT%20Support" />
                         <a class="text-sm text-sky-100/90 underline" href="#compliance-addon">See Optional Add-Ons</a>
                     </div>
-                    <!--
-                    <div class="mt-8 flex items-center gap-6 opacity-90">
-                        <img src="/admin/images/noise.png" alt="Client logo 1" class="h-8 opacity-60" />
-                        <img src="/admin/images/noise.png" alt="Client logo 2" class="h-8 opacity-60" />
-                        <img src="/admin/images/noise.png" alt="Client logo 3" class="h-8 opacity-60" />
-                    </div>
- -->
                 </div>
             </div>
         </section>
         <section id="packages-grid" class="mt-12">
             <div class="max-w-7xl mx-auto">
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
-                    <PackageCard
-                        title="Hourly"
-                        price="$120"
-                        period="/hr"
-                        features={[
-                            'One-off Troubleshooting & Repairs',
-                            'Windows and macOS Support',
-                            'Printer or Peripheral Installations',
-                            'Server Fixes Available on Request',
-                            'Best for Emergencies, Not Long-term IT'
-                        ]}
-                        link="/contact/"
-                        ctaText="Get Help Now"
-                    />
-                    <PackageCard
-                        title="Essentials Package"
-                        price="$100+"
-                        period="/user"
-                        features={[
-                            {
-                                title: '24/7 Monitoring',
-                                details:
-                                    'Your systems are monitored 24/7 by our tools. If something goes wrong, we’re alerted immediately. Low storage, failed updates, or security risks can often be fixed in the background before they disrupt your business.'
-                            },
-                            {
-                                title: 'Unlimited Remote Helpdesk Support',
-                                details:
-                                    'Whenever your team hits a snag, our remote helpdesk is here to help, there are no limits, no hidden fees. From password resets to software issues, we provide fast, reliable support during business hours so your staff can stay focused on their work.'
-                            },
-                            {
-                                title: 'Managed Updates & Security Patching',
-                                details:
-                                    'We keep your systems protected and up to date. Critical patches for Windows and other key software are tested and deployed on a schedule, reducing security risks and preventing disruptions. If an update causes problems, we can roll it back quickly to keep your business running smoothly.'
-                            },
-                            {
-                                title: 'Next-Gen Threat Protection (EDR Security)',
-                                details:
-                                    'Traditional antivirus only blocks known viruses. Our EDR (Endpoint Detection & Response) goes beyond; it watches how programs behave to spot new, hidden, or evolving threats. When suspicious activity is detected, we receive alerts and handle the investigation and cleanup for you, so problems don’t spiral into bigger issues.'
-                            },
-                            {
-                                title: 'Employee Lifecycle Management',
-                                details:
-                                    'We handle staff account setup and removal. New employees get the right email, apps, and permissions on day one. When someone leaves, we quickly revoke access to keep your data secure.'
-                            },
-                            {
-                                title: 'One Stop IT Support',
-                                details:
-                                    'Forget sitting on hold with Spectrum or bouncing between different tech vendors. We deal directly with internet providers, software companies, and hardware support so you don’t have to. Whether it’s troubleshooting, billing issues, or escalations, you call us once — we handle the rest and keep you updated.'
-                            }
-                        ]}
-                        link="/contact?topic=Managed%20IT%20Support"
-                        ctaText="Get Managed IT"
-                    />
-                    <PackageCard
-                        title="Failsafe Package"
-                        price="$170+"
-                        period="/user"
-                        features={[
-                            { title: 'Everything in Essentials', details: 'Includes all services provided in the Essentials package.' },
-                            {
-                                title: 'Web Filtering',
-                                details:
-                                    'We protect your team by blocking dangerous websites, phishing pages, and other high-risk content. This reduces the chance of malware infections and keeps browsing safe and productive at work.'
-                            },
-                            {
-                                title: 'Removable Media Protection',
-                                details:
-                                    'We prevent unsafe USB drives and external devices from spreading malware or copying sensitive files without permission, keeping your data secure.'
-                            },
-                            {
-                                title: 'Microsoft Office Apps Included',
-                                details:
-                                    'Every user gets the latest Word, Excel, Outlook, and PowerPoint. Your team is fully licensed, updated, and supported by us. We handle setup, renewals, and license management so you never have to worry about mismatched versions or expired subscriptions.'
-                            },
-                            {
-                                title: 'Microsoft Teams Collaboration',
-                                details:
-                                    'A single, secure platform for chat, file sharing, and video meetings. With Teams, your staff can message, share documents, and meet online with screen sharing and recording; all managed under your business account for security and ease.'
-                            },
-                            {
-                                title: 'Secure Configuration Standards',
-                                details:
-                                    'We secure company devices and Microsoft 365 accounts using industry best practices. That means encryption for lost or stolen laptops, automatic screen locks, multi-factor logins, blocked risky sign-ins, and even the ability to remotely wipe data if a device goes missing.'
-                            },
-                            {
-                                title: 'Email and File Cloud Backups',
-                                details:
-                                    'Most people assume Microsoft keeps endless backups, they don’t. We back up your email, OneDrive, and SharePoint every day, so if data is deleted, corrupted, or locked by ransomware, we can restore it and keep your business moving.'
-                            },
-                            { title: 'Endpoint Backups', details: 'Laptops and desktops protected so local data isn’t lost to hardware failure or accidents.' },
+                    <div id="hourly" class="anchor">
+                        <PackageCard
+                            title="Hourly"
+                            price="$120"
+                            period="/hr"
+                            features={[
+                                'One-off Troubleshooting & Repairs',
+                                'Windows and macOS Support',
+                                'Printer or Peripheral Installations',
+                                'Server Fixes Available on Request',
+                                'Best for Emergencies, Not Long-term IT'
+                            ]}
+                            link="/contact?topic=Managed%20IT%20Support"
+                            ctaText="Get Help Now"
+                        />
+                    </div>
 
-                            {
-                                title: 'Website Monitoring',
-                                details: 'Track uptime, SSL, and security issues so customers always reach you and you are not caught off guard.'
-                            },
-                            {
-                                title: 'Regular IT Reviews',
-                                details:
-                                    'No more guessing where your IT stands. We give leadership plain-English reports on risks and trends, with clear next steps to keep your business protected and prepared.'
-                            }
-                        ]}
-                        link="/contact?topic=Managed%20IT%20Support"
-                        ctaText="Get Managed IT"
-                    />
+                    <div id="essentials" class="anchor">
+                        <PackageCard
+                            title="Essentials Package"
+                            price="$100+"
+                            period="/user"
+                            features={[
+                                {
+                                    title: '24/7 Monitoring',
+                                    details:
+                                        'Your systems are monitored 24/7 by our tools. If something goes wrong, we’re alerted immediately. Low storage, failed updates, or security risks can often be fixed in the background before they disrupt your business.'
+                                },
+                                {
+                                    title: 'Unlimited Remote Helpdesk Support',
+                                    details:
+                                        'Whenever your team hits a snag, our remote helpdesk is here to help, there are no limits, no hidden fees. From password resets to software issues, we provide fast, reliable support during business hours so your staff can stay focused on their work.'
+                                },
+                                {
+                                    title: 'Managed Updates & Security Patching',
+                                    details:
+                                        'We keep your systems protected and up to date. Critical patches for Windows and other key software are tested and deployed on a schedule, reducing security risks and preventing disruptions. If an update causes problems, we can roll it back quickly to keep your business running smoothly.'
+                                },
+                                {
+                                    title: 'Next-Gen Threat Protection (EDR Security)',
+                                    details:
+                                        'Traditional antivirus only blocks known viruses. Our EDR (Endpoint Detection & Response) goes beyond; it watches how programs behave to spot new, hidden, or evolving threats. When suspicious activity is detected, we receive alerts and handle the investigation and cleanup for you, so problems don’t spiral into bigger issues.'
+                                },
+                                {
+                                    title: 'Employee Lifecycle Management',
+                                    details:
+                                        'We handle staff account setup and removal. New employees get the right email, apps, and permissions on day one. When someone leaves, we quickly revoke access to keep your data secure.'
+                                },
+                                {
+                                    title: 'One Stop IT Support',
+                                    details:
+                                        'Forget sitting on hold with Spectrum or bouncing between different tech vendors. We deal directly with internet providers, software companies, and hardware support so you don’t have to. Whether it’s troubleshooting, billing issues, or escalations, you call us once. We handle the rest and keep you updated.'
+                                }
+                            ]}
+                            link="/contact?topic=Managed%20IT%20Support"
+                            ctaText="Get Managed IT"
+                        />
+                    </div>
+
+                    <div id="failsafe" class="anchor">
+                        <PackageCard
+                            title="Failsafe Package"
+                            price="$170+"
+                            period="/user"
+                            features={[
+                                { title: 'Everything in Essentials', details: 'Includes all services provided in the Essentials package.' },
+                                {
+                                    title: 'Web Filtering',
+                                    details:
+                                        'We protect your team by blocking dangerous websites, phishing pages, and other high-risk content. This reduces the chance of malware infections and keeps browsing safe and productive at work.'
+                                },
+                                {
+                                    title: 'Removable Media Protection',
+                                    details:
+                                        'We prevent unsafe USB drives and external devices from spreading malware or copying sensitive files without permission, keeping your data secure.'
+                                },
+                                {
+                                    title: 'Microsoft Office Apps Included',
+                                    details:
+                                        'Every user gets the latest Word, Excel, Outlook, and PowerPoint. Your team is fully licensed, updated, and supported by us. We handle setup, renewals, and license management so you never have to worry about mismatched versions or expired subscriptions.'
+                                },
+                                {
+                                    title: 'Microsoft Teams Collaboration',
+                                    details:
+                                        'A single, secure platform for chat, file sharing, and video meetings. With Teams, your staff can message, share documents, and meet online with screen sharing and recording; all managed under your business account for security and ease.'
+                                },
+                                {
+                                    title: 'Secure Configuration Standards',
+                                    details:
+                                        'We secure company devices and Microsoft 365 accounts using industry best practices. That means encryption for lost or stolen laptops, automatic screen locks, multi-factor logins, blocked risky sign-ins, and even the ability to remotely wipe data if a device goes missing.'
+                                },
+                                {
+                                    title: 'Email and File Cloud Backups',
+                                    details:
+                                        'Most people assume Microsoft keeps endless backups, they don’t. We back up your email, OneDrive, and SharePoint every day, so if data is deleted, corrupted, or locked by ransomware, we can restore it and keep your business moving.'
+                                },
+                                {
+                                    title: 'Endpoint Backups',
+                                    details: 'Laptops and desktops protected so local data isn’t lost to hardware failure or accidents.'
+                                },
+
+                                {
+                                    title: 'Website Monitoring',
+                                    details: 'Track uptime, SSL, and security issues so customers always reach you and you are not caught off guard.'
+                                },
+                                {
+                                    title: 'Regular IT Reviews',
+                                    details:
+                                        'No more guessing where your IT stands. We give leadership plain-English reports on risks and trends, with clear next steps to keep your business protected and prepared.'
+                                }
+                            ]}
+                            link="/contact?topic=Managed%20IT%20Support"
+                            ctaText="Get Managed IT"
+                        />
+                    </div>
                 </div>
             </div>
         </section>
@@ -267,8 +276,6 @@ const kpis = [
                                     }
                                 </div>
                             </div>
-
-                            <div class="mt-6 flex items-center gap-4"></div>
                         </div>
 
                         <div class="mt-6 md:mt-0">
@@ -285,7 +292,7 @@ const kpis = [
                                 <details class="bg-slate-50 p-4 rounded-lg">
                                     <summary class="font-semibold cursor-pointer">SIEM Log Management</summary>
                                     <div class="mt-2 text-sm text-slate-600">
-                                        Cyber insurance and compliance frameworks often require detailed IT logs without them audits drag on and claims can even
+                                        Cyber insurance and compliance frameworks often require detailed IT logs. Without them, audits drag on and claims can even
                                         be denied. Our Security Information and Event Management (SIEM) system pulls activity from your firewalls, servers, and
                                         cloud apps into one place. That way, when an insurer or auditor asks tough questions, you already have the records. By
                                         bringing all these logs together, we can spot patterns and connections that would be invisible if each system was viewed
